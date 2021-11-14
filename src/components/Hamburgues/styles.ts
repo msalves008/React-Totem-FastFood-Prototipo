@@ -23,6 +23,10 @@ export const Container = styled.div`
     text-align: center;
     justify-content:center;
     border: none;
+    img{
+      max-height: 50%;
+      width: auto;
+    }
     
 }
 
@@ -43,6 +47,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Roboto;
   
 }
 
@@ -51,7 +58,10 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  font-size: 1rem;
+  color: red;
 }
+
 
 
 `;
