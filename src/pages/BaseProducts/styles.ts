@@ -19,8 +19,7 @@ export const Container = styled.div`
 .section-body-base-products{
   width:100%;
   height: 72vh;
-  background-color: green;
-  display: flex;
+    display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   
@@ -36,20 +35,105 @@ export const Container = styled.div`
   /* flex: 2; */
   width:88%;
   height: 100%;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .bottom-base-products{
   width: 100%;
   height: 16vh;
-  background-color:#3623E2;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 .bar-options{
   width: 100%;
   height: 25%;
   background-color:#4ABC4E;
+  display: flex;
+/*   align-items: center;
+  justify-content: center; */
+  margin : 0 auto;
+  /* background-color: var(--green); */
+  .value{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 0 auto;
+    h1{ 
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 2.5rem;
+      text-align: center;
+      color: #FFFFFF;
+      margin : 0 auto;   
+
+    }
+    div{ 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h1{ 
+        position: relative;
+        width:5%;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 2.5rem;
+      text-align: center;
+      color: #FFFFFF;
+      margin : 0 auto;   
+    }
+      span{
+        position: relative;
+        width: 30%;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        text-align: center;
+        margin : 0 auto;
+        color: red;
+      }
+
+    }
+  }
+  .cart{
+    max-width: 20%;
+    height: auto;
+    display: flex;
+    margin : 0 auto;
+    align-items: center;      
+    justify-content: center;
+
+    button{
+      background-color: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+
+      span {        
+      flex-direction: column-reverse;       
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;  
+        font-size: 1rem;
+        color: red;
+      }
+      img{
+        max-height:50%;
+      }
+    }
+  }
 }
 .section-buttons-base{
   display: flex;
@@ -73,7 +157,7 @@ export const Container = styled.div`
   border-radius: 8px;  
   text-align:center; 
   justify-content: 'center';
-  align-items: 'center'
+  align-items: 'center';
 }
 .btn-cancel{
   text-align: center;
