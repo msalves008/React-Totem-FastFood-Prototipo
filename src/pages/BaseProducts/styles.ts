@@ -50,19 +50,23 @@ export const Container = styled.div`
 .bar-options{
   width: 100%;
   height: 25%;
-  background-color:#4ABC4E;
   display: flex;
-/*   align-items: center;
-  justify-content: center; */
   margin : 0 auto;
-  /* background-color: var(--green); */
+  background-color: var(--green);
+  justify-content: center;
+  align-items: center;
   .value{
     width: 40%;
+    height:auto;
+    width: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    text-align: center;
     margin: 0 auto;
+
+
+
     h1{ 
       font-family: Roboto;
       font-style: normal;
@@ -71,42 +75,47 @@ export const Container = styled.div`
       line-height: 2.5rem;
       text-align: center;
       color: #FFFFFF;
-      margin : 0 auto;   
+      display: inline-block; 
+      padding-right: 0.5rem;
 
     }
     div{ 
       display: flex;
       justify-content: center;
       align-items: center;
-      h1{ 
-        position: relative;
-        width:5%;
+      margin: 0 auto;
+      h1{         
+      position: relative;
+      width:auto;
       font-family: Roboto;
       font-style: normal;
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 2.6rem;
       line-height: 2.5rem;
       text-align: center;
       color: #FFFFFF;
-      margin : 0 auto;   
+      display: inline-block; 
+ 
     }
       span{
+      padding-right: 0.5rem;
         position: relative;
-        width: 30%;
+        width:auto;
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
         font-size: 1.5rem;
         line-height: 2rem;
         text-align: center;
-        margin : 0 auto;
-        color: red;
+         color: red;
       }
 
     }
   }
   .cart{
+    width: auto;
     max-width: 20%;
+
     height: auto;
     display: flex;
     margin : 0 auto;

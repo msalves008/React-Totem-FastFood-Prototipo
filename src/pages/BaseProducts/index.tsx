@@ -45,7 +45,7 @@ export function BaseProducts() {
             <h1>TOTAL</h1>
             <div>
               <span>R$</span>
-              <h2>0,00</h2>
+              <h1>0,00</h1>
             </div>
           </div>
           <div className="cart">
