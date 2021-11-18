@@ -8,6 +8,7 @@ interface NewModalProps {
   onRequestClose: () => void;
 }
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
+
   return (
     <Modal
       isOpen={isOpen}

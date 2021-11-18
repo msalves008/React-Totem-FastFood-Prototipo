@@ -16,7 +16,7 @@ interface Product {
   imageUrl: string;
 }
 interface HamburguesProps {
-  onOpenNewModal: () => void;
+  onOpenNewModal: () => void
 }
 
 export function Hamburgues({ onOpenNewModal }: HamburguesProps) {
@@ -34,6 +34,7 @@ export function Hamburgues({ onOpenNewModal }: HamburguesProps) {
     }
     itemsSelects.push(id);
     localStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
+    
   }
   if (!data) {
     return <></>;
