@@ -2,29 +2,34 @@ import React from "react";
 import Modal from "react-modal";
 import { Container } from "./styles";
 import closeIcon from "../../assets/close.svg";
-import {useContext} from 'react'
-import {ProductIdContext} from '../../context/useProductIdContext'
+import { useContext, useState } from "react";
+import { ProductIdContext } from "../../context/useProductIdContext";
 
 interface NewModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
-function addItemInSectionStorage(id: any){
-
-    const sessionStorageContent =  sessionStorage.getItem("itemsSelects");
-    let itemsSelects;
-    if ( sessionStorageContent === null) {
-      itemsSelects = [];
-    } else {
-      itemsSelects = JSON.parse( sessionStorageContent);
-    }
-    itemsSelects.push(id);
-    sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects)); 
+function addItemInSectionStorage(id: any, productQuantity: number) {
+  const Item = {
+    id: id,
+    quantity: productQuantity,
+  };
+  const sessionStorageContent = sessionStorage.getItem("itemsSelects");
+  let itemsSelects;
+  if (sessionStorageContent === null) {
+    itemsSelects = [];
+  } else {
+    itemsSelects = JSON.parse(sessionStorageContent);
+  }
+  itemsSelects.push(Item);
+  sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
+ 
 }
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
   const productContext = useContext(ProductIdContext);
-   return (
+  const [productQuantity, setProductQuantity] = useState(1);
+  return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
@@ -67,7 +72,7 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
               <button type="button">+</button>
             </div>
           </div>
-          
+
           <div className="item">
             <h2>CHEDDAR</h2>
             <div className="quantily">
@@ -77,13 +82,49 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
             </div>
           </div>
         </div>
+        <h1>QUANTIDADE</h1>
 
-        <button type="button" className="btn" onClick={()=>{
-          if(productContext){
-            addItemInSectionStorage(productContext.productId?.productId)
-          }
-         onRequestClose(); 
-        }}>CONFIRMAR</button>
+        <div className="productQuantilyGroup">
+          <span>Selecione a quantidade desejada deste mesmo produto</span>
+          <div className="btns">
+            <button
+              type="button"
+              onClick={() => {
+                if (productQuantity > 1) {
+                  setProductQuantity(productQuantity - 1);
+                }
+              }}
+            >
+              -
+            </button>
+            <h2>{productQuantity}</h2>
+            <button
+              type="button"
+              onClick={() => {
+                setProductQuantity(productQuantity + 1);
+              }}
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            if (productContext) {
+              addItemInSectionStorage(
+                productContext.productId?.productId,
+                productQuantity
+              );
+            }
+            onRequestClose();
+            setProductQuantity(1);
+          }}
+        >
+          CONFIRMAR
+        </button>
       </Container>
     </Modal>
   );

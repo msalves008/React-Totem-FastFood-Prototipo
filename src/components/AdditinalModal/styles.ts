@@ -6,14 +6,13 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+
   .content {
     width: 100%;
     display: flex;
-    flex :4;
+    flex: 4;
     padding-top: 3rem;
     flex-direction: column;
-
 
     .item {
       width: 100%;
@@ -22,14 +21,14 @@ export const Container = styled.div`
       align-items: center;
       justify-content: space-between;
 
-      padding-top:1rem;
+      padding-top: 1rem;
 
       .quantily {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        button{
+        button {
           width: 2rem;
           background-color: transparent;
           border: none;
@@ -41,6 +40,45 @@ export const Container = styled.div`
       }
     }
   }
+
+  .productQuantilyGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 3rem;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      display: flex;
+      font-family: "Roboto";
+      font-size: 1.3rem;
+      font-weight: bold;
+      display: inline-block;
+      color: var(--red);
+    }
+    .btns {
+      h2{
+      color: var(--red);
+      }
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      button {
+      color: var(--red);
+        width: 2rem;
+        background-color: transparent;
+        border: none;
+        font-family: "Roboto";
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+
   .btn {
     position: absolute;
     top: 90%;
@@ -54,10 +92,9 @@ export const Container = styled.div`
 
     width: 20rem;
     height: 3.5rem;
-    color: #FFFFFF;
+    color: #ffffff;
     background-color: var(--green);
     border: none;
     border-radius: 0.7rem;
-   
   }
 `;
