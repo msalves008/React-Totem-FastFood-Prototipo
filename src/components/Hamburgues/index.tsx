@@ -1,7 +1,7 @@
-import React from "react";
 import { Container } from "./styles";
 import { useProduct } from "../../hooks/useProducts";
-
+import {useContext} from 'react'
+import {ProductIdContext} from '../../context/useProductIdContext'
 
 interface Products {
   Products: Array<Product>;
@@ -17,29 +17,27 @@ interface Product {
 }
 interface HamburguesProps {
   onOpenNewModal: () => void
+ 
 }
 
-export function Hamburgues({ onOpenNewModal }: HamburguesProps) {
+export function Hamburgues( {onOpenNewModal }: HamburguesProps) {
+  const productContext = useContext(ProductIdContext);
+  /* const {productId, setProductId} = useProductId(); */
+
   const { data } = useProduct<Products>("http://localhost:4000/products");
 
-  function setItemsSelect(id: string) {
-    onOpenNewModal();
-
-    const localStorageContent = localStorage.getItem("itemsSelects");
-    let itemsSelects;
-    if (localStorageContent === null) {
-      itemsSelects = [];
-    } else {
-      itemsSelects = JSON.parse(localStorageContent);
-    }
-    itemsSelects.push(id);
-    localStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
+  function setItemsSelect(idProduct: string) {
+    onOpenNewModal(); 
+    productContext?.setProductId({
+      productId: idProduct
+    });
+    
     
   }
   if (!data) {
     return <></>;
   }
-  console.log(data);
+/*   console.log(data); */
 
   return (
     <Container>

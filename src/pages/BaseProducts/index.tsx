@@ -8,6 +8,7 @@ import Modal from "react-modal";
 
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
+import ProductIdProvider from "../../context/useProductIdContext";
 
 Modal.setAppElement("#root");
 export function BaseProducts() {
@@ -31,12 +32,13 @@ export function BaseProducts() {
           <NavBar />
         </div>
         <div className="body-base-products">
-          
-          <AdditinalModal
-            isOpen={isNewTransactionModalOpen}
-            onRequestClose={handleCloseNewTransactionModal}
-          />
-          <Hamburgues onOpenNewModal={handleOpenNewTransactionModal} />
+          <ProductIdProvider>
+            <AdditinalModal
+              isOpen={isNewTransactionModalOpen}
+              onRequestClose={handleCloseNewTransactionModal}
+            />
+            <Hamburgues onOpenNewModal={handleOpenNewTransactionModal} />
+          </ProductIdProvider>
         </div>
       </div>
       <div className="bottom-base-products">

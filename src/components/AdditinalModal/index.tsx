@@ -2,14 +2,29 @@ import React from "react";
 import Modal from "react-modal";
 import { Container } from "./styles";
 import closeIcon from "../../assets/close.svg";
+import {useContext} from 'react'
+import {ProductIdContext} from '../../context/useProductIdContext'
 
 interface NewModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
-export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
+function addItemInSectionStorage(id: any){
 
-  return (
+    const sessionStorageContent =  sessionStorage.getItem("itemsSelects");
+    let itemsSelects;
+    if ( sessionStorageContent === null) {
+      itemsSelects = [];
+    } else {
+      itemsSelects = JSON.parse( sessionStorageContent);
+    }
+    itemsSelects.push(id);
+    sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects)); 
+}
+
+export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
+  const productContext = useContext(ProductIdContext);
+   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
@@ -63,7 +78,12 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           </div>
         </div>
 
-        <button type="button" className="btn" onClick={onRequestClose}>CONFIRMAR</button>
+        <button type="button" className="btn" onClick={()=>{
+          if(productContext){
+            addItemInSectionStorage(productContext.productId?.productId)
+          }
+         onRequestClose(); 
+        }}>CONFIRMAR</button>
       </Container>
     </Modal>
   );

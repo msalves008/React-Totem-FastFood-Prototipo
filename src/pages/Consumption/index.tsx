@@ -9,30 +9,16 @@ const Consumption: React.FC = () => {
   const handleEatHere = useCallback(() => history.push('/list-products'), [history]);
   function eatHere(){
     handleEatHere();
-    localStorage.setItem('Consumption','eat-here');
+    sessionStorage.setItem('Consumption','eat-here');   
+   
     
-    // test add object in localStorage
-    const localStorageContent = localStorage.getItem('names')
-    let names;
-    if (localStorageContent === null){
-      names = []
-    }else{
-      names = JSON.parse(localStorageContent);
-    }
-
-    names.push('matheus')
-    names.push('daniel')
-    names.push('maria')
-    names.push('carlos')
-    localStorage.setItem('names', JSON.stringify(names))
-    //finish test
   }
   
   const handleEatOut = useCallback(() => history.push('/list-products'), [history]);
   
   function eatOut(){
     handleEatOut()
-    localStorage.setItem('Consumption','eat-out');
+    sessionStorage.setItem('Consumption','eat-out');
     
   }
 
