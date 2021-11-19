@@ -9,12 +9,20 @@ export const Container = styled.div`
     margin: 0 auto;
    
   }
-
+.spinningLoading{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width:15rem;
+  height: auto;
+  top: 50vw;
+  left: 25vh;
+}
 .topbar-base-product{
   width: 100%;
   height: 12vh;
-  background-color: yellow;
-}
+ }
 
 .section-body-base-products{
   width:100%;
@@ -26,16 +34,13 @@ export const Container = styled.div`
 
 }
 .navbar-base-products{
-  /* flex: 0.5; */
-  width:12%;
+   width:12%;
   height: 100%;
-  background-color: blue;
+  
 }
 .body-base-products{
-  /* flex: 2; */
   width:88%;
-  height: 100%;
-  /* background-color: red; */
+  height: auto;
 }
 
 .bottom-base-products{
@@ -45,6 +50,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: fixed;
 
 }
 .bar-options{

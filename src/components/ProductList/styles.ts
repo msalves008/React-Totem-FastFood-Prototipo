@@ -1,15 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    .spinning-loading{
+      display: flex;
+      height: auto;
+      width: 3rem;
+    }
   .section-hamburger {
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     button {
-      width: 40%;
-      height: 25%;
+     /*  width: 40%;
+      height: 25%; */
+      width: 22rem;
+      height: 20rem;
       background-color: #fff;
       box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
       border-radius: 8px;

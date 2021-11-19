@@ -29,6 +29,7 @@ function addItemInSectionStorage(id: any, productQuantity: number) {
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
   const productContext = useContext(ProductIdContext);
   const [productQuantity, setProductQuantity] = useState(1);
+  
   return (
     <Modal
       isOpen={isOpen}

@@ -1,7 +1,8 @@
 import { Container } from "./styles";
-import { useProduct } from "../../hooks/useProducts";
+import { useRequest } from "../../hooks/useRequest";
 import {useContext} from 'react'
 import {ProductIdContext} from '../../context/useProductIdContext'
+import loadingIcon from '../../assets/spinning-loading.gif'
 
 interface Products {
   Products: Array<Product>;
@@ -15,16 +16,14 @@ interface Product {
   situation: boolean;
   imageUrl: string;
 }
-interface HamburguesProps {
-  onOpenNewModal: () => void
- 
+interface ProductListProps {
+  onOpenNewModal: () => void 
 }
 
-export function Hamburgues( {onOpenNewModal }: HamburguesProps) {
+export function ProductList( {onOpenNewModal }: ProductListProps) {
   const productContext = useContext(ProductIdContext);
-  /* const {productId, setProductId} = useProductId(); */
 
-  const { data } = useProduct<Products>("http://localhost:4000/products");
+  const { data } = useRequest<Products>("http://localhost:4000/products");
 
   function setItemsSelect(idProduct: string) {
     onOpenNewModal(); 
@@ -35,9 +34,11 @@ export function Hamburgues( {onOpenNewModal }: HamburguesProps) {
     
   }
   if (!data) {
-    return <></>;
+    return <>
+      <img src={loadingIcon} alt="" className="spinningLoading"/>
+    </>;
   }
-/*   console.log(data); */
+
 
   return (
     <Container>

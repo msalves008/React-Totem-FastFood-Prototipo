@@ -10,27 +10,27 @@ export const Container = styled.div`
   background-color: #fff;
   position: sticky;
   flex-direction: column;
-  
-}
-.base-navbar{
+  padding-top: 2rem;
+  button{
   display: flex;
   height: 10%;
   width: 100%;  
   flex-direction: column;
   border: none;
   background-color: transparent;
-}
-.item-navbar{
-  height: 90%;
- justify-content: center;
-  align-items: space-between;
-}
-.icon{    
+  img{
+   
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    justify-content: center;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    max-width: 80%;
-    height: 100%;
-   /*  align-items: center; */
+  
+  }
 }
+  
+}
+
 `;

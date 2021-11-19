@@ -1,60 +1,40 @@
 import React, { useCallback } from 'react';
-import promoIcon from './../../assets/promo.png'
-import comboIcon from './../../assets/combo.png'
-import hamburguerIcon from './../../assets/Hamburguer.png'
-import bebidasIcon from './../../assets/Bebidas.png'
-import sundaeIcon from './../../assets/Sundae.png'
-
 import { Container } from './styles';
 import { useHistory } from 'react-router-dom';
+import { useRequest } from '../../hooks/useRequest';
 
-
+interface NavBarCategories {
+  Categories: Array<NavBarType>;
+}
+interface NavBarType{
+  id: string;
+  name: string;
+  imageUrl: string;
+}
 const NavBar: React.FC = () => {
+
+  const { data } = useRequest<NavBarCategories>("http://localhost:4000/categories");
 
   const history = useHistory();
 
   const handleCombos = useCallback(() => history.push('/list-products-combos'), [history]);
-  function opemNewModal(){
-    alert('a')
-    handleCombos();
+  
+  function opemNewModal(id: any){
+    alert('id: ' + id);
+   /*  handleCombos(); */
   }
 
-  const data = [
-    {
-      id: '1',
-      img: promoIcon,
-      rout: handleCombos
-    },
-    {
-      id: '2',
-      img: comboIcon,
-      rout: ''
-    },
-    {
-      id:'3',
-      img: hamburguerIcon,
-      rout: ''
-    },
-    {
-      id:'4',
-      img: bebidasIcon,
-      rout: ''
-    },
-    {
-      id:'5',
-      img: sundaeIcon,
-      rout: ''
-    }
-  ]
-  
+ 
+  if (!data) {
+    return <></>;
+  }
+  console.log(data.Categories);
   return (
     <Container>
       <div className="main-navbar"> 
-        {data.map((d)=>(
-              <button className="base-navbar" onClick={() => opemNewModal()} key={d.id}>
-                <div className="item-navbar" >
-                  <img src={d.img} alt="" className="icon" />
-                </div>
+        {data.Categories.map((d)=>(
+              <button className="base-navbar" onClick={() => opemNewModal(d.id)} key={d.id}>
+              <img src={d.imageUrl} alt="" className="icon" />                
               </button>      
         ))}         
       </div>

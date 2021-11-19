@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hamburgues } from "../../components/Hamburgues";
+import { ProductList } from "../../components/ProductList";
 import NavBar from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
 import cartIcon from "../../assets/cart.svg";
@@ -37,7 +37,7 @@ export function BaseProducts() {
               isOpen={isNewTransactionModalOpen}
               onRequestClose={handleCloseNewTransactionModal}
             />
-            <Hamburgues onOpenNewModal={handleOpenNewTransactionModal} />
+            <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
           </ProductIdProvider>
         </div>
       </div>
