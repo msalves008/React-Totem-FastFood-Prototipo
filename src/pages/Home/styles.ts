@@ -25,6 +25,15 @@ export const Container = styled.div`
    align-content: space-around;
    height: 100vh;
    align-content: center;
+   img{
+      margin: 0 auto;
+      margin-top:10% ;
+      width: 50%;
+      background-image: url(${logo});
+      background-repeat: no-repeat;
+      background-size: cover; 
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+   }
 
  }
 .title{  
@@ -59,16 +68,9 @@ export const Container = styled.div`
 .logo{
    align-content: center;
    flex: 2;
-   width:60vw;
-   height:20%;
-   margin: 0 auto;
-   margin-top:10% ;
-   background-image: url(${logo});
-    background-repeat: no-repeat;
-    background-size: cover; 
-   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
-
-
+   height: 20%;
+   width: auto;
+   max-width: 20rem;
 }
 .mask{
    flex: 2;

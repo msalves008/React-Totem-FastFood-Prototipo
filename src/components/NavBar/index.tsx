@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
   if (!data) {
     return <></>;
   }
-  console.log(data.Categories);
+  /* console.log(data.Categories); */
   return (
     <Container>
       <div className="main-navbar"> 

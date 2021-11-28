@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import logo from '../../assets/logoDyoLanches_write.png'
 
 import { Container } from './styles';
 
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
           <div className="content">
             <h1 className="title">Evite filas</h1>
             <h2 className="sub-title">Faça  seu pedido aqui!</h2>
-            <div className="logo"></div>
+            <img src={logo} alt="" />
             <div className="mask">
               <h1 className="text-info">Toque na tela para continuar</h1>
             </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useContext, useEffect  } from "react";
+
 import { ProductList } from "../../components/ProductList";
 import NavBar from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
@@ -8,10 +9,13 @@ import Modal from "react-modal";
 
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
-import ProductIdProvider from "../../context/useProductIdContext";
+import ProductIdProvider, { ProductIdContext } from "../../context/useProductIdContext";
 
 Modal.setAppElement("#root");
+
 export function BaseProducts() {
+
+  const productContext = useContext(ProductIdContext);
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
 
@@ -22,51 +26,57 @@ export function BaseProducts() {
   function handleCloseNewTransactionModal() {
     setIsNewTransactionModalOpen(false);
   }
+  let cart;
+  useEffect(() => {
+    cart = productContext?.cartQuantity;
+    console.log(`cart ${cart}`);
+  });
+  
   return (
     <Container>
-      <div className="topbar-base-product">
-        <TopBar />
-      </div>
-      <div className="section-body-base-products">
-        <div className="navbar-base-products">
-          <NavBar />
+      <ProductIdProvider>
+        <div className="topbar-base-product">
+          <TopBar />
         </div>
-        <div className="body-base-products">
-          <ProductIdProvider>
+        <div className="section-body-base-products">
+          <div className="navbar-base-products">
+            <NavBar />
+          </div>
+          <div className="body-base-products">
             <AdditinalModal
               isOpen={isNewTransactionModalOpen}
               onRequestClose={handleCloseNewTransactionModal}
             />
             <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
-          </ProductIdProvider>
+          </div>
         </div>
-      </div>
-      <div className="bottom-base-products">
-        <div className="bar-options">
-          <div className="value">
-            <h1>TOTAL</h1>
-            <div>
-              <span>R$</span>
-              <h1>0,00</h1>
+        <div className="bottom-base-products">
+          <div className="bar-options">
+            <div className="value">
+              <h1>TOTAL</h1>
+              <div>
+                <span>R$</span>
+                <h1>{productContext?.amountOrder}</h1>
+              </div>
+            </div>
+            <div className="cart">
+              <button>
+                <img src={cartIcon} alt="Carinho de Compras" />
+                <span>{cart}</span>
+              </button>
             </div>
           </div>
-          <div className="cart">
-            <button>
-              <img src={cartIcon} alt="Carinho de Compras" />
-              <span>0</span>
+          <div className="section-buttons-base">
+            <button id="btn-base-product" className="btn-cancel">
+              CANCELAR
+            </button>
+            <button id="btn-base-product" className="btn-finish">
+              FINALIZAR
             </button>
           </div>
         </div>
-        <div className="section-buttons-base">
-          <button id="btn-base-product" className="btn-cancel">
-            CANCELAR
-          </button>
-          <button id="btn-base-product" className="btn-finish">
-            FINALIZAR
-          </button>
-        </div>
-      </div>
-      <GlobalStyles />
+        <GlobalStyles />
+      </ProductIdProvider>
     </Container>
   );
 }

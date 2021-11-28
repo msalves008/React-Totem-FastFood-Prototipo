@@ -23,10 +23,20 @@ function addItemInSectionStorage(id: any, productQuantity: number) {
   }
   itemsSelects.push(Item);
   sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
+  console.log(`length ${itemsSelects.length}`);
+  
  
 }
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
+  const sessionStorageContent = sessionStorage.getItem("itemsSelects");
+  let itemsSelects;
+  if (sessionStorageContent === null) {
+    itemsSelects = [];
+  } else {
+    itemsSelects = JSON.parse(sessionStorageContent);
+  }
+  const cartQuantitySessionStorage = itemsSelects.length;
   const productContext = useContext(ProductIdContext);
   const [productQuantity, setProductQuantity] = useState(1);
   
@@ -121,7 +131,12 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
               );
             }
             onRequestClose();
-            setProductQuantity(1);
+            setProductQuantity(1);  
+
+            productContext?.setCartQuantity({
+              cartQuantity:cartQuantitySessionStorage
+            }) 
+            console.log(productContext?.cartQuantity)        
           }}
         >
           CONFIRMAR
