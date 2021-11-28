@@ -1,6 +1,8 @@
 import React, {useCallback} from 'react';
 import {useHistory} from 'react-router-dom';
 import { Container } from './styles';
+import iconEatHere from './../../assets/icon-eat-here.svg';
+import iconEatOut from './../../assets/icon-eat-out.svg';
 
 const Consumption: React.FC = () => {
   
@@ -33,13 +35,15 @@ const Consumption: React.FC = () => {
             <button className="button-mask-element" onClick={() => eatHere()}>
               <div className="eat-container">
                 <h1 className="title-button">Comer aqui</h1>
-                <div className="icontbn"></div>
+                <img src={iconEatHere} alt="" />
+                {/* <div className="icontbn"></div> */}
               </div>
             </button>
             <button className="button-mask-element" onClick={() => eatOut()}>
               <div className="eat-container">
                 <h1 className="title-button">Para viagem</h1>
-                <div className="icontbn-out"></div>
+                <img src={iconEatOut} alt="" />
+                {/* <div className="icontbn-out"></div> */}
               </div>
             </button>
         

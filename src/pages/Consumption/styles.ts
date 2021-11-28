@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import bg from './../../assets/bg_Consumption.png';
-import iconEatHere from './../../assets/icon-eat-here.svg';
-import iconEatOut from './../../assets/icon-eat-out.svg';
 
 export const Container = styled.div`
 .consuption-container{
@@ -63,6 +61,7 @@ export const Container = styled.div`
   background: rgba(178, 178, 178, 0.68);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+
 }
 .title-button{
   font-family: Roboto;
@@ -71,7 +70,7 @@ export const Container = styled.div`
   font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
-
+  margin: 0 auto;
   color: #000000;
 
 }
@@ -79,32 +78,18 @@ export const Container = styled.div`
 .eat-container{
   display: flex;
   flex-direction: column;
-  align-self: center;
+  /* align-self: center; */
+  align-items: center;
+  justify-content: center;
   width:100%;
   height:100%;  
+  img{
+    max-width:90%;
+    height:80%;
+    max-height:80%; 
+    margin: 0 auto;
+  }
   
 }
-
-.icontbn{
-  width:80%;
-  height:80%; 
-  margin: 0 auto;
-  background: url(${iconEatHere});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.icontbn-out{
-  width:80%;
-  height:90%; 
-  margin: 0 auto;
-  margin-bottom: 4%;
-  background: url(${iconEatOut});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 
 `;
