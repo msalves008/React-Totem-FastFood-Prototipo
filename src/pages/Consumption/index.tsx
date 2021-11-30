@@ -11,9 +11,8 @@ const Consumption: React.FC = () => {
   const handleEatHere = useCallback(() => history.push('/list-products'), [history]);
   function eatHere(){
     handleEatHere();
-    sessionStorage.setItem('Consumption','eat-here');   
-   
-    
+    sessionStorage.setItem('Consumption','eat-here');
+
   }
   
   const handleEatOut = useCallback(() => history.push('/list-products'), [history]);

@@ -6,6 +6,12 @@ import { Container } from './styles';
 
 const Home: React.FC = () => {
   sessionStorage.clear();
+  /* document.cookie */
+/*   function deleteCookie(name: string) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
+  deleteCookie('connect.sid'); */
+
   return (
     <Container>
       <Link to={"/consumption"} className="link-newPage">        

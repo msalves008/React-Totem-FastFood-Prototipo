@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
 import ProductIdProvider, { ProductIdContext } from "../../context/useProductIdContext";
+import { Link } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -70,9 +71,11 @@ export function BaseProducts() {
             <button id="btn-base-product" className="btn-cancel">
               CANCELAR
             </button>
-            <button id="btn-base-product" className="btn-finish">
-              FINALIZAR
-            </button>
+            <Link to={"/checkout-order"} className="link-newPage">
+              <button id="btn-base-product" className="btn-finish">
+                FINALIZAR
+              </button>
+            </Link>
           </div>
         </div>
         <GlobalStyles />

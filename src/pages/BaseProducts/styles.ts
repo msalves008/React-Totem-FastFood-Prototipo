@@ -9,6 +9,10 @@ export const Container = styled.div`
     margin: 0 auto;
    
   }
+  .link-newPage{
+   border: none;
+   text-decoration: none;
+}
 .spinningLoading{
   position: absolute;
   display: flex;

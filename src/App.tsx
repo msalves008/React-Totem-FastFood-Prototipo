@@ -4,6 +4,8 @@ import Home from './pages/Home/index';
 import Consumption from './pages/Consumption/index';
 /* import Identification from './pages/Identification/index'; */
 import BaseProducts from './pages/BaseProducts/index';
+import CheckouOrder from './pages/CheckouOrder/index';
+import PixPayment from "./pages/Payment/PixPayment";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/consumption" exact={true} component={Consumption} />
         {/*   <Route path="/identification" exact={true} component={Identification} /> */}
           <Route path="/list-products" exact={true} component={BaseProducts} />
+          <Route path="/checkout-order" exact={true} component={CheckouOrder} />
+          <Route path="/pixpayment" exact={true} component={PixPayment} />
           
         </Switch>
       </BrowserRouter>
