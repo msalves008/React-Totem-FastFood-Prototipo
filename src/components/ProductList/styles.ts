@@ -12,6 +12,8 @@ export const Container = styled.div`
     background-color: #fff;
     display: flex;
     flex-wrap: wrap;
+    overflow: scroll;
+    white-space: nowrap;
     button {
      /*  width: 40%;
       height: 25%; */

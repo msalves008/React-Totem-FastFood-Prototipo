@@ -23,7 +23,7 @@ export const Container = styled.div`
     left: 25vh;
   }
   .topbar-base-product {
-    width: 100%;
+    width: 100vw;
     height: 12vh;
   }
 
@@ -37,10 +37,14 @@ export const Container = styled.div`
   .navbar-base-products {
     width: 12%;
     height: 100%;
+    position: fixed;
   }
   .body-base-products {
-    width: 88%;
-    height: auto;
+    width: 88vw;
+    height: 80vh;
+    position: absolute;
+    right: 0;
+    background-color: red;
   }
 
   .bottom-base-products {
