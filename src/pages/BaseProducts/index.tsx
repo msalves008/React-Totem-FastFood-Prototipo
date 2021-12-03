@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import { ProductList } from "../../components/ProductList";
 import NavBar from "../../components/NavBar";
@@ -12,7 +12,7 @@ import { GlobalStyles } from "../../style/global";
 import ProductIdProvider, {
   ProductIdContext,
 } from "../../context/useProductIdContext";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
 Modal.setAppElement("#root");
@@ -36,11 +36,13 @@ export function BaseProducts() {
   function handleCloseNewTransactionModal() {
     setIsNewTransactionModalOpen(false);
   }
+  /* 
   let cart;
   useEffect(() => {
-    cart = productContext?.cartQuantity;
-    console.log(`cart ${cart}`);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    cart = productContext?.cartQuantity?.cartQuantity;
+
+  }); */
 
   return (
     <Container>
@@ -72,7 +74,7 @@ export function BaseProducts() {
             <div className="cart">
               <button>
                 <img src={cartIcon} alt="Carinho de Compras" />
-                <span>{cart}</span>
+                <span>{ sessionStorage.getItem("cartQuantility")}</span>
               </button>
             </div>
           </div>
