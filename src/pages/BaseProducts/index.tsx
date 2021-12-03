@@ -1,4 +1,4 @@
-import React, { useState,useContext, useEffect  } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { ProductList } from "../../components/ProductList";
 import NavBar from "../../components/NavBar";
@@ -9,12 +9,21 @@ import Modal from "react-modal";
 
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
-import ProductIdProvider, { ProductIdContext } from "../../context/useProductIdContext";
-import { Link } from "react-router-dom";
+import ProductIdProvider, {
+  ProductIdContext,
+} from "../../context/useProductIdContext";
+import { Link, useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 Modal.setAppElement("#root");
 
 export function BaseProducts() {
+  const history = useHistory();
+  function finshOrder(){
+    history.push("/checkout-order");
+  }
+
+
 
   const productContext = useContext(ProductIdContext);
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
@@ -32,7 +41,7 @@ export function BaseProducts() {
     cart = productContext?.cartQuantity;
     console.log(`cart ${cart}`);
   });
-  
+
   return (
     <Container>
       <ProductIdProvider>
@@ -68,14 +77,13 @@ export function BaseProducts() {
             </div>
           </div>
           <div className="section-buttons-base">
-            <button id="btn-base-product" className="btn-cancel">
+            <Button variant="outlined" color="error">
               CANCELAR
-            </button>
-            <Link to={"/checkout-order"} className="link-newPage">
-              <button id="btn-base-product" className="btn-finish">
+            </Button>
+              <Button variant="contained" color="success" onClick={finshOrder}>
                 FINALIZAR
-              </button>
-            </Link>
+              </Button>
+            
           </div>
         </div>
         <GlobalStyles />

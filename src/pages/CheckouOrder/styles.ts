@@ -27,18 +27,28 @@ export const Container = styled.div`
     .amountOrder {
       display: flex;
       flex-direction: column;
-      margin: 0 ;
+      margin: 0;
+      
+      border:none;
      .item{
       display: flex;
       flex-direction: row;
+      border:none;
+      margin: 0;
+      height: 3rem;
+
       h5 {
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
-        font-size: 1.12rem;
-        display: inline-block;
+        font-size: 1.7rem;
+      border:none;
+
 
         color: #000000;
+      }
+      .colorRed{
+        color: #ff0000;
       }
      }
     }
@@ -49,6 +59,18 @@ export const Container = styled.div`
       position: absolute;
       bottom: 2rem;
       width: 90vw;
+      .btnCheckout{
+        width: 40vw;
+      }
+      Button {
+      height: 4vh;
+      width: 40vw;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.25rem;
+      text-align: center;
+    }
     }
   }
 `;

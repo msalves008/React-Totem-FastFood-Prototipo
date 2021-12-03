@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TopBar from "../../../components/TopBar";
 import { Container } from "./styles";
-import spinnerIcon from '../../../assets/spinner.gif'
+/* import spinnerIcon from '../../../assets/spinner.gif' */
+import {CircularProgress} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 const PixPayment: React.FC = () => {
 
@@ -38,7 +39,9 @@ const PixPayment: React.FC = () => {
 
 
   if (!imgQRCode) {
-    return <img src={spinnerIcon} alt="Icon Spinner" className="spinnerIcon" />;
+    return <CircularProgress />
+
+   /*  return <img src={spinnerIcon} alt="Icon Spinner" className="spinnerIcon" />; */
   }
 
   return (
@@ -61,7 +64,7 @@ const PixPayment: React.FC = () => {
           <h2>TOTAL:</h2>
           <div className="amountValue">
             <span>R$ </span>
-          <h2 className="receiverName">15,90</h2>
+          <h2 className="receiverName">60,30</h2>
           </div>
         </div>        
       

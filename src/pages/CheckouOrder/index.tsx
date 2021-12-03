@@ -61,7 +61,7 @@ const CheckouOrder: React.FC = () => {
       <div className="Content">
         <h1>CONFIRME SEU PEDIDO</h1>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <Table sx={{ minWidth: 650 }} size="medium" aria-label="a dense table">
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
@@ -91,7 +91,7 @@ const CheckouOrder: React.FC = () => {
         </TableContainer>
         <h1>ADICIONAIS</h1>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <Table sx={{ minWidth: 650 }} size="medium" aria-label="a dense table">
             <TableHead>
               <TableRow>
                 <TableCell>ITEM</TableCell>
@@ -119,30 +119,30 @@ const CheckouOrder: React.FC = () => {
           <div className="item">
             <h5>
               TOTAL
-              GERAL.............................................................................
+              GERAL..............................................................................
             </h5>
-            <h5>R$: 60,30</h5>{" "}
+            <h5>R$: 60,30</h5>
           </div>
           <div className="item">
             <h5>
             TOTAL
         DESCONTOS.....................................................................
             </h5>
-            <h5>R$: 60,30</h5>{" "}
+            <h5>R$: 00,00</h5>
           </div>
           <div className="item">
-            <h5>
+            <h5 className="colorRed">
               TOTAL
-              GERAL.............................................................................
+              A PAGAR...........................................................................
             </h5>
-            <h5>R$: 60,30</h5>{" "}
+            <h5 className="colorRed">R$: 60,30</h5>
           </div>
         </div>
         
         <div className="btnGrops">
           <Button
             variant="outlined"
-            color="info"
+            color="warning"
             size="large"
             onClick={showAlert}
           >
@@ -153,6 +153,7 @@ const CheckouOrder: React.FC = () => {
             color="success"
             size="large"
             onClick={checkoutOrder}
+            className="btnCheckout"
           >
             CONFIRMAR
           </Button>
