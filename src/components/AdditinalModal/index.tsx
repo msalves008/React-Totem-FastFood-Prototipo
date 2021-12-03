@@ -9,10 +9,17 @@ interface NewModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
-function addItemInSectionStorage(id: any, productQuantity: number) {
+let a = 0;
+function somar(unitaryAmount:number,productQuantity: number){
+  a = a + (unitaryAmount * productQuantity);
+  console.log(`a ${a.toFixed(2)}`);
+  sessionStorage.setItem("amountOrder", a.toFixed(2));
+}
+function addItemInSectionStorage(id: any, productQuantity: number, unitaryAmount: any) {
   const Item = {
     id: id,
     quantity: productQuantity,
+    unitaryAmount: unitaryAmount,
   };
   const sessionStorageContent = sessionStorage.getItem("itemsSelects");
   let itemsSelects;
@@ -22,12 +29,16 @@ function addItemInSectionStorage(id: any, productQuantity: number) {
     itemsSelects = JSON.parse(sessionStorageContent);
   }
   itemsSelects.push(Item);
+  somar(unitaryAmount,productQuantity);
   sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
   sessionStorage.setItem("cartQuantility", itemsSelects.length);
+  
   console.log(`length ${itemsSelects.length}`);
+
 }
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
+  
 /*   const sessionStorageContent = sessionStorage.getItem("itemsSelects");
   let itemsSelects;
   if (sessionStorageContent === null) {
@@ -37,6 +48,7 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
   } */
 
   const productContext = useContext(ProductIdContext);
+
 
   const [productQuantity, setProductQuantity] = useState(1);
 
@@ -128,7 +140,8 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
             if (productContext) {
               addItemInSectionStorage(
                 productContext.productId?.productId,
-                productQuantity
+                productQuantity,
+                productContext.amountOrder?.amountOrder
               );
             }
             onRequestClose();

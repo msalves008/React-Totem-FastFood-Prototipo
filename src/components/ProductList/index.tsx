@@ -24,12 +24,16 @@ export function ProductList( {onOpenNewModal }: ProductListProps) {
   const productContext = useContext(ProductIdContext);
 
   const { data } = useRequest<Products>("http://localhost:4000/products");
-
-  function setItemsSelect(idProduct: string) {
+  
+ 
+  function setItemsSelect(idProduct: string,amount: number) {
     onOpenNewModal(); 
     productContext?.setProductId({
       productId: idProduct
     });
+    productContext?.setAmountOrder({
+      amountOrder: amount
+    })
     
     
   }
@@ -45,7 +49,10 @@ export function ProductList( {onOpenNewModal }: ProductListProps) {
       <div className="section-hamburger">
         {data.Products.map((d) => (
           <button
-            onClick={() => setItemsSelect(d.id)}
+            onClick={() => {
+              setItemsSelect(d.id, d.value)           
+
+            }}
             key={d.id}
           >
             <img src={d.imageUrl} alt="" />

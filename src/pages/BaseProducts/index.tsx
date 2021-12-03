@@ -22,9 +22,6 @@ export function BaseProducts() {
   function finshOrder(){
     history.push("/checkout-order");
   }
-
-
-
   const productContext = useContext(ProductIdContext);
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
@@ -36,14 +33,7 @@ export function BaseProducts() {
   function handleCloseNewTransactionModal() {
     setIsNewTransactionModalOpen(false);
   }
-  /* 
-  let cart;
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    cart = productContext?.cartQuantity?.cartQuantity;
-
-  }); */
-
+ 
   return (
     <Container>
       <ProductIdProvider>
@@ -68,7 +58,7 @@ export function BaseProducts() {
               <h1>TOTAL</h1>
               <div>
                 <span>R$</span>
-                <h1>{productContext?.amountOrder}</h1>
+                <h1>{sessionStorage.getItem("amountOrder")}</h1>
               </div>
             </div>
             <div className="cart">
