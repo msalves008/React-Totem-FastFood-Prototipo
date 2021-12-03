@@ -1,81 +1,73 @@
 import React from "react";
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+import TopBar from "../../components/TopBar";
 import { Container } from "./styles";
 
+import {Table} from '@material-ui/core';
+import {TableBody} from '@material-ui/core';
+import {TableCell} from '@material-ui/core';
+import {TableContainer} from '@material-ui/core';
+import {TableHead} from '@material-ui/core';
+import {TableRow} from '@material-ui/core';
+import {Paper} from '@material-ui/core';
+function createData(
+  id: number,
+  qtd: number,
+  product: String,
+  unitValue: number,
+  totalValue: number,
+) {
+  return { id,qtd, product, unitValue, totalValue };
+}
+
+const rows = [
+  createData(1,2,'TRIPLO-BACON', 15.90, 21.80 ),
+  createData(2,1,' BACON SIMPLES', 15.90, 15.90 ),
+  createData(3,2,'COCA-COLA M', 7.90, 15.80 ),
+  createData(4,1,' FANTA LARANJA P', 6.90, 6.80 ),
+];
 const CheckouOrder: React.FC = () => {
-  const rows = [
-    {
-      id: 2,
-      QTD: 2,
-      Produto: "TRIPLO-BACON",
-      vl_Unit: 15.9,
-      vl_Total: 31.8,
-    },
-    {
-      id: 2,
-      QTD: 1,
-      Produto: "BACON SIMPLES",
-      vl_Unit: 12.9,
-      vl_Total: 12.9,
-    },
-    {
-      id: 3,
-      QTD: 1,
-      Produto: "COCA-COLA M",
-      vl_Unit: 7.9,
-      vl_Total: 7.9,
-    },
-    {
-      id: 4,
-      QTD: 1,
-      Produto: "FANTA LARANJA P",
-      vl_Unit: 6.9,
-      vl_Total: 6.9,
-    },
-  ];
+
 
   return (
     <Container>
+      <div className="topBar">
+        <TopBar />
+      </div>
       <div className="Content">
         <h1>CONFIRME SEU PEDIDO</h1>
-        {/*        <div className="Table_Checkout_Product">
-            <strong>QTD</strong>
-            <strong>PRODUTO</strong>
-            <strong>VL. UNIT</strong>
-            <strong>VL. TOTAL</strong>
-          </div> */}
-        <div style={{ height: 500, width: "98%" }}>
-          <DataGrid
-            columns={[
-              {
-                field: "id",
-                flex: 1,
-                minWidth: 150,
-              },
-              {
-                field: "QTD",
-                flex: 1,
-                minWidth: 150,
-              },
-              {
-                field: "Produto",
-                width: 200,
-              },
-              {
-                field: "vl_Unit",
-                flex: 0.3,
-                minWidth: 50,
-              },
-              {
-                field: "vl_Total",
-                flex: 0.3,
-                minWidth: 50,
-              },
-            ]}
-            rows={rows}
-          />
-        </div>
+        <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>QTD</TableCell>
+            <TableCell >PRODUTO</TableCell>
+            <TableCell >VL. UNIT</TableCell>
+            <TableCell >VL. TOTAL</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell align="left">{row.qtd}</TableCell>
+              <TableCell align="left">{row.product}</TableCell>
+              <TableCell >{row.unitValue}</TableCell>
+              <TableCell >{row.totalValue}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+
+
+
       </div>
     </Container>
   );
