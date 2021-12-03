@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ 
 }
 
 .App-logo {
@@ -12,7 +13,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.spinnerIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  max-height: 25rem;
+  margin: 0 auto;
+}
 .App-header {
   min-height: 100vh;
   display: flex;
