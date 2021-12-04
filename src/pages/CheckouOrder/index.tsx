@@ -2,16 +2,7 @@ import React from "react";
 import TopBar from "../../components/TopBar";
 import { Container } from "./styles";
 
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import { useHistory } from "react-router-dom";
 function createData(
@@ -36,15 +27,14 @@ const rows = [
   createData(1, 2, "TRIPLO-BACON", 15.9, 21.8),
   createData(2, 1, "BACON SIMPLES", 15.9, 15.9),
   createData(3, 2, "COCA-COLA M", 7.9, 15.8),
-  createData(4, 1, "FANTA LARANJA P", 6.9,6.8),
+  createData(4, 1, "FANTA LARANJA P", 6.9, 6.8),
 ];
 
 const rowsAdditionals = [
   createDataAdditional(1, "BACON", 2.99, 2.99),
   createDataAdditional(1, "BACON", 2.99, 2.99),
   createDataAdditional(1, "BACON", 2.99, 2.99),
-  createDataAdditional(1, "BACON", 2.99, 2.99)
-
+  createDataAdditional(1, "BACON", 2.99, 2.99),
 ];
 
 const CheckouOrder: React.FC = () => {
@@ -63,39 +53,6 @@ const CheckouOrder: React.FC = () => {
       </div>
       <div className="Content">
         <h1>CONFIRME SEU PEDIDO</h1>
-       {/*  <TableContainer component={Paper}>
-          <Table
-            sx={{ minWidth: 650 }}
-            size="medium"
-            aria-label="a dense table"
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>QTD</TableCell>
-                <TableCell>PRODUTO</TableCell>
-                <TableCell>VL. UNIT</TableCell>
-                <TableCell>VL. TOTAL</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.id}
-                  </TableCell>
-                  <TableCell align="left">{row.qtd}</TableCell>
-                  <TableCell align="left">{row.product}</TableCell>
-                  <TableCell>{row.unitValue}</TableCell>
-                  <TableCell>{row.totalValue}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer> */}
         <table>
           <tr>
             <th>ID</th>
@@ -104,23 +61,20 @@ const CheckouOrder: React.FC = () => {
             <th>VL. UNIT</th>
             <th>VL. TOTAL</th>
           </tr>
-         
-            {rows.map((row) => (
-              <tr>
-                <td > {row.id}</td>
-                <td> {row.qtd}</td>
-                <td >{row.product}</td>
-                <td>{row.unitValue}</td>
-                <td>{row.totalValue}</td>
-              </tr>
-            ))}
-          
+
+          {rows.map((row) => (
+            <tr>
+              <td> {row.id}</td>
+              <td> {row.qtd}</td>
+              <td>{row.product}</td>
+              <td>{row.unitValue}</td>
+              <td>{row.totalValue}</td>
+            </tr>
+          ))}
         </table>
 
-
-
         <h1>ADICIONAIS</h1>
-        
+
         <table>
           <tr>
             <th>ITEM</th>
@@ -128,16 +82,15 @@ const CheckouOrder: React.FC = () => {
             <th>VL. UNIT</th>
             <th>VL. TOTAL</th>
           </tr>
-         
-            {rowsAdditionals.map((row) => (
-              <tr>
-                <td> {row.item}</td>
-                <td >{row.product}</td>
-                <td>{row.unitValue}</td>
-                <td>{row.totalValue}</td>
-              </tr>
-            ))}
-          
+
+          {rowsAdditionals.map((row) => (
+            <tr>
+              <td> {row.item}</td>
+              <td>{row.product}</td>
+              <td>{row.unitValue}</td>
+              <td>{row.totalValue}</td>
+            </tr>
+          ))}
         </table>
         <h1>TOTAL</h1>
         <div className="amountOrder">
