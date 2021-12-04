@@ -78,4 +78,13 @@ export const Container = styled.div`
       }
     }
   }
+  @media(max-width: 600px) {
+  /* background-color: yellow; */
+  .Content{
+    img{
+      width: 45vw;
+    }
+  }
+}
+
 `;

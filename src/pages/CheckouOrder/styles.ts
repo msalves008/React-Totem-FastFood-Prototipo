@@ -116,4 +116,18 @@ export const Container = styled.div`
       }
     }
   }
+
+
+
+
+
+  @media(max-height: 1300px) {
+    
+  }
+
+@media(max-width: 600px) {
+  /* background-color: yellow; */
+}
+
+
 `;

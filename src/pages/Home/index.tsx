@@ -20,10 +20,10 @@ const Home: React.FC = () => {
             <h1 className="title">Evite filas</h1>
             <h2 className="sub-title">Faça  seu pedido aqui!</h2>
             <img src={logo} alt="" />
+          </div>
             <div className="mask">
               <h1 className="text-info">Toque na tela para continuar</h1>
             </div>
-          </div>
         </div>
       </Link>
     </Container>

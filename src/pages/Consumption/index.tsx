@@ -21,9 +21,7 @@ const Consumption: React.FC = () => {
     handleEatOut()
     sessionStorage.setItem('Consumption','eat-out');
     
-  }
-
-  
+  } 
 
   return (
     <Container>
