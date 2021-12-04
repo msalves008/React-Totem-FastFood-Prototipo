@@ -34,12 +34,18 @@ function createDataAdditional(
 
 const rows = [
   createData(1, 2, "TRIPLO-BACON", 15.9, 21.8),
-  createData(2, 1, " BACON SIMPLES", 15.9, 15.9),
+  createData(2, 1, "BACON SIMPLES", 15.9, 15.9),
   createData(3, 2, "COCA-COLA M", 7.9, 15.8),
-  createData(4, 1, " FANTA LARANJA P", 6.9, 6.8),
+  createData(4, 1, "FANTA LARANJA P", 6.9,6.8),
 ];
 
-const rowsAdditionals = [createDataAdditional(1, "BACON", 2.99, 2.99)];
+const rowsAdditionals = [
+  createDataAdditional(1, "BACON", 2.99, 2.99),
+  createDataAdditional(1, "BACON", 2.99, 2.99),
+  createDataAdditional(1, "BACON", 2.99, 2.99),
+  createDataAdditional(1, "BACON", 2.99, 2.99)
+
+];
 
 const CheckouOrder: React.FC = () => {
   const history = useHistory();
@@ -57,8 +63,12 @@ const CheckouOrder: React.FC = () => {
       </div>
       <div className="Content">
         <h1>CONFIRME SEU PEDIDO</h1>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="medium" aria-label="a dense table">
+       {/*  <TableContainer component={Paper}>
+          <Table
+            sx={{ minWidth: 650 }}
+            size="medium"
+            aria-label="a dense table"
+          >
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
@@ -85,32 +95,50 @@ const CheckouOrder: React.FC = () => {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer> */}
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>QTD</th>
+            <th>PRODUTO</th>
+            <th>VL. UNIT</th>
+            <th>VL. TOTAL</th>
+          </tr>
+         
+            {rows.map((row) => (
+              <tr>
+                <td > {row.id}</td>
+                <td> {row.qtd}</td>
+                <td >{row.product}</td>
+                <td>{row.unitValue}</td>
+                <td>{row.totalValue}</td>
+              </tr>
+            ))}
+          
+        </table>
+
+
+
         <h1>ADICIONAIS</h1>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="medium" aria-label="a dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell>ITEM</TableCell>
-                <TableCell>PRODUTO</TableCell>
-                <TableCell>VL. UNIT</TableCell>
-                <TableCell>VL. TOTAL</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rowsAdditionals.map((row) => (
-                <TableRow>
-                  <TableCell component="th" scope="row">
-                    {row.item}
-                  </TableCell>
-                  <TableCell align="left">{row.product}</TableCell>
-                  <TableCell>{row.unitValue}</TableCell>
-                  <TableCell>{row.totalValue}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        
+        <table>
+          <tr>
+            <th>ITEM</th>
+            <th>PRODUTO</th>
+            <th>VL. UNIT</th>
+            <th>VL. TOTAL</th>
+          </tr>
+         
+            {rowsAdditionals.map((row) => (
+              <tr>
+                <td> {row.item}</td>
+                <td >{row.product}</td>
+                <td>{row.unitValue}</td>
+                <td>{row.totalValue}</td>
+              </tr>
+            ))}
+          
+        </table>
         <h1>TOTAL</h1>
         <div className="amountOrder">
           <div className="item">
@@ -118,24 +146,26 @@ const CheckouOrder: React.FC = () => {
               TOTAL
               GERAL..............................................................................
             </h5>
-            <h5>R$: {sessionStorage.getItem('amountOrder')}</h5>
+            <h5>R$: {sessionStorage.getItem("amountOrder")}</h5>
           </div>
           <div className="item">
             <h5>
-            TOTAL
-        DESCONTOS.....................................................................
+              TOTAL
+              DESCONTOS.....................................................................
             </h5>
             <h5>R$: 00,00</h5>
           </div>
           <div className="item">
             <h5 className="colorRed">
-              TOTAL
-              A PAGAR...........................................................................
+              TOTAL A
+              PAGAR...........................................................................
             </h5>
-            <h5 className="colorRed">R$: {sessionStorage.getItem('amountOrder')}</h5>
+            <h5 className="colorRed">
+              R$: {sessionStorage.getItem("amountOrder")}
+            </h5>
           </div>
         </div>
-        
+
         <div className="btnGrops">
           <Button
             variant="outlined"
