@@ -44,7 +44,6 @@ export const Container = styled.div`
     height: 80vh;
     position: absolute;
     right: 0;
-    background-color: red;
   }
 
   .bottom-base-products {

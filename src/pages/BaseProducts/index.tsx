@@ -19,9 +19,14 @@ Modal.setAppElement("#root");
 
 export function BaseProducts() {
   const history = useHistory();
+  
   function finshOrder(){
     history.push("/checkout-order");
   }
+  function cancelOrder(){
+    history.push("/");
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const productContext = useContext(ProductIdContext);
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
@@ -69,7 +74,7 @@ export function BaseProducts() {
             </div>
           </div>
           <div className="section-buttons-base">
-            <Button variant="outlined" color="error">
+            <Button variant="outlined" color="error" onClick={cancelOrder}>
               CANCELAR
             </Button>
               <Button variant="contained" color="success" onClick={finshOrder}>

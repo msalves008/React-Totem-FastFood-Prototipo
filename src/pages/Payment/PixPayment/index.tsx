@@ -31,7 +31,7 @@ const PixPayment: React.FC = () => {
   const [imgQRCode, setImgQRCode] = useState("");
 
   useEffect(() => {
-     postPixPayment(2.59);     
+     postPixPayment(sessionStorage.getItem('amountOrder'));     
     return () => {
       console.log("cleanup");
     };
@@ -64,7 +64,7 @@ const PixPayment: React.FC = () => {
           <h2>TOTAL:</h2>
           <div className="amountValue">
             <span>R$ </span>
-          <h2 className="receiverName">60,30</h2>
+          <h2 className="receiverName">{sessionStorage.getItem('amountOrder')}</h2>
           </div>
         </div>        
       

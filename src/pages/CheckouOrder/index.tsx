@@ -11,9 +11,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Alert,
-  AlertTitle,
-  Stack,
 } from "@material-ui/core";
 
 import { useHistory } from "react-router-dom";
@@ -121,7 +118,7 @@ const CheckouOrder: React.FC = () => {
               TOTAL
               GERAL..............................................................................
             </h5>
-            <h5>R$: 60,30</h5>
+            <h5>R$: {sessionStorage.getItem('amountOrder')}</h5>
           </div>
           <div className="item">
             <h5>
@@ -135,7 +132,7 @@ const CheckouOrder: React.FC = () => {
               TOTAL
               A PAGAR...........................................................................
             </h5>
-            <h5 className="colorRed">R$: 60,30</h5>
+            <h5 className="colorRed">R$: {sessionStorage.getItem('amountOrder')}</h5>
           </div>
         </div>
         
