@@ -1,10 +1,8 @@
 import { Container } from "./styles";
-import { useRequest } from "../../hooks/useRequest";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/useProductIdContext";
-import loadingIcon from "../../assets/spinning-loading.gif";
 import { CategoryContext } from "../../context/categoryIdContext";
 import axios from "axios";
+import { ProductIdContext } from "../../context/productIdContext";
 
 interface Products {
   Products: Array<Product>;
@@ -23,7 +21,7 @@ interface ProductListProps {
 }
 
 export function ProductList({ onOpenNewModal }: ProductListProps) {
-  const cartContext = useContext(CartContext);
+  const productIdContext = useContext(ProductIdContext);
   const categoryContext = useContext(CategoryContext);
   const [productsList, setProductList] = useState<Products>();
 
@@ -51,16 +49,11 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
 
 
   function setItemsSelect(idProduct: string, amount: number) {
-    onOpenNewModal();
-    cartContext.cart.push({
-      id: idProduct,
-    })
-  /*   productContext?.setProductId({
+    productIdContext.setProductId({
       productId: idProduct,
-    });
-    productContext?.setAmountOrder({
-      amountOrder: amount,
-    }); */
+    })
+    onOpenNewModal();
+    
   }
   if (!productsList) {
     return (

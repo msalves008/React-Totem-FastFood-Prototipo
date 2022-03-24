@@ -1,27 +1,30 @@
-import React, {useCallback} from 'react';
-import {useHistory} from 'react-router-dom';
-import { Container } from './styles';
-import iconEatHere from './../../assets/icon-eat-here.svg';
-import iconEatOut from './../../assets/icon-eat-out.svg';
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
+import { Container } from "./styles";
+import iconEatHere from "./../../assets/icon-eat-here.svg";
+import iconEatOut from "./../../assets/icon-eat-out.svg";
 
 const Consumption: React.FC = () => {
-  
   const history = useHistory();
 
-  const handleEatHere = useCallback(() => history.push('/list-products'), [history]);
-  function eatHere(){
+  const handleEatHere = useCallback(
+    () => history.push("/list-products"),
+    [history]
+  );
+  function eatHere() {
     handleEatHere();
-    sessionStorage.setItem('Consumption','eat-here');
-
+    sessionStorage.setItem("Consumption", "eat-here");
   }
-  
-  const handleEatOut = useCallback(() => history.push('/list-products'), [history]);
-  
-  function eatOut(){
-    handleEatOut()
-    sessionStorage.setItem('Consumption','eat-out');
-    
-  } 
+
+  const handleEatOut = useCallback(
+    () => history.push("/list-products"),
+    [history]
+  );
+
+  function eatOut() {
+    handleEatOut();
+    sessionStorage.setItem("Consumption", "eat-out");
+  }
 
   return (
     <Container>
@@ -33,17 +36,14 @@ const Consumption: React.FC = () => {
               <div className="eat-container">
                 <h1 className="title-button">Comer aqui</h1>
                 <img src={iconEatHere} alt="" />
-                {/* <div className="icontbn"></div> */}
               </div>
             </button>
             <button className="button-mask-element" onClick={() => eatOut()}>
               <div className="eat-container">
                 <h1 className="title-button">Para viagem</h1>
                 <img src={iconEatOut} alt="" />
-                {/* <div className="icontbn-out"></div> */}
               </div>
             </button>
-        
           </div>
         </div>
       </div>

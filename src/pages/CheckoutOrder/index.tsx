@@ -37,7 +37,7 @@ const rowsAdditionals = [
   createDataAdditional(1, "BACON", 2.99, 2.99),
 ];
 
-const CheckouOrder: React.FC = () => {
+const CheckoutOrder: React.FC = () => {
   const history = useHistory();
   function checkoutOrder() {
     history.push("/pixpayment");
@@ -143,4 +143,4 @@ const CheckouOrder: React.FC = () => {
   );
 };
 
-export default CheckouOrder;
+export default CheckoutOrder;

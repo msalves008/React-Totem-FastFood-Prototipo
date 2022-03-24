@@ -3,7 +3,8 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import closeIcon from "../../assets/close.svg";
 import { useContext, useState } from "react";
-import { CartContext, useCart } from "../../context/useProductIdContext";
+import { useCart } from "../../context/useProductIdContext";
+import { ProductIdContext } from "../../context/productIdContext";
 
 interface NewModalProps {
   isOpen: boolean;
@@ -11,9 +12,9 @@ interface NewModalProps {
 }
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
-  const {addProduct} = useCart();
-
+  const { addProduct, updateProductAmount } = useCart();
   const [productQuantity, setProductQuantity] = useState(1);
+  const productIdContext = useContext(ProductIdContext);
 
   return (
     <Modal
@@ -88,7 +89,6 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
               type="button"
               onClick={() => {
                 setProductQuantity(productQuantity + 1);
-                
               }}
             >
               +
@@ -100,10 +100,17 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           type="button"
           className="btn"
           onClick={() => {
-           addProduct("5d917cb1-2872-4bbb-bf9e-7107ca31f67e")
+            addProduct(productIdContext.productId?.productId, productQuantity);
+            console.log({
+              productId: productIdContext.productId?.productId,
+              amount: productQuantity,
+            })
+            updateProductAmount({
+              productId: productIdContext.productId?.productId,
+              amount: productQuantity,
+            });
             onRequestClose();
             setProductQuantity(1);
-           
           }}
         >
           CONFIRMAR

@@ -4,7 +4,7 @@ import { api } from "../services/api";
 
 interface CartContextData {
   cart: Product[];
-  addProduct: (productId: string) => Promise<void>;
+  addProduct: (productId: string, amountData: number) => Promise<void>;
   removeProduct: (productId: string) => void;
   updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
 }
@@ -40,7 +40,7 @@ export function CartProvider({ children }: CartProviderProps){
     return [];
   });
 
-  const addProduct = async (productId: string) => {
+  const addProduct = async (productId: string, amountData: number) => {
     try {
       const updatedCart = [...cart];
       const productExists = updatedCart.find(
@@ -48,16 +48,19 @@ export function CartProvider({ children }: CartProviderProps){
       );
 
       const currentAmount = productExists ? productExists.amount : 0;
-      const amount = currentAmount + 1;
+      const amount = currentAmount + amountData; ;
+     /*  const amount = amountData > 0 ? amountData : amounta; */
+      console.log(amount);
+      
 
       if (productExists) {
-        productExists.amount = amount;
+        productExists.amount = amount ;
       } else {
         const product = await api.get(`/product/${productId}`);
 
         const newProduct = {
           ...product.data,
-          amount: 1,
+          amount: amountData,
         };
         updatedCart.push(newProduct);
       }

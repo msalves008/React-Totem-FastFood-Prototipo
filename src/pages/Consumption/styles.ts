@@ -8,11 +8,11 @@ export const Container = styled.div`
     align-items: baseline;
     margin: 0;
     height: 100vh;
-    width: 100%;
     background-image: url(${bg});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
   }
   .data-container {
     display: flex;
@@ -52,7 +52,7 @@ export const Container = styled.div`
     align-items: center;
     background-color: chocolate;
     width: 45%;
-    height: 45%;
+    max-height: 20vh;
     border: none;
     background: rgba(178, 178, 178, 0.68);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
