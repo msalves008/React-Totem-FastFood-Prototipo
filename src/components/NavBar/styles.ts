@@ -19,10 +19,11 @@ export const Container = styled.div`
   border: none;
   background-color: transparent;
   img{
-   
+    /* width: 67px; */
     width: auto;
-    max-width: 90%;
-    height: auto;
+    max-width: 67px;
+    height: 67px;
+    /* max-height: 50px; */
     justify-content: center;
     background-position: center;
     background-repeat: no-repeat;
