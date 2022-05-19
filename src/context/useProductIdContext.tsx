@@ -50,14 +50,10 @@ export function CartProvider({ children }: CartProviderProps){
       const currentAmount = productExists ? productExists.amount : 0;
       const amount = currentAmount + amountData; ;
      /*  const amount = amountData > 0 ? amountData : amounta; */
-      console.log(amount);
-      
-
       if (productExists) {
         productExists.amount = amount ;
       } else {
         const product = await api.get(`/product/${productId}`);
-
         const newProduct = {
           ...product.data,
           amount: amountData,
