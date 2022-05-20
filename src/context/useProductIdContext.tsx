@@ -4,6 +4,8 @@ import { api } from "../services/api";
 
 interface CartContextData {
   cart: Product[];
+  /* cartQuantity: number;
+  totalItems: number; */
   addProduct: (productId: string, amountData: number) => Promise<void>;
   removeProduct: (productId: string) => void;
   updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
@@ -29,10 +31,9 @@ export const CartContext = createContext<CartContextData>(
   {} as CartContextData
 );
 
-export function CartProvider({ children }: CartProviderProps){
+export function CartProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useState<Product[]>(() => {
     const storagedCart = sessionStorage.getItem("@CleanSystem:cart");
-
     if (storagedCart) {
       return JSON.parse(storagedCart);
     }
@@ -48,14 +49,14 @@ export function CartProvider({ children }: CartProviderProps){
       );
 
       const currentAmount = productExists ? productExists.amount : 0;
-      const amount = currentAmount + amountData; ;
-     /*  const amount = amountData > 0 ? amountData : amounta; */
+      const amount = currentAmount + amountData;
+      /*  const amount = amountData > 0 ? amountData : amounta; */
       if (productExists) {
-        productExists.amount = amount ;
+        productExists.amount = amount;
       } else {
         const product = await api.get(`/product/${productId}`);
         const newProduct = {
-          ...product.data,
+          ...product.data.Product,
           amount: amountData,
         };
         updatedCart.push(newProduct);
@@ -76,7 +77,10 @@ export function CartProvider({ children }: CartProviderProps){
       if (productIndex >= 0) {
         updatedCart.splice(productIndex, 1);
         setCart(updatedCart);
-        sessionStorage.setItem("@CleanSystem:cart", JSON.stringify(updatedCart));
+        sessionStorage.setItem(
+          "@CleanSystem:cart",
+          JSON.stringify(updatedCart)
+        );
       } else {
         throw Error();
       }
@@ -85,7 +89,10 @@ export function CartProvider({ children }: CartProviderProps){
     }
   };
 
-  const updateProductAmount = async ({productId, amount }: UpdateProductAmount) => {
+  const updateProductAmount = async ({
+    productId,
+    amount,
+  }: UpdateProductAmount) => {
     try {
       if (amount <= 0) {
         return;
@@ -97,8 +104,10 @@ export function CartProvider({ children }: CartProviderProps){
       if (productExists) {
         productExists.amount = amount;
         setCart(updatedCart);
-        sessionStorage.setItem("@CleanSystem:cart", JSON.stringify(updatedCart));
-        
+        sessionStorage.setItem(
+          "@CleanSystem:cart",
+          JSON.stringify(updatedCart)
+        );
       } else {
         throw Error();
       }
@@ -109,7 +118,12 @@ export function CartProvider({ children }: CartProviderProps){
 
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+      value={{
+        cart,
+        /* cartQuantity,totalItems, */ addProduct,
+        removeProduct,
+        updateProductAmount,
+      }}
     >
       {children}
     </CartContext.Provider>

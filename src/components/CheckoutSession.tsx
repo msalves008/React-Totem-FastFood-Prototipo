@@ -12,12 +12,16 @@ export default function CheckoutSession() {
   useEffect(() => {
     if (cart) {
       let quantity = 0;
-      let total = 0.01;
+      let total = 0;
       for (var i = 0; i < cart.length; i++) {
         quantity += cart[i].amount;
       }
       setCartQuantity(quantity);
+      cart.map((product) => {
+        total += product.price * product.amount;
+      })
       setTotalItems(total);
+      
       sessionStorage.setItem("amountOrder", JSON.stringify(total));
     }
   }, [cart]);
