@@ -85,4 +85,30 @@ export const Container = styled.div`
       margin-bottom: 10rem;
     }
   }
+  @media (max-width: 768px) {
+    .section-hamburger {
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    .section-hamburger {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .section-hamburger {
+      button {
+        width: 17rem;
+        height: 15rem;
+      }
+    }
+  }
 `;

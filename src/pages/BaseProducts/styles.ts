@@ -167,4 +167,44 @@ export const Container = styled.div`
       letter-spacing: 0.5em;
     }
   }
+  @media (max-width: 1440px){
+    .bottom-base-products{
+      height: 20vh;
+      position: relative;
+      .section-buttons-base{
+        Button{
+          height: 5vh;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px){
+    .bottom-base-products{
+      height: 20vh;
+      position: relative;
+      .section-buttons-base{
+        Button{
+          height: 5vh;
+        }
+      }
+    }
+  }
+  @media (max-width: 425px){
+    .bottom-base-products{
+      .section-buttons-base{
+        Button{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 320px){
+    .bottom-base-products{
+      .section-buttons-base{
+        Button{
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
 `;
