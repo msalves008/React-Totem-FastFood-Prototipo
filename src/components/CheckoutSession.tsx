@@ -19,9 +19,9 @@ export default function CheckoutSession() {
       setCartQuantity(quantity);
       cart.map((product) => {
         total += product.price * product.amount;
-      })
+      });
       setTotalItems(total);
-      
+
       sessionStorage.setItem("amountOrder", JSON.stringify(total));
     }
   }, [cart]);
@@ -39,7 +39,7 @@ export default function CheckoutSession() {
           <h1>TOTAL</h1>
           <div>
             <span>R$</span>
-            <h1>{totalItems}</h1>
+            <h1>{Number(totalItems).toFixed(2).replace(".", ",")}</h1>
           </div>
         </div>
         <div className="cart">

@@ -29,7 +29,7 @@ export function BaseProducts() {
   return (
     <Container>
       <ProductIdProvider>
-        <CartProvider>
+        {/* <CartProvider> */}
           <CategoryProvider>
             <div className="topbar-base-product">
               <TopBar />
@@ -49,7 +49,7 @@ export function BaseProducts() {
            <CheckoutSession/>
             <GlobalStyles />
           </CategoryProvider>
-        </CartProvider>
+       {/*  </CartProvider> */}
       </ProductIdProvider>
 
       {/*  </ProductIdProvider> */}

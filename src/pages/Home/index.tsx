@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logoDyoLanches_write.png'
+import { useCart } from '../../context/useProductIdContext';
 
 import { Container } from './styles';
 
 const Home: React.FC = () => {
+  const {setCart} = useCart();
   sessionStorage.clear();
+  useEffect(() => {
+    /* setCart(null) */
+  }, []);
   /* document.cookie */
 /*   function deleteCookie(name: string) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';

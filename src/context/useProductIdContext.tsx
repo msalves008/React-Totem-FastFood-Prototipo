@@ -6,6 +6,7 @@ interface CartContextData {
   cart: Product[];
   /* cartQuantity: number;
   totalItems: number; */
+  setCart: (cart: Product[] | null) => void;
   addProduct: (productId: string, amountData: number) => Promise<void>;
   removeProduct: (productId: string) => void;
   updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
@@ -32,7 +33,7 @@ export const CartContext = createContext<CartContextData>(
 );
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<Product[]>(() => {
+  const [cart, setCart] = useState<Product[] | null>(() => {
     const storagedCart = sessionStorage.getItem("@CleanSystem:cart");
     if (storagedCart) {
       return JSON.parse(storagedCart);
@@ -120,7 +121,8 @@ export function CartProvider({ children }: CartProviderProps) {
     <CartContext.Provider
       value={{
         cart,
-        /* cartQuantity,totalItems, */ addProduct,
+        setCart,
+        addProduct,
         removeProduct,
         updateProductAmount,
       }}
