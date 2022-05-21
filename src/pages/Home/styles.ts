@@ -19,11 +19,10 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     .content {
-      align-items: center;
-      align-content: space-around;
+      display: flex;
+      flex-direction: column;
       height: 95vh;
       width: 100vw;
-      align-content: center;
       h1 {
         flex: 1;
         font-family: Reenie Beanie;
@@ -37,7 +36,7 @@ export const Container = styled.div`
       }
       h2 {
         align-items: center;
-        margin: 0 auto;        
+        margin: 0 auto;
         font-family: Reem Kufi;
         font-style: normal;
         font-weight: normal;
@@ -76,44 +75,125 @@ export const Container = styled.div`
       }
     }
   }
-  
-
-  @media (max-width: 600px) {
-   .app-main-content{
-    display: flex;
-    justify-content: space-between;
-
-
-     .content{
-       display: flex;
-       flex-direction: column;
-      align-items: center;
-      width: 100%;
-      height: 60%;
-      position: absolute;
-      top:2rem;
-       h1{     
-         border: none;
-         margin: 0 ;
-         padding: 0;
-          font-size: 8rem;
-       }
-       h2{
-          font-size: 3rem;
-       }
-       img{
-          height: 10rem;
-          margin-top: 2.3rem;
-          
-       }
-      }
-      .mask{
-        h1{
-           font-size: 2rem;
+  @media (max-width: 1440px) {
+    .app-main-content {
+      justify-content: flex-start;
+      align-items: flex-start;
+      .content {
+        height: 80vh;
+        width: 100vw;
+        margin: 2rem;
+        h1 {
+          font-size: 12rem;
+          margin: 0;
+        }
+        h2 {
+          font-size: 4rem;
+          margin: 0;
+        }
+        img {
+          width: auto;
+          height: 9rem;
+          /* margin-top: 3rem; */
         }
       }
-   }
-    
+      .mask {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
   }
-  
+  @media (max-width: 768px) {
+    .app-main-content {
+      justify-content: flex-start;
+      align-items: flex-start;
+     
+
+      .content {
+        height: 60vh;
+        h1 {
+          font-size: 9rem;
+          font-weight: 400;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        img {
+          width: auto;
+          height: 9rem;
+          margin-top: 3rem;
+        }
+      }
+      .mask {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    .app-main-content {
+      display: flex;
+      justify-content: space-between;
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 60%;
+        position: absolute;
+        top: 2rem;
+        h1 {
+          border: none;
+          margin: 0;
+          padding: 0;
+          font-size: 8rem;
+        }
+        h2 {
+          font-size: 3rem;
+        }
+        img {
+          height: 10rem;
+          margin-top: 2.3rem;
+        }
+      }
+      .mask {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    .app-main-content {
+      width: 100vw;
+      height: 100vh;
+      .content {
+        h1 {
+          font-size: 6rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .app-main-content {
+      .content {
+        h1 {
+          font-size: 5rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      .mask {
+        h1 {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
 `;
