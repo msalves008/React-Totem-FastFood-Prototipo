@@ -84,7 +84,48 @@ export const Container = styled.div`
       margin: 0 auto;
     }
   }
-
+  @media (max-width: 1440px) {
+    .consuption-container {
+      .consuption-masks {
+        width: 60%;
+        button {
+          width: 25%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+              font-family: Roboto;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .consuption-container {
+      h1 {
+        font-size: 3rem;
+      }
+      .consuption-masks {
+        width: 60%;
+        button {
+          width: 40%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
   @media (max-width: 600px) {
     .consuption-container {
       width: 100vw;
@@ -93,20 +134,86 @@ export const Container = styled.div`
         font-size: 2.55rem;
       }
       .consuption-masks {
-      button {
-        height:25vh;
-        div{
-          justify-content: space-around;
-          h1{
-            font-size:1.5rem;
+        button {
+          height: 25vh;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
           }
-          img{
-            max-height:15vh;
-          }
-
         }
-      }
       }
     }
   }
+  @media (max-width: 425px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.3rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.3rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.3rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+ 
 `;
