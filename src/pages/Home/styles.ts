@@ -115,6 +115,7 @@ export const Container = styled.div`
         h1 {
           font-size: 9rem;
           font-weight: 400;
+
         }
         h2 {
           font-size: 2rem;
@@ -169,12 +170,19 @@ export const Container = styled.div`
     .app-main-content {
       width: 100vw;
       height: 100vh;
+      margin: 0 auto;
       .content {
+        margin: 0;
         h1 {
           font-size: 6rem;
         }
         h2 {
           font-size: 2rem;
+        }
+        img {
+          width: auto;
+          height: 9rem;
+          margin-top: 3rem;
         }
       }
     }
