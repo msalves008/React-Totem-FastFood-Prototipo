@@ -3,55 +3,18 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import closeIcon from "../../assets/close.svg";
 import { useContext, useState } from "react";
-import { ProductIdContext } from "../../context/useProductIdContext";
+import { useCart } from "../../context/useProductIdContext";
+import { ProductIdContext } from "../../context/productIdContext";
 
 interface NewModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
-let a = 0;
-function somar(unitaryAmount:number,productQuantity: number){
-  a = a + (unitaryAmount * productQuantity);
-  console.log(`a ${a.toFixed(2)}`);
-  sessionStorage.setItem("amountOrder", a.toFixed(2));
-}
-function addItemInSectionStorage(id: any, productQuantity: number, unitaryAmount: any) {
-  const Item = {
-    id: id,
-    quantity: productQuantity,
-    unitaryAmount: unitaryAmount,
-  };
-  const sessionStorageContent = sessionStorage.getItem("itemsSelects");
-  let itemsSelects;
-  if (sessionStorageContent === null) {
-    itemsSelects = [];
-  } else {
-    itemsSelects = JSON.parse(sessionStorageContent);
-  }
-  itemsSelects.push(Item);
-  somar(unitaryAmount,productQuantity);
-  sessionStorage.setItem("itemsSelects", JSON.stringify(itemsSelects));
-  sessionStorage.setItem("cartQuantility", itemsSelects.length);
-  
-  console.log(`length ${itemsSelects.length}`);
-
-}
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
-  
-/*   const sessionStorageContent = sessionStorage.getItem("itemsSelects");
-  let itemsSelects;
-  if (sessionStorageContent === null) {
-    itemsSelects = [];
-  } else {
-    itemsSelects = JSON.parse(sessionStorageContent);
-  } */
-
-  const productContext = useContext(ProductIdContext);
-
-
+  const { addProduct, updateProductAmount } = useCart();
   const [productQuantity, setProductQuantity] = useState(1);
-
+  const productIdContext = useContext(ProductIdContext);
 
   return (
     <Modal
@@ -137,16 +100,17 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           type="button"
           className="btn"
           onClick={() => {
-            if (productContext) {
-              addItemInSectionStorage(
-                productContext.productId?.productId,
-                productQuantity,
-                productContext.amountOrder?.amountOrder
-              );
-            }
+            addProduct(productIdContext.productId?.productId, productQuantity);
+            console.log({
+              productId: productIdContext.productId?.productId,
+              amount: productQuantity,
+            })
+            updateProductAmount({
+              productId: productIdContext.productId?.productId,
+              amount: productQuantity,
+            });
             onRequestClose();
             setProductQuantity(1);
-           
           }}
         >
           CONFIRMAR

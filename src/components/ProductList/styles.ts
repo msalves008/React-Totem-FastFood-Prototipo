@@ -1,28 +1,30 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    .spinning-loading{
-      display: flex;
-      height: auto;
-      width: 3rem;
-    }
+  .spinning-loading {
+    display: flex;
+    height: auto;
+    width: 3rem;
+  }
   .section-hamburger {
     width: 100%;
     height: auto;
     background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 22rem 22rem;
+    padding-bottom: 4rem;
     overflow: scroll;
     white-space: nowrap;
     button {
-     /*  width: 40%;
+      /*  width: 40%;
       height: 25%; */
       width: 22rem;
       height: 20rem;
       background-color: #fff;
       box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
       border-radius: 8px;
-      margin: 0 auto;
+      /* margin: 0 auto; */
       margin-top: 5%;
       display: flex;
       flex-direction: column;
@@ -58,7 +60,7 @@ export const Container = styled.div`
         margin: 0;
         padding: 0;
         align-items: stretch;
- /*        text-align: center; */
+        /*        text-align: center; */
         span {
           display: flex;
           font-size: 1rem;
@@ -68,9 +70,8 @@ export const Container = styled.div`
           justify-content: center;
           align-items: center;
           text-align: center;
-          
         }
-        h3 { 
+        h3 {
           font-family: Roboto;
           font-weight: bold;
           font-size: 3rem;
@@ -80,7 +81,8 @@ export const Container = styled.div`
         }
       }
     }
+    button:last-child {
+      margin-bottom: 10rem;
+    }
   }
-
-
 `;

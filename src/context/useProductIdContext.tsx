@@ -1,49 +1,138 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { api } from "../services/api";
 
+interface CartContextData {
+  cart: Product[];
+  /* cartQuantity: number;
+  totalItems: number; */
+  setCart: (cart: Product[] | null) => void;
+  addProduct: (productId: string, amountData: number) => Promise<void>;
+  removeProduct: (productId: string) => void;
+  updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
+}
 interface Product {
+  id: string;
+  name?: string;
+  price?: number;
+  image?: string;
+  amount?: number;
+}
+
+interface UpdateProductAmount {
   productId: string;
+  amount: number;
 }
-interface Cart {
-  cartQuantity: number;
-}
-interface AmountOrder {
-  amountOrder: number;
-}
-interface ProductIdProviderProps {
+
+interface CartProviderProps {
   children: ReactNode;
 }
-type ProductContextType = {
-  productId: Product | null;
-  setProductId: React.Dispatch<React.SetStateAction<Product | null>>;
 
-  cartQuantity: Cart | null;
-  setCartQuantity: React.Dispatch<React.SetStateAction<Cart | null>>;
-
-  amountOrder: AmountOrder | null;
-  setAmountOrder: React.Dispatch<React.SetStateAction<AmountOrder | null>>;
-};
-export const ProductIdContext = createContext<ProductContextType | null>(
-  {} as ProductContextType
+export const CartContext = createContext<CartContextData>(
+  {} as CartContextData
 );
 
-export default function ProductIdProvider({
-  children,
-}: ProductIdProviderProps) {
-  const [productId, setProductId] = useState<Product | null>(null);
-  const [cartQuantity, setCartQuantity] = useState<Cart | null>(null);
-  const [amountOrder, setAmountOrder] = useState<AmountOrder | null>(null);
+export function CartProvider({ children }: CartProviderProps) {
+  const [cart, setCart] = useState<Product[] | null>(() => {
+    const storagedCart = sessionStorage.getItem("@CleanSystem:cart");
+    if (storagedCart) {
+      return JSON.parse(storagedCart);
+    }
+
+    return [];
+  });
+
+  const addProduct = async (productId: string, amountData: number) => {
+    try {
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(
+        (product) => product.id === productId
+      );
+
+      const currentAmount = productExists ? productExists.amount : 0;
+      const amount = currentAmount + amountData;
+      /*  const amount = amountData > 0 ? amountData : amounta; */
+      if (productExists) {
+        productExists.amount = amount;
+      } else {
+        const product = await api.get(`/product/${productId}`);
+        const newProduct = {
+          ...product.data.Product,
+          amount: amountData,
+        };
+        updatedCart.push(newProduct);
+      }
+      setCart(updatedCart);
+      sessionStorage.setItem("@CleanSystem:cart", JSON.stringify(updatedCart));
+    } catch {
+      toast.error("Erro na adição do produto");
+    }
+  };
+
+  const removeProduct = (productId: string) => {
+    try {
+      const updatedCart = [...cart];
+      const productIndex = updatedCart.findIndex(
+        (product) => product.id === productId
+      );
+      if (productIndex >= 0) {
+        updatedCart.splice(productIndex, 1);
+        setCart(updatedCart);
+        sessionStorage.setItem(
+          "@CleanSystem:cart",
+          JSON.stringify(updatedCart)
+        );
+      } else {
+        throw Error();
+      }
+    } catch {
+      toast.error("Erro na remoção do produto");
+    }
+  };
+
+  const updateProductAmount = async ({
+    productId,
+    amount,
+  }: UpdateProductAmount) => {
+    try {
+      if (amount <= 0) {
+        return;
+      }
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(
+        (product) => product.id === productId
+      );
+      if (productExists) {
+        productExists.amount = amount;
+        setCart(updatedCart);
+        sessionStorage.setItem(
+          "@CleanSystem:cart",
+          JSON.stringify(updatedCart)
+        );
+      } else {
+        throw Error();
+      }
+    } catch {
+      toast.error("Erro na alteração de quantidade do produto");
+    }
+  };
+
   return (
-    <ProductIdContext.Provider
+    <CartContext.Provider
       value={{
-        productId,
-        setProductId,
-        cartQuantity,
-        setCartQuantity,
-        amountOrder,
-        setAmountOrder,
+        cart,
+        setCart,
+        addProduct,
+        removeProduct,
+        updateProductAmount,
       }}
     >
       {children}
-    </ProductIdContext.Provider>
+    </CartContext.Provider>
   );
+}
+
+export function useCart(): CartContextData {
+  const context = useContext(CartContext);
+  return context;
 }

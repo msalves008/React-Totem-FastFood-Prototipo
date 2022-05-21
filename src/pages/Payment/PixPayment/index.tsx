@@ -3,45 +3,65 @@ import React, { useEffect, useState } from "react";
 import TopBar from "../../../components/TopBar";
 import { Container } from "./styles";
 /* import spinnerIcon from '../../../assets/spinner.gif' */
-import {CircularProgress} from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useCart } from "../../../context/useProductIdContext";
 const PixPayment: React.FC = () => {
-
+  const {cart} = useCart();
   const history = useHistory();
-  function generatePassworld(){
-    history.push('/password');
-
+  function generatePassworld() {
+    history.push("/password");
   }
 
+  /* 
+  [
+            {
+              quantity: 1,
+              price: value,
+              name: "pedido",
+            },
+          ],
+  */
   function postPixPayment(value: any) {
-    /* console.log(`value: ${value}`); */
-    const body = { value: value };
     const headers = {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     };
     const response = axios
-      .post("https://peaceful-garden-02489.herokuapp.com/", body, { headers })
+      .post(
+        "https://pixpayment.dyotech.com.br/create-order",
+        {
+          cpf: sessionStorage.getItem("documentNumber"),
+          nome: sessionStorage.getItem("name"),
+          telefone: "",
+          items: cart.map((item)=>{
+            return {
+              name: item.name,
+              price: item.price,
+              quantity: item.amount,
+            }
+          })
+        },
+        { headers }
+      )
       .then((response) => {
         /*  console.log(response.data); */
-        setImgQRCode(response.data);
+        setImgQRCode(response.data.qrcode.imagemQrcode);
       });
     return response;
   }
   const [imgQRCode, setImgQRCode] = useState("");
 
   useEffect(() => {
-     postPixPayment(sessionStorage.getItem('amountOrder'));     
-    return () => {
-      console.log("cleanup");
-    };
+    postPixPayment(
+      Number(sessionStorage.getItem("amountOrder")).toFixed(2)
+    );
   }, []);
 
-
   if (!imgQRCode) {
-    return <CircularProgress />
+    return <CircularProgress />;
 
-   /*  return <img src={spinnerIcon} alt="Icon Spinner" className="spinnerIcon" />; */
+    /*  return <img src={spinnerIcon} alt="Icon Spinner" className="spinnerIcon" />; */
   }
 
   return (
@@ -64,12 +84,15 @@ const PixPayment: React.FC = () => {
           <h2>TOTAL:</h2>
           <div className="amountValue">
             <span>R$ </span>
-          <h2 className="receiverName">{sessionStorage.getItem('amountOrder')}</h2>
+            <h2 className="receiverName">
+              {sessionStorage.getItem("amountOrder")}
+            </h2>
           </div>
-        </div>        
-      
+        </div>
       </div>
-      <button className="btnPayment" onClick={generatePassworld}>Aprovar Pagameto</button>
+      <button className="btnPayment" onClick={generatePassworld}>
+        Aprovar Pagameto
+      </button>
     </Container>
   );
 };

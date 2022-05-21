@@ -5,6 +5,7 @@ import { Container } from "./styles";
 import { Button } from "@material-ui/core";
 
 import { useHistory } from "react-router-dom";
+import { useCart } from "../../context/useProductIdContext";
 function createData(
   id: number,
   qtd: number,
@@ -37,12 +38,16 @@ const rowsAdditionals = [
   createDataAdditional(1, "BACON", 2.99, 2.99),
 ];
 
-const CheckouOrder: React.FC = () => {
+const CheckoutOrder: React.FC = () => {
+  const { cart } = useCart();
   const history = useHistory();
   function checkoutOrder() {
-    history.push("/pixpayment");
+    history.push("/identification");
+    
   }
-
+  if (!cart) {
+    return <></>;
+  }
   function showAlert() {
     return window.alert("Não Existe cupons disponíveis para este produto");
   }
@@ -62,13 +67,13 @@ const CheckouOrder: React.FC = () => {
             <th>VL. TOTAL</th>
           </tr>
 
-          {rows.map((row) => (
+          {cart?.map((row, index) => (
             <tr>
-              <td> {row.id}</td>
-              <td> {row.qtd}</td>
-              <td>{row.product}</td>
-              <td>{row.unitValue}</td>
-              <td>{row.totalValue}</td>
+              <td> {index}</td>
+              <td> {row.amount}</td>
+              <td>{row.name}</td>
+              <td>{row.price}</td>
+              <td>{row.price * row.amount}</td>
             </tr>
           ))}
         </table>
@@ -99,7 +104,12 @@ const CheckouOrder: React.FC = () => {
               TOTAL
               GERAL..............................................................................
             </h5>
-            <h5>R$: {sessionStorage.getItem("amountOrder")}</h5>
+            <h5>
+              R$:{" "}
+              {Number(sessionStorage.getItem("amountOrder"))
+                .toFixed(2)
+                .replace(".", ",")}
+            </h5>
           </div>
           <div className="item">
             <h5>
@@ -114,7 +124,10 @@ const CheckouOrder: React.FC = () => {
               PAGAR...........................................................................
             </h5>
             <h5 className="colorRed">
-              R$: {sessionStorage.getItem("amountOrder")}
+              R$:{" "}
+              {Number(sessionStorage.getItem("amountOrder"))
+                .toFixed(2)
+                .replace(".", ",")}
             </h5>
           </div>
         </div>
@@ -143,4 +156,4 @@ const CheckouOrder: React.FC = () => {
   );
 };
 
-export default CheckouOrder;
+export default CheckoutOrder;
