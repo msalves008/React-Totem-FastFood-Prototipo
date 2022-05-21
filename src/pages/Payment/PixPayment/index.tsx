@@ -5,12 +5,23 @@ import { Container } from "./styles";
 /* import spinnerIcon from '../../../assets/spinner.gif' */
 import { CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useCart } from "../../../context/useProductIdContext";
 const PixPayment: React.FC = () => {
+  const {cart} = useCart();
   const history = useHistory();
   function generatePassworld() {
     history.push("/password");
   }
 
+  /* 
+  [
+            {
+              quantity: 1,
+              price: value,
+              name: "pedido",
+            },
+          ],
+  */
   function postPixPayment(value: any) {
     const headers = {
       "Content-Type": "application/json",
@@ -20,16 +31,16 @@ const PixPayment: React.FC = () => {
       .post(
         "https://pixpayment.dyotech.com.br/create-order",
         {
-          cpf: "70663914116",
-          name: "Matheus de Sousa Alves",
+          cpf: sessionStorage.getItem("documentNumber"),
+          nome: sessionStorage.getItem("name"),
           telefone: "",
-          items: [
-            {
-              quantity: 1,
-              price: value,
-              name: "pedido",
-            },
-          ],
+          items: cart.map((item)=>{
+            return {
+              name: item.name,
+              price: item.price,
+              quantity: item.amount,
+            }
+          })
         },
         { headers }
       )

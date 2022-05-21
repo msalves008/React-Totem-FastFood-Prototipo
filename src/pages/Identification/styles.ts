@@ -46,7 +46,8 @@ export const Container = styled.div`
   width: 90vw;
   display: flex;
   position: relative;
-  left: 10%;
+  left: 0;
+  padding-top: 2rem;
 }
 
 .label-identification{
@@ -76,8 +77,8 @@ export const Container = styled.div`
 .btn-comfirm{
   align-self: center;
   margin-top: 45px;
-  width: 40%;
-  height:20%;
+  width: 20rem;
+  height:4rem;
   background: #4ABC4E;
   border-radius: 8px;
   border: none;
@@ -91,13 +92,21 @@ export const Container = styled.div`
   color: #FFFFFF;
 
 }
-
-
-
-  .keyborder{
-    align-content: flex-end;
-    width: 100%;
+.error-message{
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #FF0000;
+}
+.textfield {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  input{
+    background: rgba(179, 179, 179, 0.68);
+    color: #FFF;
   }
+}
+
+
 
 
 
