@@ -196,6 +196,20 @@ export const Container = styled.div`
       }
     }
   }
+  @media (max-width: 415px) {
+    .Content {
+      .btnGrops {
+        width: 90vw;
+        Button {
+          width: 55vw;
+          font-size: 1rem;
+        }
+        .btnCheckout {
+          width: 30vw;
+        }
+      }
+    }
+  }
   @media (max-width: 320px) {
     .Content {
       h1 {
