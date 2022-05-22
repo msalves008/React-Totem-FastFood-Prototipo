@@ -124,11 +124,13 @@ export const Container = styled.div`
     .Content {
       h1 {
         font-size: 1.5rem;
+        font-family: Roboto;
       }
       table {
         tr {
           th {
             font-size: 1rem;
+            font-family: Roboto;
           }
         }
       }
@@ -196,7 +198,7 @@ export const Container = styled.div`
       }
     }
   }
-  @media (max-width: 415px) {
+  @media (max-width: 414px) {
     .Content {
       .btnGrops {
         width: 90vw;
@@ -214,12 +216,14 @@ export const Container = styled.div`
     .Content {
       h1 {
         font-size: 0.9rem;
+        font-family: Roboto;
       }
       table {
         tr {
           th,
           td {
             font-size: 0.8rem;
+            font-family: Roboto;
           }
         }
       }
@@ -232,6 +236,7 @@ export const Container = styled.div`
             th,
             td {
               font-size: 0.8rem;
+              font-family: Roboto;
             }
           }
         }
@@ -242,6 +247,7 @@ export const Container = styled.div`
         Button {
           width: 52vw;
           font-size: 0.7rem;
+          font-family: Roboto;
         }
         .btnCheckout {
           width: 40vw;
