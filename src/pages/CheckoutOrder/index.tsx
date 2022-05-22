@@ -31,19 +31,13 @@ const rows = [
   createData(4, 1, "FANTA LARANJA P", 6.9, 6.8),
 ];
 
-const rowsAdditionals = [
-  createDataAdditional(1, "BACON", 2.99, 2.99),
-  createDataAdditional(1, "BACON", 2.99, 2.99),
-  createDataAdditional(1, "BACON", 2.99, 2.99),
-  createDataAdditional(1, "BACON", 2.99, 2.99),
-];
+const rowsAdditionals = [createDataAdditional(1, "BACON", 2.99, 2.99)];
 
 const CheckoutOrder: React.FC = () => {
   const { cart } = useCart();
   const history = useHistory();
   function checkoutOrder() {
     history.push("/identification");
-    
   }
   if (!cart) {
     return <></>;
@@ -97,39 +91,30 @@ const CheckoutOrder: React.FC = () => {
             </tr>
           ))}
         </table>
-        <h1>TOTAL</h1>
         <div className="amountOrder">
-          <div className="item">
-            <h5>
-              TOTAL
-              GERAL..............................................................................
-            </h5>
-            <h5>
-              R$:{" "}
-              {Number(sessionStorage.getItem("amountOrder"))
-                .toFixed(2)
-                .replace(".", ",")}
-            </h5>
-          </div>
-          <div className="item">
-            <h5>
-              TOTAL
-              DESCONTOS.....................................................................
-            </h5>
-            <h5>R$: 00,00</h5>
-          </div>
-          <div className="item">
-            <h5 className="colorRed">
-              TOTAL A
-              PAGAR...........................................................................
-            </h5>
-            <h5 className="colorRed">
-              R$:{" "}
-              {Number(sessionStorage.getItem("amountOrder"))
-                .toFixed(2)
-                .replace(".", ",")}
-            </h5>
-          </div>
+          <h1>TOTAL</h1>
+          <table>
+            <tr>
+              <th>TOTAL GERAL</th>
+              <th>TOTAL DESCONTOS</th>
+              <th className="colorRed">TOTAL FINAL</th>
+            </tr>
+            <tr>
+              <td>
+                R$:
+                {Number(sessionStorage.getItem("amountOrder"))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </td>
+              <td>R$: 00,00</td>
+              <td className="colorRed">
+                R$:
+                {Number(sessionStorage.getItem("amountOrder"))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </td>
+            </tr>
+          </table>
         </div>
 
         <div className="btnGrops">
@@ -139,7 +124,7 @@ const CheckoutOrder: React.FC = () => {
             size="large"
             onClick={showAlert}
           >
-            ADICIONAR CUPOM DE DESCONTO
+            CUPOM DE DESCONTO
           </Button>
           <Button
             variant="contained"

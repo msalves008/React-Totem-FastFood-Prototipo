@@ -24,6 +24,9 @@ export const Container = styled.div`
     align-items: center;
     margin: 0 auto;
     text-align: center;
+    hr {
+      border: 1px dashed green;
+    }
 
     table {
       width: 90vw;
@@ -36,18 +39,17 @@ export const Container = styled.div`
         flex-direction: row;
         justify-content: space-between;
         text-align: left !important;
-        
+
         th {
           display: flex;
           width: 100%;
-          
+
           font-family: Roboto;
           font-style: normal;
           font-weight: bold;
           font-size: 1.3rem;
           color: #8c8888;
-        text-align: left;
-
+          text-align: left;
         }
         td {
           width: 100%;
@@ -59,9 +61,7 @@ export const Container = styled.div`
           font-size: 1.3rem;
           color: #000000;
           margin: 0 auto;
-          margin-bottom: .2rem;
-        
-
+          margin-bottom: 0.2rem;
         }
       }
     }
@@ -117,17 +117,122 @@ export const Container = styled.div`
     }
   }
 
-
-
-
-
-  @media(max-height: 1300px) {
-    
+  @media (max-width: 1440px) {
+    .topBar {
+      height: 15vh;
+    }
+    .Content {
+      h1 {
+        font-size: 1.5rem;
+      }
+      table {
+        tr {
+          th {
+            font-size: 1rem;
+          }
+        }
+      }
+      .btnGrops {
+        width: 60vw;
+        Button {
+          width: 30vw;
+        }
+        .btnCheckout {
+          width: 25vw;
+        }
+      }
+    }
   }
+  @media (max-width: 768px) {
+    .Content {
+      .amountOrder {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        table {
+          width: 70%;
+          display: flex;
+          margin: 0 auto;
 
-@media(max-width: 600px) {
-  /* background-color: yellow; */
-}
-
-
+          tr {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0 auto;
+            th {
+            }
+            .colorRed {
+              color: #ff0000;
+            }
+          }
+        }
+      }
+      .btnGrops {
+        width: 70vw;
+        Button {
+          width: 37vw;
+        }
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    .Content {
+      .amountOrder {
+        table {
+          width: 90%;
+          display: flex;
+          margin: 0 auto;
+        }
+      }
+      .btnGrops {
+        width: 70vw;
+        Button {
+          width: 37vw;
+        }
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .Content {
+      h1 {
+        font-size: 0.9rem;
+      }
+      table {
+        tr {
+          th,
+          td {
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .amountOrder {
+        table {
+          width: 90%;
+          display: flex;
+          margin: 0 auto;
+          tr {
+            th,
+            td {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+      .btnGrops {
+        width: 99vw;
+        justify-content: space-around;
+        Button {
+          width: 52vw;
+          font-size: 0.7rem;
+        }
+        .btnCheckout {
+          width: 40vw;
+        }
+      }
+    }
+  }
 `;
