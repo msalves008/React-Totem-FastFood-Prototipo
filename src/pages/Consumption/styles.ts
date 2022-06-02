@@ -44,7 +44,7 @@ export const Container = styled.div`
     justify-content: space-around;
     /*   background-color: blue; */
     width: 90%;
-    height: 80%;
+    height: 100%;
   }
   .button-mask-element {
     display: flex;
@@ -52,7 +52,7 @@ export const Container = styled.div`
     align-items: center;
     background-color: chocolate;
     width: 45%;
-    max-height: 20vh;
+    /* max-height: 20vh; */
     border: none;
     background: rgba(178, 178, 178, 0.68);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -87,9 +87,11 @@ export const Container = styled.div`
   @media (max-width: 1440px) {
     .consuption-container {
       .consuption-masks {
-        width: 60%;
+        width: 65%;
+        height: 100%;
         button {
-          width: 25%;
+          width: 30%;
+          height: 100% !important;
           div {
             justify-content: space-around;
             h1 {
@@ -215,5 +217,4 @@ export const Container = styled.div`
       }
     }
   }
- 
 `;
