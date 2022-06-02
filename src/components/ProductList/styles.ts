@@ -93,6 +93,16 @@ export const Container = styled.div`
       }
     }
   }
+  @media (max-width: 650px) {
+    .section-hamburger {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
   @media (max-width: 425px) {
     .section-hamburger {
       grid-template-columns: 1fr;
