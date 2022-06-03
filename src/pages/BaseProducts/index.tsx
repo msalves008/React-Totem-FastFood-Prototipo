@@ -14,8 +14,6 @@ import CheckoutSession from "../../components/CheckoutSession";
 Modal.setAppElement("#root");
 
 export function BaseProducts() {
-
-
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
 
@@ -29,30 +27,23 @@ export function BaseProducts() {
   return (
     <Container>
       <ProductIdProvider>
-        {/* <CartProvider> */}
-          <CategoryProvider>
-            <div className="topbar-base-product">
-              <TopBar />
-            </div>
-            <div className="section-body-base-products">
-              <div className="navbar-base-products">
-                <NavBar />
-              </div>
-              <div className="body-base-products">
-                <AdditinalModal
-                  isOpen={isNewTransactionModalOpen}
-                  onRequestClose={handleCloseNewTransactionModal}
-                />
-                <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
-              </div>
-            </div>
-           <CheckoutSession/>
-            <GlobalStyles />
-          </CategoryProvider>
-       {/*  </CartProvider> */}
+        <CategoryProvider>
+          <header>
+            <TopBar />
+          </header>
+          <aside>
+            <NavBar />
+          </aside>
+          <section>
+            <AdditinalModal
+              isOpen={isNewTransactionModalOpen}
+              onRequestClose={handleCloseNewTransactionModal}
+            />
+            <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
+          </section>
+        </CategoryProvider>
       </ProductIdProvider>
-
-      {/*  </ProductIdProvider> */}
+      <GlobalStyles />
     </Container>
   );
 }

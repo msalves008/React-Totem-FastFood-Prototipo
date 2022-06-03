@@ -11,7 +11,7 @@ export const Container = styled.div`
     height: auto;
     background-color: #fff;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
     /* grid-template-columns: 1fr 1fr;
     grid-template-rows: 22rem 22rem; */
     padding-bottom: 4rem;
@@ -29,6 +29,7 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       border: none;
+
       /* .mask {
         background: #fff0de;
         border-radius: 24px 24px 0px 0px;
@@ -42,6 +43,7 @@ export const Container = styled.div`
         width: auto;
         margin-top: 1rem;
         z-index: 9999;
+        margin: 0 auto;
       }
       .info-item-hamburger {
         display: flex;
