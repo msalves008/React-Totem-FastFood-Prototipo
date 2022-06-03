@@ -38,7 +38,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     } else {
       axios
         .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/product/category/57f2f87e-e830-45ca-a80f-a696d2ba5215`
+          `${process.env.REACT_APP_ENDPOINT_API}/product/category/7e2515ef-6ea6-4267-9fc8-8d33d16850b3`
         )
         .then((res) => {
           setProductList(res.data);

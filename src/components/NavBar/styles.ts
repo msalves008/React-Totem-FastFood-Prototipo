@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   .main-navbar {
     display: flex;
-    height: 100%;
+   min-height: 100vh;
     width: 100%;
     background-color: #fff;
-    position: sticky;
     flex-direction: column;
     padding-top: 2rem;
     button {
