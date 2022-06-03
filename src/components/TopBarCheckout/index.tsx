@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-import cartIcon from "../assets/cart.svg";
 import { useHistory } from "react-router-dom";
-import { useCart } from "../context/useProductIdContext";
-
-export default function CheckoutSession() {
+import { useCart } from "../../context/useProductIdContext";
+import { ShoppingCart } from "@material-ui/icons";
+import logo from "../../assets/logo.png";
+import { Container } from "./styles";
+export default function TopBarCheckoutSession() {
   const history = useHistory();
   const [cartQuantity, setCartQuantity] = useState(0);
   const [totalItems, setTotalItems] = useState<number>();
@@ -33,30 +34,27 @@ export default function CheckoutSession() {
   }
 
   return (
-    <div className="bottom-base-products">
-      <div className="bar-options">
-        <div className="value">
-          <h1>TOTAL</h1>
-          <div>
-            <span>R$</span>
-            <h1>{Number(totalItems).toFixed(2).replace(".", ",")}</h1>
+    <Container>
+      <div>
+        <img src={logo} alt="" className="logo" />
+        <section>
+          <div className="totalValue">
+            <h1>TOTAL: </h1>
+            <h1 className="amount">
+              R$ {Number(totalItems).toFixed(2).replace(".", ",")}
+            </h1>
           </div>
-        </div>
-        <div className="cart">
-          <button>
-            <img src={cartIcon} alt="Carinho de Compras" />
-            <span>{cartQuantity}</span>
-          </button>
-        </div>
+          <Button
+            variant="outlined"
+            size="large"
+            color="warning"
+            startIcon={<ShoppingCart />}
+            onClick={finshOrder}
+          >
+            Finalizar pedido
+          </Button>
+        </section>
       </div>
-      <div className="section-buttons-base">
-        <Button variant="outlined" color="error" onClick={cancelOrder}>
-          CANCELAR
-        </Button>
-        <Button variant="contained" color="success" onClick={finshOrder}>
-          FINALIZAR
-        </Button>
-      </div>
-    </div>
+    </Container>
   );
 }
