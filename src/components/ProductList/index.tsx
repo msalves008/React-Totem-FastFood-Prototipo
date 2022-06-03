@@ -35,7 +35,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
           setProductList(res.data);
         })
         .catch((err) => {});
-    }else{
+    } else {
       axios
         .get(
           `${process.env.REACT_APP_ENDPOINT_API}/product/category/57f2f87e-e830-45ca-a80f-a696d2ba5215`
@@ -47,19 +47,17 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     }
   }, [categoryContext.categoryId?.categoryId]);
 
-
   function setItemsSelect(idProduct: string, amount: number) {
     productIdContext.setProductId({
       productId: idProduct,
-    })
+    });
     onOpenNewModal();
-    
   }
   if (!productsList) {
     return (
       <>
-       {/*  <img src={loadingIcon} alt="" className="spinningLoading" /> */}
-       <span>Carregando........</span>
+        {/*  <img src={loadingIcon} alt="" className="spinningLoading" /> */}
+        <span>Carregando........</span>
       </>
     );
   }
@@ -67,14 +65,16 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
   return (
     <Container>
       <div className="section-hamburger">
-          {productsList.Products.map((product) => (
+        {productsList.Products.map((product) => (
           <button
             onClick={() => {
               setItemsSelect(product.id, product.price);
             }}
             key={product.id}
           >
+            <div className="mask"></div>
             <img src={product.image} alt="" />
+
             <div className="info-item-hamburger">
               <h3>{product.name}</h3>
               <div className="item-value-container">
