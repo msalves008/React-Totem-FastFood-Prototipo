@@ -56,6 +56,7 @@ export const GlobalStyles = createGlobalStyle`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99999999;
  }
 .react-modal-content{
   width: 100%;
