@@ -40,4 +40,12 @@ export const Container = styled.header`
       }
     }
   }
+  @media (max-width: 414px) {
+    div{
+      img{
+        height: 50%;
+      }
+
+    }
+  }
 `;
