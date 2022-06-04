@@ -1,17 +1,39 @@
 import { Button, Rating } from "@material-ui/core";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import TopBar from "../../components/TopBar";
-
 import { Container } from "./styles";
-
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 export function SatisfactionSurvey() {
   const [chanceToUseAgain, setChanceToUseAgain] = useState<number | null>(null);
   const [easyToUse, setEasyToUse] = useState<number | null>(null);
   const [levelOfSatisfaction, setLevelOfSatisfaction] = useState<number | null>(
     null
   );
+  const history = useHistory();
+
+  const notifySuccess = () =>
+  toast.success("Obrigado por sua resposta. Sua opinião é muito importante.!", {
+    position: "top-center",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  function  handlePostSatisfactionSurvey(){
+    notifySuccess();
+    setTimeout(() => {
+      history.push("/")
+      window.location.reload();
+    }, 5000);
+  }
+
   return (
     <Container>
+       <ToastContainer />
       <TopBar />
       <section>
         <h1 className=" yellow">Agradecemos pela preferência!</h1>
@@ -62,7 +84,7 @@ export function SatisfactionSurvey() {
           />
         </div>
       </section>
-      <Button variant="contained">Enviar Resposta</Button>
+      <Button variant="contained" onClick={() => handlePostSatisfactionSurvey()}>Enviar Resposta</Button>
     </Container>
   );
 }

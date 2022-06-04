@@ -9885,10 +9885,10 @@ react-simple-keyboard@^3.2.98:
   resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-3.2.98.tgz#59e359475eed11af8bc5efcb3db24c092d6d394e"
   integrity sha512-DBmmKBw0b5cKuXK/TwQnhejBK0Ipoiyhd68a/Jg2RITuMzDATi4cSEI9U5fiumRn3wQvfNGDGFVS0i6BTc3Qrg==
 
-react-toastify@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-8.2.0.tgz#ef7d56bdfdc6272ca6b228368ab564721c3a3244"
-  integrity sha512-Pg2Ju7NngAamarFvLwqrFomJ57u/Ay6i6zfLurt/qPynWkAkOthu6vxfqYpJCyNhHRhR4hu7+bySSeWWJu6PAg==
+react-toastify@^9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.0.3.tgz#8e6d22651c85cb584c5ebd0b5e2c3bf0d7ec06ee"
+  integrity sha512-0QZJk0SqYBxouRBGCFU3ymvjlwimRRhVH7SzqGRiVrQ001KSoUNbGKx9Yq42aoPv18n45yJzEFG82zqv3HnASg==
   dependencies:
     clsx "^1.1.1"
 
