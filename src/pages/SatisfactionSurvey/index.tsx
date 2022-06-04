@@ -46,6 +46,7 @@ export function SatisfactionSurvey() {
           history.push("/");
         });
     }
+    history.push("/");
   }
 
   return (
