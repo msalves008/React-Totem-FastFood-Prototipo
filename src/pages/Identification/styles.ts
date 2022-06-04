@@ -1,6 +1,4 @@
-import { maxWidth } from "@material-ui/system";
 import styled from "styled-components";
-import bg from "./../../assets/bg_Consumption.png";
 
 export const Container = styled.div`
   section {
