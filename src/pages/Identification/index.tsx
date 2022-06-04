@@ -56,9 +56,9 @@ const Identification: React.FC = () => {
                   type="text"
                   margin="normal"
                   {...register("name")}
-                  inputProps={{
+                 /*  inputProps={{
                     maxLength: 11,
-                  }}
+                  }} */
                   error={errors.name}
                   helperText={errors.name && errors.name?.message}
                   fullWidth
