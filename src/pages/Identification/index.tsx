@@ -4,15 +4,11 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Container } from "./styles";
-import { TextField, Box } from "@material-ui/core";
+import { TextField, Box, Button } from "@material-ui/core";
+import TopBarCheckoutSession from "../../components/TopBarCheckout";
 const schema = yup
   .object({
     name: yup.string().required("Nome é obrigatório"),
-    documentNumber: yup
-      .string()
-      .min(11, "CPF Incompleto")
-      .max(11, "Máximo 11 Dígitos")
-      .required("CPF é obrigatório"),
   })
   .required();
 
@@ -28,84 +24,61 @@ const Identification: React.FC = () => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
-    console.log(data);
     sessionStorage.setItem("name", data.name);
-    sessionStorage.setItem("documentNumber", data.documentNumber);
-     history.push("/pixpayment");
+    sessionStorage.setItem("documentNumber", "75992048065");
+    history.push("/pixpayment");
   };
   return (
     <Container>
-      <div className="main-context-identification">
-        <div className="section-identification">
-          <h1 className="identification-title">IDENTICAÇÃO</h1>
-          <form
-            action="submit"
-            onSubmit={handleSubmit(onSubmit)}
-            className="form-identification"
+      <TopBarCheckoutSession showTotalValue={false} />
+      <section>
+        <h1 className="title">IDENTIFICAÇÃO</h1>
+        <h1 className="label">Como devemos te chamar ?</h1>
+        <form
+          action="submit"
+          onSubmit={handleSubmit(onSubmit)}
+          className="form-identification"
+        >
+          <Box
+            sx={{
+              width: "50vw",
+              margin: "0 auto",
+            }}
           >
-            <Box
-              sx={{
-                width: 1000,
-                maxWidth: "90%",
-                margin: "0 auto",
-              }}
-            >
-              <div className="style-div-label">
-                <label className="label-identification">DIGITE SEU CPF:</label>
-              </div>
-              <Controller
-                name="documentNumber"
-                control={control}
-                render={({ field }) => (
-                  <TextField
-                    id="outlined-basic"
-                    className="textfield"
-                    type="text"
-                    margin="normal"
-                    {...register("documentNumber")}
-                    inputProps={{
-                      maxLength: 11,
-                    }}
-                    error={errors.documentNumber}
-                    helperText={
-                      errors.documentNumber && errors.documentNumber?.message
-                    }
-                    fullWidth
-                    focused
-                    variant="outlined"
-                    {...field}
-                  />
-                )}
-              />
-              <div className="style-div-label">
-                <label className="label-identification">DIGITE SEU NOME:</label>
-              </div>
-              <Controller
-                name="name"
-                control={control}
-                render={({ field }) => (
-                  <TextField
-                    id="outlined-basic"
-                    className="textfield"
-                    type="text"
-                    margin="normal"
-                    {...register("name")}
-                    error={errors.name}
-                    helperText={errors.name && errors.name?.message}
-                    fullWidth
-                    focused
-                    variant="outlined"
-                    {...field}
-                  />
-                )}
-              />
-            </Box>
-            <button className="btn-comfirm" type="submit">
-              Confirmar
-            </button>
-          </form>
-        </div>
-      </div>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  id="outlined-basic"
+                  className="textfield"
+                  label="Nome"
+                  type="text"
+                  margin="normal"
+                  {...register("name")}
+                  inputProps={{
+                    maxLength: 11,
+                  }}
+                  error={errors.name}
+                  helperText={errors.name && errors.name?.message}
+                  fullWidth
+                  focused
+                  variant="outlined"
+                  {...field}
+                />
+              )}
+            />
+          </Box>
+          <Button
+            variant="contained"
+            color="success"
+            size="large"
+            type="submit"
+          >
+            Confirmar
+          </Button>
+        </form>
+      </section>
     </Container>
   );
 };
