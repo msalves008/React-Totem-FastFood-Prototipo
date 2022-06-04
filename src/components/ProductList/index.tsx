@@ -29,7 +29,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     if (categoryContext.categoryId?.categoryId) {
       axios
         .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/product/category/${categoryContext.categoryId.categoryId}`
+          `${process.env.REACT_APP_ENDPOINT_API}/category/${process.env.REACT_APP_RESTAURANT_ID}`
         )
         .then((res) => {
           setProductList(res.data);
@@ -38,7 +38,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     } else {
       axios
         .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/product/category/7e2515ef-6ea6-4267-9fc8-8d33d16850b3`
+          `${process.env.REACT_APP_ENDPOINT_API}/product/${process.env.REACT_APP_RESTAURANT_ID}/${process.env.REACT_APP_INITIAL_CATEGORY}`
         )
         .then((res) => {
           setProductList(res.data);
