@@ -28,7 +28,7 @@ export function BaseProducts() {
       <ProductIdProvider>
         <CategoryProvider>
           <header>
-            <TopBarCheckoutSession />
+            <TopBarCheckoutSession showTotalValue={true} />
           </header>
           <aside>
             <NavBar />

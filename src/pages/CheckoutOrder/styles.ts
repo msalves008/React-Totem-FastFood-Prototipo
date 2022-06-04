@@ -1,256 +1,294 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  background-color: var(--background);
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .link-newPage {
-    border: none;
-    text-decoration: none;
-  }
-  .topBar {
-    width: 100vw;
-    height: 15vh;
-  }
-
-  .Content {
-    width: 100vw;
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    text-align: center;
-    hr {
-      border: 1px dashed green;
-    }
-
-    table {
-      width: 90vw;
+  .modal {
+    width: 100%;
+    max-width: 1280px;
+    height: 95%;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    .modal-header {
       display: flex;
-      flex-direction: column;
-
-      tr {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left !important;
-
-        th {
-          display: flex;
-          width: 100%;
-
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.3rem;
-          color: #8c8888;
-          text-align: left;
-        }
-        td {
-          width: 100%;
-          display: flex;
-          text-align: left !important;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.3rem;
-          color: #000000;
-          margin: 0 auto;
-          margin-bottom: 0.2rem;
-        }
-      }
-    }
-
-    .amountOrder {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-
-      border: none;
-      .item {
-        display: flex;
-        flex-direction: row;
-        border: none;
-        margin: 0;
-        height: 3rem;
-
-        h5 {
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.7rem;
-          border: none;
-          text-align: justify;
-          justify-content: center;
-
-          color: #000000;
-        }
-        .colorRed {
-          color: #ff0000;
-        }
-      }
-    }
-
-    .btnGrops {
-      display: flex;
+      height: 4rem;
+      width: 100%;
+      align-items: center;
       justify-content: space-between;
-      position: absolute;
-      bottom: 2rem;
-      width: 90vw;
-      .btnCheckout {
-        width: 40vw;
-      }
-      Button {
-        height: 4vh;
-        width: 40vw;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.25rem;
-        text-align: center;
-      }
+      padding: 0 1rem;
     }
-  }
+    .modal-title {
+      margin: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+    .items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      width: 100%;
+      height: auto;
 
-  @media (max-width: 1440px) {
-    .topBar {
-      height: 15vh;
+      .item {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        align-items: center;
+
+        img {
+          width: 6rem;
+          /* height: 10.3rem; */
+        }
+        .item-info {
+          text-align: left;
+          h3 {
+            font-size: 1.2rem;
+            line-height: 150%;
+            font-weight: 300;
+            color: var(--text-body);
+          }
+          span {
+            font-size: 0.9rem;
+            line-height: 150%;
+            font-weight: normal;
+            color: rgba(65, 65, 77, 0.6);
+          }
+        }
+        .item-value {
+          font-size: 1.2rem;
+          font-weight: 300;
+          line-height: 150%;
+          color: var(--text-body);
+        }
+      }
     }
-    .Content {
+    .divider {
+      width: 100%;
+      border-top: 1px solid #dce2e6;
+      margin-bottom: 0.4rem;
+    }
+    .resume {
+      width: 90%;
+      margin: 0 auto;
+      height: auto;
+      padding: 2rem;
+      right: 10rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 0.4rem;
+      .resume-itens {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+
+        .resume-item {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          margin-bottom: 0.8rem;
+          span {
+            font-size: 0.9rem;
+            line-height: 150%;
+            font-weight: normal;
+            color: var(--text-body);
+          }
+        }
+
+        .amount {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          font-size: 0.9rem;
+          line-height: 150%;
+          font-weight: 600;
+          color: var(--text-body);
+          text-transform: uppercase;
+          margin-bottom: 0.8rem;
+        }
+        .btn-checkout {
+          width: 100%;
+          height: 3rem;
+          mix-blend-mode: multiply;
+          color: #fff;
+
+          text-transform: uppercase;
+        }
+        .btn{
+          width: 100%;
+          height: 3rem;
+          margin-top: 1rem;
+
+        }
+      }
       h1 {
         font-size: 1.5rem;
-        font-family: Roboto;
+        font-weight: 500;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: var(--text-body);
       }
-      table {
-        tr {
-          th {
-            font-size: 1rem;
-            font-family: Roboto;
+    }
+  }
+  @media (max-width: 1280px) {
+    .modal {
+      width: 1140px;
+      .items {
+        .item {
+          img {
+            width: 5rem;
           }
         }
       }
-      .btnGrops {
-        width: 60vw;
-        Button {
-          width: 30vw;
-        }
-        .btnCheckout {
-          width: 25vw;
+      .resume {
+        .resume-itens {
+          button {
+            height: 2.5rem;
+            width: 80%;
+          }
         }
       }
+    }
+  }
+  @media (max-width: 1024px) {
+    .modal {
+      width: 960px;
+    }
+  }
+  @media (max-width: 992px) {
+    .modal {
+      width: 960px;
     }
   }
   @media (max-width: 768px) {
-    .Content {
-      .amountOrder {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        table {
-          width: 70%;
-          display: flex;
-          margin: 0 auto;
-
-          tr {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            margin: 0 auto;
-            th {
+    .modal {
+      width: 720px;
+      .items {
+        .item {
+          .item-info {
+            h3 {
+              font-size: 1rem;
             }
-            .colorRed {
-              color: #ff0000;
+            span {
+              font-size: 0.7rem;
             }
+          }
+          .item-value {
+            font-size: 1rem;
           }
         }
       }
-      .btnGrops {
-        width: 70vw;
-        Button {
-          width: 37vw;
+    }
+  }
+  @media (max-width: 576px) {
+    .modal {
+      width: 540px;
+      .resume {
+        h1 {
+          font-size: 1rem;
+        }
+        .resume-itens {
+          width: 50%;
+        }
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .modal {
+      width: 460px;
+      .modal-header {
+        flex-direction: column;
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
+          }
         }
       }
     }
   }
   @media (max-width: 425px) {
-    .Content {
-      .amountOrder {
-        table {
-          width: 90%;
-          display: flex;
-          margin: 0 auto;
+    .modal {
+      width: 400px;
+      .modal-header {
+        h1{
+          line-height: 0;
         }
-      }
-      .btnGrops {
-        width: 70vw;
-        Button {
-          width: 37vw;
-        }
-      }
-    }
-  }
-  @media (max-width: 414px) {
-    .Content {
-      .btnGrops {
-        width: 90vw;
-        Button {
-          width: 55vw;
-          font-size: 1rem;
-        }
-        .btnCheckout {
-          width: 30vw;
-        }
-      }
-    }
-  }
-  @media (max-width: 320px) {
-    .Content {
-      h1 {
-        font-size: 0.9rem;
-        font-family: Roboto;
-      }
-      table {
-        tr {
-          th,
-          td {
-            font-size: 0.8rem;
-            font-family: Roboto;
+        height: 10%;
+        display: flex;
+        flex-direction: column !important; 
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
           }
         }
       }
-      .amountOrder {
-        table {
-          width: 90%;
-          display: flex;
-          margin: 0 auto;
-          tr {
-            th,
-            td {
+      .resume {
+        flex-direction: column;
+        .resume-itens {
+          margin-top: 2rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    .modal {
+      width: 300px;
+      .modal-header {
+        flex-direction: column;
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
+          }
+        }
+      }
+      .modal-title {
+        font-size: 1.2rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .items {
+        .item {
+          img {
+            width: 4rem;
+          }
+          .item-value {
+            font-size: 0.8rem;
+          }
+          .item-info {
+            h3 {
               font-size: 0.8rem;
-              font-family: Roboto;
             }
           }
         }
       }
-      .btnGrops {
-        width: 99vw;
-        justify-content: space-around;
-        Button {
-          width: 52vw;
-          font-size: 0.7rem;
-          font-family: Roboto;
-        }
-        .btnCheckout {
-          width: 40vw;
+      .resume {
+        flex-direction: column;
+        .resume-itens {
+          margin-top: 2rem;
+          width: 100%;
         }
       }
     }

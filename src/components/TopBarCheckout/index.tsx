@@ -5,7 +5,10 @@ import { useCart } from "../../context/useProductIdContext";
 import { ShoppingCart } from "@material-ui/icons";
 import logo from "../../assets/logo.png";
 import { Container } from "./styles";
-export default function TopBarCheckoutSession() {
+type IProps = {
+  showTotalValue: boolean;
+};
+export default function TopBarCheckoutSession({ showTotalValue }: IProps) {
   const history = useHistory();
   const [cartQuantity, setCartQuantity] = useState(0);
   const [totalItems, setTotalItems] = useState<number>();
@@ -38,21 +41,25 @@ export default function TopBarCheckoutSession() {
       <div>
         <img src={logo} alt="" className="logo" />
         <section>
-          <div className="totalValue">
-            <h1>TOTAL: </h1>
-            <h1 className="amount">
-              R$ {Number(totalItems).toFixed(2).replace(".", ",")}
-            </h1>
-          </div>
-          <Button
-            variant="outlined"
-            size="large"
-            color="warning"
-            startIcon={<ShoppingCart />}
-            onClick={finshOrder}
-          >
-            Finalizar pedido
-          </Button>
+          {showTotalValue && (
+            <>
+              <div className="totalValue">
+                <h1>TOTAL: </h1>
+                <h1 className="amount">
+                  R$ {Number(totalItems).toFixed(2).replace(".", ",")}
+                </h1>
+              </div>
+              <Button
+                variant="outlined"
+                size="large"
+                color="warning"
+                startIcon={<ShoppingCart />}
+                onClick={finshOrder}
+              >
+                Finalizar pedido
+              </Button>
+            </>
+          )}
         </section>
       </div>
     </Container>

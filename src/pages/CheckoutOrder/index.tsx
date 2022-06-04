@@ -1,11 +1,11 @@
 import React from "react";
-import TopBar from "../../components/TopBar";
 import { Container } from "./styles";
 
-import { Button } from "@material-ui/core";
-
+import Hamburguer from "../../assets/Hamburguer.png";
 import { useHistory } from "react-router-dom";
 import { useCart } from "../../context/useProductIdContext";
+import TopBarCheckoutSession from "../../components/TopBarCheckout";
+import { Button } from "@material-ui/core";
 function createData(
   id: number,
   qtd: number,
@@ -47,96 +47,75 @@ const CheckoutOrder: React.FC = () => {
   }
   return (
     <Container>
-      <div className="topBar">
-        <TopBar />
-      </div>
-      <div className="Content">
-        <h1>CONFIRME SEU PEDIDO</h1>
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>QTD</th>
-            <th>PRODUTO</th>
-            <th>VL. UNIT</th>
-            <th>VL. TOTAL</th>
-          </tr>
-
-          {cart?.map((row, index) => (
-            <tr>
-              <td> {index}</td>
-              <td> {row.amount}</td>
-              <td>{row.name}</td>
-              <td>{row.price}</td>
-              <td>{row.price * row.amount}</td>
-            </tr>
-          ))}
-        </table>
-
-        <h1>ADICIONAIS</h1>
-
-        <table>
-          <tr>
-            <th>ITEM</th>
-            <th>PRODUTO</th>
-            <th>VL. UNIT</th>
-            <th>VL. TOTAL</th>
-          </tr>
-
-          {rowsAdditionals.map((row) => (
-            <tr>
-              <td> {row.item}</td>
-              <td>{row.product}</td>
-              <td>{row.unitValue}</td>
-              <td>{row.totalValue}</td>
-            </tr>
-          ))}
-        </table>
-        <div className="amountOrder">
-          <h1>TOTAL</h1>
-          <table>
-            <tr>
-              <th>TOTAL GERAL</th>
-              <th>TOTAL DESCONTOS</th>
-              <th className="colorRed">TOTAL FINAL</th>
-            </tr>
-            <tr>
-              <td>
-                R$:
-                {Number(sessionStorage.getItem("amountOrder"))
-                  .toFixed(2)
-                  .replace(".", ",")}
-              </td>
-              <td>R$: 00,00</td>
-              <td className="colorRed">
-                R$:
-                {Number(sessionStorage.getItem("amountOrder"))
-                  .toFixed(2)
-                  .replace(".", ",")}
-              </td>
-            </tr>
-          </table>
+      <section className="modal">
+        <div className="modal-header">
+          <h1 className="modal-title">CONFIRME SEU PEDIDO</h1>
         </div>
-
-        <div className="btnGrops">
-          <Button
-            variant="outlined"
-            color="warning"
-            size="large"
-            onClick={showAlert}
-          >
-            CUPOM DE DESCONTO
-          </Button>
+        <div className="items">
+          {cart?.map((row, index) => (
+            <div className="item" key={index}>
+              <img
+                src={row.image}
+                alt="Nike Paul George 2 Masculino"
+                className="Item-image"
+              />
+              <div className="item-info">
+                <h3>{row.name}</h3>
+                <span> QTD: {row.amount}</span>
+              </div>
+              <span className="item-value">R$ {row.price}</span>
+            </div>
+          ))}
+        </div>
+        <div className="divider"></div>
+        <div className="resume">
+          <h1>Resumo do Pedido</h1>
+          <div className="resume-itens">
+            <div className="resume-item">
+              <span>Total de Pedidos</span>
+              <span>
+                R$:{" "}
+                {Number(sessionStorage.getItem("amountOrder"))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </span>
+            </div>
+            <div className="resume-item">
+              <span>Descontos</span>
+              <span>R$: 00,00</span>
+            </div>
+            <div className="divider"></div>
+            <div className="amount">
+              <span>Total</span>
+              <span>
+                {" "}
+                R$:{" "}
+                {Number(sessionStorage.getItem("amountOrder"))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </span>
+            </div>
           <Button
             variant="contained"
             color="success"
             size="large"
             onClick={checkoutOrder}
-            className="btnCheckout"
+            className="btn-checkout"
           >
             CONFIRMAR
           </Button>
+          <Button
+            variant="outlined"
+            color="warning"
+            size="large"
+            onClick={()=> history.push("/list-products")}
+            className="btn"
+          >
+            Adicionar mais Itens
+          </Button>
+          </div>
         </div>
-      </div>
+      </section>
     </Container>
   );
 };
