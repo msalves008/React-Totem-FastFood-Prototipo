@@ -10,7 +10,7 @@ const PixPayment: React.FC = () => {
   const { cart } = useCart();
   const history = useHistory();
   function generatePassworld() {
-    history.push("/password");
+   
   }
 
   function postPixPayment(value: any) {
@@ -79,7 +79,9 @@ const PixPayment: React.FC = () => {
             </h2>
           </div>
         </div>
-          <Button className="btn-21" variant="contained" onClick={generatePassworld}>
+          <Button className="btn-21" variant="contained" onClick={()=>{
+             history.push("/satisfactionsurvey");
+          }}>
         Aprovar Pagameto
       </Button>
       </div>

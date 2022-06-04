@@ -2,13 +2,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/index";
 import Consumption from "./pages/Consumption/index";
-/* import Identification from './pages/Identification/index'; */
 import BaseProducts from "./pages/BaseProducts/index";
 import CheckoutOrder from "./pages/CheckoutOrder/index";
 import PixPayment from "./pages/Payment/PixPayment";
-import PasswordOrder from "./pages/PasswordOrder";
 import { CartProvider } from "./context/useProductIdContext";
 import Identification from "./pages/Identification";
+import { SatisfactionSurvey } from "./pages/SatisfactionSurvey";
 
 function App() {
   return (
@@ -30,7 +29,7 @@ function App() {
               component={CheckoutOrder}
             />
             <Route path="/pixpayment" exact={true} component={PixPayment} />
-            <Route path="/password" exact={true} component={PasswordOrder} />
+            <Route path="/satisfactionsurvey" exact={true} component={SatisfactionSurvey} />
           </Switch>
         </CartProvider>
       </BrowserRouter>
