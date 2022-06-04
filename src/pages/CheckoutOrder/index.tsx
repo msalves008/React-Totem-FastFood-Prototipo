@@ -1,7 +1,5 @@
 import React from "react";
 import { Container } from "./styles";
-
-import Hamburguer from "../../assets/Hamburguer.png";
 import { useHistory } from "react-router-dom";
 import { useCart } from "../../context/useProductIdContext";
 import TopBarCheckoutSession from "../../components/TopBarCheckout";
@@ -48,6 +46,7 @@ const CheckoutOrder: React.FC = () => {
   return (
     <Container>
       <section className="modal">
+      <TopBarCheckoutSession showTotalValue={false} />
         <div className="modal-header">
           <h1 className="modal-title">CONFIRME SEU PEDIDO</h1>
         </div>

@@ -12,10 +12,8 @@ export const Container = styled.div`
   .modal {
     width: 100%;
     max-width: 1280px;
-    height: 95%;
+    min-height: 95%;
     background-color: #fff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
     .modal-header {
       display: flex;
       height: 4rem;
@@ -126,16 +124,14 @@ export const Container = styled.div`
           margin-bottom: 0.8rem;
         }
         .btn-checkout {
-          width: 100%;
-          height: 3rem;
+          width: 80%;
           mix-blend-mode: multiply;
           color: #fff;
 
           text-transform: uppercase;
         }
         .btn{
-          width: 100%;
-          height: 3rem;
+          width: 80%;
           margin-top: 1rem;
 
         }
