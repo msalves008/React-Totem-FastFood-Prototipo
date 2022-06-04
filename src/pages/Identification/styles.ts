@@ -1,113 +1,19 @@
-import styled from 'styled-components';
-import bg from './../../assets/bg_Consumption.png';
+import styled from "styled-components";
 
 export const Container = styled.div`
-  .main-context-identification{
-    display: flex;
-    /* justify-content: center; */
-    align-items: baseline;
-    flex-direction: column;
-    margin: 0;
-    height: 100vh;
-    width: 100%;
-    background-image: url(${bg});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  section {
+    .title {
+      font-size: 2rem;
+    }
+    .label {
+      font-size: 1.5rem;
+      margin-top: 4rem;
+    }
+    form {
+      .textfield {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
   }
-
-  .section-identification{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 2;
-    width: 100%;
-
-  }
-.identification-title{
-  font-family: Reem Kufi;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 4rem;
-  line-height: 8rem;
-  text-align: center;
-
-  color: #FEEA03;
-}
-
-.form-identification{
-  flex-direction: column;
-  align-content: center;
-  display: flex;
-  width: 100%;
-
-}
-.style-div-label{
-  width: 90vw;
-  display: flex;
-  position: relative;
-  left: 0;
-  padding-top: 2rem;
-}
-
-.label-identification{
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1.7rem;
-  letter-spacing: 0.185em;
-  align-self: flex-start;
-  color: #FEEA03;
-  padding-bottom: 2%;
-
-}
-
-.input-identification{
-  height: 4vh;
-  width:80%;
-  background: rgba(179, 179, 179, 0.68);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  border: none;
-  align-content: center;
-
-  margin: 0 auto;
-}
-
-.btn-comfirm{
-  align-self: center;
-  margin-top: 45px;
-  width: 20rem;
-  height:4rem;
-  background: #4ABC4E;
-  border-radius: 8px;
-  border: none;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-align: center;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-
-}
-.error-message{
-  font-family: Roboto;
-  font-style: normal;
-  font-size: 1.2rem;
-  color: #FF0000;
-}
-.textfield {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  input{
-    background: rgba(179, 179, 179, 0.68);
-    color: #FFF;
-  }
-}
-
-
-
-
-
 `;

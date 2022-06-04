@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import bg from "./../../assets/home_bg.png";
+import bg2 from "./../../assets/bg_Consumption.png";
 
 export const Container = styled.div`
   width: 100vw;
@@ -77,24 +78,24 @@ export const Container = styled.div`
   }
   @media (max-width: 1440px) {
     .app-main-content {
+      background-image: url(${bg2});
       justify-content: flex-start;
       align-items: flex-start;
       .content {
-        height: 80vh;
+        height: 70vh;
         width: 100vw;
         margin: 2rem;
         h1 {
           font-size: 12rem;
-          margin: 0;
+          margin: 0 ;
         }
         h2 {
           font-size: 4rem;
-          margin: 0;
+          margin: 0 ;
         }
         img {
           width: auto;
           height: 9rem;
-          /* margin-top: 3rem; */
         }
       }
       .mask {
@@ -135,6 +136,7 @@ export const Container = styled.div`
   }
   @media (max-width: 600px) {
     .app-main-content {
+      background-image: url(${bg});
       display: flex;
       justify-content: space-between;
       .content {

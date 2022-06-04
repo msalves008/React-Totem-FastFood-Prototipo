@@ -44,7 +44,7 @@ export const Container = styled.div`
     justify-content: space-around;
     /*   background-color: blue; */
     width: 90%;
-    height: 80%;
+    height: 100%;
   }
   .button-mask-element {
     display: flex;
@@ -52,7 +52,7 @@ export const Container = styled.div`
     align-items: center;
     background-color: chocolate;
     width: 45%;
-    max-height: 20vh;
+    /* max-height: 20vh; */
     border: none;
     background: rgba(178, 178, 178, 0.68);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -84,7 +84,50 @@ export const Container = styled.div`
       margin: 0 auto;
     }
   }
-
+  @media (max-width: 1440px) {
+    .consuption-container {
+      .consuption-masks {
+        width: 65%;
+        height: 100%;
+        button {
+          width: 30%;
+          height: 100% !important;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+              font-family: Roboto;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .consuption-container {
+      h1 {
+        font-size: 3rem;
+      }
+      .consuption-masks {
+        width: 60%;
+        button {
+          width: 40%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
   @media (max-width: 600px) {
     .consuption-container {
       width: 100vw;
@@ -93,19 +136,84 @@ export const Container = styled.div`
         font-size: 2.55rem;
       }
       .consuption-masks {
-      button {
-        height:25vh;
-        div{
-          justify-content: space-around;
-          h1{
-            font-size:1.5rem;
+        button {
+          height: 25vh;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
           }
-          img{
-            max-height:15vh;
-          }
-
         }
       }
+    }
+  }
+  @media (max-width: 425px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.5rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.3rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .consuption-container {
+      h1 {
+        font-size: 1.3rem;
+      }
+      .consuption-masks {
+        width: 95%;
+        button {
+          width: 45%;
+          div {
+            justify-content: space-around;
+            h1 {
+              font-size: 1.3rem;
+            }
+            img {
+              max-height: 15vh;
+            }
+          }
+        }
       }
     }
   }

@@ -7,15 +7,12 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
 import { CategoryProvider } from "../../context/categoryIdContext";
-import { CartProvider } from "../../context/useProductIdContext";
 import { ProductIdProvider } from "../../context/productIdContext";
-import CheckoutSession from "../../components/CheckoutSession";
+import TopBarCheckoutSession from "../../components/TopBarCheckout";
 
 Modal.setAppElement("#root");
 
 export function BaseProducts() {
-
-
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
 
@@ -29,30 +26,23 @@ export function BaseProducts() {
   return (
     <Container>
       <ProductIdProvider>
-        {/* <CartProvider> */}
-          <CategoryProvider>
-            <div className="topbar-base-product">
-              <TopBar />
-            </div>
-            <div className="section-body-base-products">
-              <div className="navbar-base-products">
-                <NavBar />
-              </div>
-              <div className="body-base-products">
-                <AdditinalModal
-                  isOpen={isNewTransactionModalOpen}
-                  onRequestClose={handleCloseNewTransactionModal}
-                />
-                <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
-              </div>
-            </div>
-           <CheckoutSession/>
-            <GlobalStyles />
-          </CategoryProvider>
-       {/*  </CartProvider> */}
+        <CategoryProvider>
+          <header>
+            <TopBarCheckoutSession showTotalValue={true} />
+          </header>
+          <aside>
+            <NavBar />
+          </aside>
+          <section>
+            <AdditinalModal
+              isOpen={isNewTransactionModalOpen}
+              onRequestClose={handleCloseNewTransactionModal}
+            />
+            <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
+          </section>
+        </CategoryProvider>
       </ProductIdProvider>
-
-      {/*  </ProductIdProvider> */}
+      <GlobalStyles />
     </Container>
   );
 }

@@ -11,37 +11,45 @@ export const Container = styled.div`
     height: auto;
     background-color: #fff;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 22rem 22rem;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: 22rem 22rem; */
     padding-bottom: 4rem;
     overflow: scroll;
     white-space: nowrap;
     button {
-      /*  width: 40%;
-      height: 25%; */
-      width: 22rem;
-      height: 20rem;
+      box-shadow: 0px 24px 40px rgba(0, 0, 0, 0.16);
+      border-radius: 24px;
+      width: 20rem;
+      height: 18rem;
       background-color: #fff;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-      border-radius: 8px;
-      /* margin: 0 auto; */
+      margin: 0 auto;
       margin-top: 5%;
+      text-align: left;
       display: flex;
       flex-direction: column;
-      text-align: center;
-      justify-content: center;
       border: none;
+
+      /* .mask {
+        background: #fff0de;
+        border-radius: 24px 24px 0px 0px;
+        width: 20rem;
+        height: 7rem;
+        position: absolute;
+      } */
+
       img {
         max-height: 50%;
         width: auto;
-        padding-top: 0.5rem;
+        margin-top: 1rem;
+        z-index: 9999;
+        margin: 0 auto;
       }
       .info-item-hamburger {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-align: center;
         margin: 0 auto;
         h3 {
           text-align: center;
@@ -83,6 +91,42 @@ export const Container = styled.div`
     }
     button:last-child {
       margin-bottom: 10rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .section-hamburger {
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
+  @media (max-width: 650px) {
+    .section-hamburger {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    .section-hamburger {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      button {
+        width: 19rem;
+        height: 17rem;
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    .section-hamburger {
+      button {
+        width: 17rem;
+        height: 15rem;
+      }
     }
   }
 `;

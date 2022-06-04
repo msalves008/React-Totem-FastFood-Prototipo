@@ -17,6 +17,13 @@ export const Container = styled.div`
       max-height: 73%;
     }
   }  
+  @media(max-width: 1440px) {
+  height: 100%;
+   img{ 
+     width: 10em !important;
+      max-height: 50%;
+   }
+  }
 
 
 `

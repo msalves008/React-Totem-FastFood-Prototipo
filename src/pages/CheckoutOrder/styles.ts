@@ -1,133 +1,292 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  background-color: var(--background);
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .link-newPage {
-    border: none;
-    text-decoration: none;
-  }
-  .topBar {
-    width: 100vw;
-    height: 15vh;
-  }
-
-  .Content {
-    width: 100vw;
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    text-align: center;
-
-    table {
-      width: 90vw;
+  .modal {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 95%;
+    background-color: #fff;
+    .modal-header {
+      display: flex;
+      height: 4rem;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+    .modal-title {
+      margin: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+    .items {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      width: 100%;
+      height: auto;
 
-      tr {
+      .item {
         width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        align-items: center;
+
+        img {
+          width: 6rem;
+          /* height: 10.3rem; */
+        }
+        .item-info {
+          text-align: left;
+          h3 {
+            font-size: 1.2rem;
+            line-height: 150%;
+            font-weight: 300;
+            color: var(--text-body);
+          }
+          span {
+            font-size: 0.9rem;
+            line-height: 150%;
+            font-weight: normal;
+            color: rgba(65, 65, 77, 0.6);
+          }
+        }
+        .item-value {
+          font-size: 1.2rem;
+          font-weight: 300;
+          line-height: 150%;
+          color: var(--text-body);
+        }
+      }
+    }
+    .divider {
+      width: 100%;
+      border-top: 1px solid #dce2e6;
+      margin-bottom: 0.4rem;
+    }
+    .resume {
+      width: 90%;
+      margin: 0 auto;
+      height: auto;
+      padding: 2rem;
+      right: 10rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 0.4rem;
+      .resume-itens {
+        width: 30%;
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left !important;
-        
-        th {
-          display: flex;
-          width: 100%;
-          
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.3rem;
-          color: #8c8888;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         text-align: left;
 
-        }
-        td {
+        .resume-item {
           width: 100%;
-          display: flex;
-          text-align: left !important;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.3rem;
-          color: #000000;
-          margin: 0 auto;
-          margin-bottom: .2rem;
-        
+          height: 100%;
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          margin-bottom: 0.8rem;
+          span {
+            font-size: 0.9rem;
+            line-height: 150%;
+            font-weight: normal;
+            color: var(--text-body);
+          }
+        }
+
+        .amount {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          font-size: 0.9rem;
+          line-height: 150%;
+          font-weight: 600;
+          color: var(--text-body);
+          text-transform: uppercase;
+          margin-bottom: 0.8rem;
+        }
+        .btn-checkout {
+          width: 80%;
+          mix-blend-mode: multiply;
+          color: #fff;
+
+          text-transform: uppercase;
+        }
+        .btn{
+          width: 80%;
+          margin-top: 1rem;
 
         }
       }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: var(--text-body);
+      }
     }
-
-    .amountOrder {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-
-      border: none;
-      .item {
+  }
+  @media (max-width: 1280px) {
+    .modal {
+      width: 1140px;
+      .items {
+        .item {
+          img {
+            width: 5rem;
+          }
+        }
+      }
+      .resume {
+        .resume-itens {
+          button {
+            height: 2.5rem;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    .modal {
+      width: 960px;
+    }
+  }
+  @media (max-width: 992px) {
+    .modal {
+      width: 960px;
+    }
+  }
+  @media (max-width: 768px) {
+    .modal {
+      width: 720px;
+      .items {
+        .item {
+          .item-info {
+            h3 {
+              font-size: 1rem;
+            }
+            span {
+              font-size: 0.7rem;
+            }
+          }
+          .item-value {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 576px) {
+    .modal {
+      width: 540px;
+      .resume {
+        h1 {
+          font-size: 1rem;
+        }
+        .resume-itens {
+          width: 50%;
+        }
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .modal {
+      width: 460px;
+      .modal-header {
+        flex-direction: column;
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    .modal {
+      width: 400px;
+      .modal-header {
+        h1{
+          line-height: 0;
+        }
+        height: 10%;
         display: flex;
-        flex-direction: row;
-        border: none;
-        margin: 0;
-        height: 3rem;
-
-        h5 {
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.7rem;
-          border: none;
-          text-align: justify;
-          justify-content: center;
-
-          color: #000000;
+        flex-direction: column !important; 
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
+          }
         }
-        .colorRed {
-          color: #ff0000;
+      }
+      .resume {
+        flex-direction: column;
+        .resume-itens {
+          margin-top: 2rem;
+          width: 100%;
         }
       }
     }
-
-    .btnGrops {
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 2rem;
-      width: 90vw;
-      .btnCheckout {
-        width: 40vw;
+  }
+  @media (max-width: 375px) {
+    .modal {
+      width: 300px;
+      .modal-header {
+        flex-direction: column;
+        .language-switcher {
+          justify-content: space-evenly;
+          span {
+            display: none;
+          }
+        }
       }
-      Button {
-        height: 4vh;
-        width: 40vw;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.25rem;
-        text-align: center;
+      .modal-title {
+        font-size: 1.2rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .items {
+        .item {
+          img {
+            width: 4rem;
+          }
+          .item-value {
+            font-size: 0.8rem;
+          }
+          .item-info {
+            h3 {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+      .resume {
+        flex-direction: column;
+        .resume-itens {
+          margin-top: 2rem;
+          width: 100%;
+        }
       }
     }
   }
-
-
-
-
-
-  @media(max-height: 1300px) {
-    
-  }
-
-@media(max-width: 600px) {
-  /* background-color: yellow; */
-}
-
-
 `;

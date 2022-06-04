@@ -65,7 +65,7 @@ export function CartProvider({ children }: CartProviderProps) {
       setCart(updatedCart);
       sessionStorage.setItem("@CleanSystem:cart", JSON.stringify(updatedCart));
     } catch {
-      toast.error("Erro na adição do produto");
+      /* toast.error("Erro na adição do produto"); */
     }
   };
 
@@ -86,7 +86,7 @@ export function CartProvider({ children }: CartProviderProps) {
         throw Error();
       }
     } catch {
-      toast.error("Erro na remoção do produto");
+      /* toast.error("Erro na remoção do produto"); */
     }
   };
 
@@ -113,7 +113,7 @@ export function CartProvider({ children }: CartProviderProps) {
         throw Error();
       }
     } catch {
-      toast.error("Erro na alteração de quantidade do produto");
+      /* toast.error("Erro na alteração de quantidade do produto"); */
     }
   };
 

@@ -18,6 +18,7 @@ export const GlobalStyles = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Roboto, sans-serif !important;
    }
  html{
    @media(max-width: 1080px){
@@ -55,6 +56,7 @@ export const GlobalStyles = createGlobalStyle`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99999999;
  }
 .react-modal-content{
   width: 100%;

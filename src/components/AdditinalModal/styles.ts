@@ -58,8 +58,8 @@ export const Container = styled.div`
       color: var(--red);
     }
     .btns {
-      h2{
-      color: var(--red);
+      h2 {
+        color: var(--red);
       }
       position: relative;
       display: flex;
@@ -67,7 +67,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       button {
-      color: var(--red);
+        color: var(--red);
         width: 2rem;
         background-color: transparent;
         border: none;
@@ -96,5 +96,37 @@ export const Container = styled.div`
     background-color: var(--green);
     border: none;
     border-radius: 0.7rem;
+  }
+
+  @media (max-width: 425px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    .content {
+      justify-content: flex-start;
+      h2 {
+        font-size: 1rem;
+      }
+    }
+    .productQuantilyGroup {
+      span {
+        font-size: 1rem;
+      }
+      .btns {
+        h2 {
+          font-size: 1rem;
+        }
+        button {
+          font-size: 1rem;
+        }
+      }
+    }
+    .btn {
+      width: 16rem;
+      height: 2rem;
+      font-size: 17px;
+      line-height: 20px;
+      letter-spacing: 0.3em;
+    }
   }
 `;
