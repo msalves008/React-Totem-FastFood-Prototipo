@@ -29,7 +29,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     if (categoryContext.categoryId?.categoryId) {
       axios
         .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/category/${process.env.REACT_APP_RESTAURANT_ID}`
+          `${process.env.REACT_APP_ENDPOINT_API}/product/${process.env.REACT_APP_RESTAURANT_ID}/${categoryContext.categoryId?.categoryId}`
         )
         .then((res) => {
           setProductList(res.data);
