@@ -229,6 +229,7 @@ export const Container = styled.div`
         h1{
           line-height: 0;
         }
+
         height: 10%;
         display: flex;
         flex-direction: column !important; 
@@ -238,6 +239,9 @@ export const Container = styled.div`
             display: none;
           }
         }
+      }
+      .items{
+        width: 90%;
       }
       .resume {
         flex-direction: column;
