@@ -81,6 +81,10 @@ export const Container = styled.div`
   @media (max-width: 600px) {
     /* background-color: yellow; */
     .Content {
+      h1, h2{
+        font-size: 1.5rem;
+        margin: 0;
+      }
       img {
         width: 45vw;
       }

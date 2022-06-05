@@ -9,9 +9,6 @@ import { useCart } from "../../../context/useProductIdContext";
 const PixPayment: React.FC = () => {
   const { cart } = useCart();
   const history = useHistory();
-  function generatePassworld() {
-   
-  }
 
   function postPixPayment(value: any) {
     const headers = {
