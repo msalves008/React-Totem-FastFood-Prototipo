@@ -51,6 +51,7 @@ export function SatisfactionSurvey() {
           }, 5000);
         })
         .catch(() => {
+          window.location.reload();
           history.push("/");
         });
     }
