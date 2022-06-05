@@ -15,11 +15,15 @@ export function NavBar() {
   const categoryContext = useContext(CategoryContext);
   const [categories, setCategories] = useState<NavBarCategories>();
   useEffect(() => {
-    axios.get(process.env.REACT_APP_ENDPOINT_API + "/category").then((res) => {
-      setCategories(res.data);
-    }).catch((err) => {})
-  },[])
- 
+    axios
+      .get(
+        `${process.env.REACT_APP_ENDPOINT_API}/category/${process.env.REACT_APP_RESTAURANT_ID}`
+      )
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => {});
+  }, []);
 
   if (!categories) {
     return <></>;
