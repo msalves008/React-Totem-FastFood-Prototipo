@@ -80,22 +80,7 @@ export const Container = styled.div`
   }
 
   .btn {
-    position: absolute;
-    top: 90%;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: 0.5em;
-
-    width: 20rem;
-    height: 3.5rem;
-    color: #ffffff;
-    background-color: var(--green);
-    border: none;
-    border-radius: 0.7rem;
+    margin-top: 2rem;
   }
 
   @media (max-width: 425px) {

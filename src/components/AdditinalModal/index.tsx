@@ -5,6 +5,7 @@ import closeIcon from "../../assets/close.svg";
 import { useContext, useState } from "react";
 import { useCart } from "../../context/useProductIdContext";
 import { ProductIdContext } from "../../context/productIdContext";
+import { Button } from "@material-ui/core";
 
 interface NewModalProps {
   isOpen: boolean;
@@ -31,7 +32,7 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
         <img src={closeIcon} alt="Fechar Modal" />
       </button>
       <Container>
-        <h1>ADICIONAIS</h1>
+        {/*         <h1>ADICIONAIS</h1>
         <div className="content">
           <div className="item">
             <h2>HAMBÚRGUER</h2>
@@ -68,7 +69,7 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
               <button type="button">+</button>
             </div>
           </div>
-        </div>
+        </div> */}
         <h1>QUANTIDADE</h1>
 
         <div className="productQuantilyGroup">
@@ -96,15 +97,18 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           </div>
         </div>
 
-        <button
+        <Button
           type="button"
+          variant="outlined"
+          size="large"
+          color="warning"
           className="btn"
           onClick={() => {
             addProduct(productIdContext.productId?.productId, productQuantity);
             console.log({
               productId: productIdContext.productId?.productId,
               amount: productQuantity,
-            })
+            });
             updateProductAmount({
               productId: productIdContext.productId?.productId,
               amount: productQuantity,
@@ -113,8 +117,8 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
             setProductQuantity(1);
           }}
         >
-          CONFIRMAR
-        </button>
+          Adicionar na sacola
+        </Button>
       </Container>
     </Modal>
   );
