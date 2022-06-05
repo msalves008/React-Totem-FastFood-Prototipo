@@ -34,11 +34,15 @@ export function SatisfactionSurvey() {
         "Access-Control-Allow-Origin": "*",
       };
       axios
-        .post(`${process.env.REACT_APP_ENDPOINT_API}/surveysatisfaction`, {
-          chanceToUseAgain,
-          easyToUse,
-          levelOfSatisfaction,
-        }, { headers })
+        .post(
+          `${process.env.REACT_APP_ENDPOINT_API}/satisfactionsurvey`,
+          {
+            chanceToUseAgain,
+            easyToUse,
+            levelOfSatisfaction,
+          },
+          { headers }
+        )
         .then(() => {
           notifySuccess();
           setTimeout(() => {
