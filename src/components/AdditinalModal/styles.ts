@@ -107,8 +107,8 @@ export const Container = styled.div`
       }
     }
     .btn {
-      width: 16rem;
-      height: 2rem;
+      width: 90%;
+      height: auto;
       font-size: 17px;
       line-height: 20px;
       letter-spacing: 0.3em;

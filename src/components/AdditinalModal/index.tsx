@@ -105,10 +105,6 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           className="btn"
           onClick={() => {
             addProduct(productIdContext.productId?.productId, productQuantity);
-            console.log({
-              productId: productIdContext.productId?.productId,
-              amount: productQuantity,
-            });
             updateProductAmount({
               productId: productIdContext.productId?.productId,
               amount: productQuantity,
