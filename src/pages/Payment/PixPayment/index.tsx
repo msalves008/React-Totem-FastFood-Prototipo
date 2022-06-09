@@ -72,11 +72,13 @@ const PixPayment: React.FC = () => {
           <div className="amountValue">
             <span>R$ </span>
             <h2 className="receiverName">
-              {sessionStorage.getItem("amountOrder")}
+              {Number(sessionStorage.getItem("amountOrder"))
+                  .toFixed(2)
+                  .replace(".", ",")}
             </h2>
           </div>
         </div>
-          <Button className="btn-21" variant="contained" onClick={()=>{
+          <Button className="btn" variant="contained" onClick={()=>{
              history.push("/satisfactionsurvey");
           }}>
         Aprovar Pagameto

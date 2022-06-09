@@ -77,6 +77,33 @@ export const Container = styled.div`
         }
       }
     }
+    .btn{
+      margin-bottom: 2.5rem;
+    }
+  }
+  @media (max-width: 1300px) {
+    /* background-color: yellow; */
+    .Content {
+      h1, h2{
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      img {
+        width: 25vw;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    /* background-color: yellow; */
+    .Content {
+      h1, h2{
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      img {
+        width: 30vw;
+      }
+    }
   }
   @media (max-width: 600px) {
     /* background-color: yellow; */
@@ -90,52 +117,5 @@ export const Container = styled.div`
       }
     }
   }
-  .btn-21 {
-    display: block;
-    box-sizing: border-box;
-
-    position: relative;
-    overflow: hidden;
-
-    text-transform: uppercase;
-    border: 1px solid currentColor;
-  }
-
-  .btn-21 span {
-    font-weight: 900;
-    mix-blend-mode: difference;
-  }
-
-  .btn-21:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    top: 0;
-    left: -100%;
-
-    background: white;
-    animation: move-out 0.3s;
-    will-change: transform;
-  }
-  .btn-21:hover:before {
-    animation: move-in 0.3s forwards;
-  }
-  @keyframes move-in {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-  @keyframes move-out {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(200%);
-    }
-  }
+  
 `;

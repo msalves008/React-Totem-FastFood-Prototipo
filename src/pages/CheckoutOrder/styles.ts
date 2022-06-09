@@ -157,7 +157,8 @@ export const Container = styled.div`
       .resume {
         .resume-itens {
           button {
-            height: 2.5rem;
+            height: auto;
+            min-height: 2.5rem;
             width: 80%;
           }
         }
