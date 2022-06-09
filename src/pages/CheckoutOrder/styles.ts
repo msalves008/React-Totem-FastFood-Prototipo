@@ -130,10 +130,9 @@ export const Container = styled.div`
 
           text-transform: uppercase;
         }
-        .btn{
+        .btn {
           width: 80%;
           margin-top: 1rem;
-
         }
       }
       h1 {
@@ -226,13 +225,13 @@ export const Container = styled.div`
     .modal {
       width: 400px;
       .modal-header {
-        h1{
+        h1 {
           line-height: 0;
         }
 
-        height: 10%;
+        height: auto;
         display: flex;
-        flex-direction: column !important; 
+        flex-direction: column !important;
         .language-switcher {
           justify-content: space-evenly;
           span {
@@ -240,15 +239,20 @@ export const Container = styled.div`
           }
         }
       }
-      .items{
+      .items {
         width: 90%;
+        height: auto;
       }
       .resume {
         flex-direction: column;
         .resume-itens {
           margin-top: 2rem;
           width: 100%;
+          height: auto;
         }
+      }
+      .btn {
+        margin-bottom: 2rem;
       }
     }
   }
