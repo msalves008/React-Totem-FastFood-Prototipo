@@ -74,10 +74,6 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
           className="btn"
           onClick={() => {
             addProduct(productContext.product?.id, productQuantity);
-            updateProductAmount({
-              productId: productContext.product?.id,
-              amount: productQuantity,
-            });
             onRequestClose();
             setProductQuantity(1);
           }}
