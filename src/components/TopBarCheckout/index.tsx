@@ -55,6 +55,7 @@ export default function TopBarCheckoutSession({ showTotalValue }: IProps) {
                 color="warning"
                 startIcon={<ShoppingCart />}
                 onClick={finshOrder}
+                disabled={Number(totalItems).toFixed(2).replace(".", ",") === "0,00"}
               >
                 Finalizar pedido
               </Button>

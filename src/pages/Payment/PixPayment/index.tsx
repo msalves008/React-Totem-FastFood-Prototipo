@@ -40,7 +40,11 @@ const PixPayment: React.FC = () => {
   const [imgQRCode, setImgQRCode] = useState("");
 
   useEffect(() => {
-    postPixPayment(Number(sessionStorage.getItem("amountOrder")).toFixed(2));
+    if (Number(sessionStorage.getItem("amountOrder")) > 0) {
+      postPixPayment(Number(sessionStorage.getItem("amountOrder")).toFixed(2));
+    } else {
+      history.push("/list-products");
+    }
   }, []);
 
   if (!imgQRCode) {
@@ -73,18 +77,21 @@ const PixPayment: React.FC = () => {
             <span>R$ </span>
             <h2 className="receiverName">
               {Number(sessionStorage.getItem("amountOrder"))
-                  .toFixed(2)
-                  .replace(".", ",")}
+                .toFixed(2)
+                .replace(".", ",")}
             </h2>
           </div>
         </div>
-          <Button className="btn" variant="contained" onClick={()=>{
-             history.push("/satisfactionsurvey");
-          }}>
-        Aprovar Pagameto
-      </Button>
+        <Button
+          className="btn"
+          variant="contained"
+          onClick={() => {
+            history.push("/satisfactionsurvey");
+          }}
+        >
+          Aprovar Pagameto
+        </Button>
       </div>
-     
     </Container>
   );
 };

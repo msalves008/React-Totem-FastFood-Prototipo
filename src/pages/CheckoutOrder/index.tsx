@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
 import { useCart } from "../../context/useProductIdContext";
@@ -22,16 +22,15 @@ function createDataAdditional(
   return { item, product, unitValue, totalValue };
 }
 
-const rows = [
-  createData(1, 2, "TRIPLO-BACON", 15.9, 21.8),
-  createData(2, 1, "BACON SIMPLES", 15.9, 15.9),
-  createData(3, 2, "COCA-COLA M", 7.9, 15.8),
-  createData(4, 1, "FANTA LARANJA P", 6.9, 6.8),
-];
 
-const rowsAdditionals = [createDataAdditional(1, "BACON", 2.99, 2.99)];
+
 
 const CheckoutOrder: React.FC = () => {
+  useEffect(() => {
+    if (!(Number(sessionStorage.getItem("amountOrder")) > 0)) {
+      history.push("/list-products");
+    } 
+  }, []);
   const { cart } = useCart();
   const history = useHistory();
   function checkoutOrder() {
@@ -40,9 +39,9 @@ const CheckoutOrder: React.FC = () => {
   if (!cart) {
     return <></>;
   }
-  function showAlert() {
-    return window.alert("Não Existe cupons disponíveis para este produto");
-  }
+  
+  console.log( Number(sessionStorage.getItem("amountOrder"))
+  )
   return (
     <Container>
       <section className="modal">
@@ -100,6 +99,7 @@ const CheckoutOrder: React.FC = () => {
             size="large"
             onClick={checkoutOrder}
             className="btn-checkout"
+            disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
           >
             CONFIRMAR
           </Button>
@@ -109,6 +109,7 @@ const CheckoutOrder: React.FC = () => {
             size="large"
             onClick={()=> history.push("/list-products")}
             className="btn"
+            
           >
             Adicionar mais Itens
           </Button>
