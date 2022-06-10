@@ -21,6 +21,14 @@
   max-height: 25rem;
   margin: 0 auto;
 }
+.spinning-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  top: 50%;
+  margin: 0 auto;
+}
 .App-header {
   min-height: 100vh;
   display: flex;

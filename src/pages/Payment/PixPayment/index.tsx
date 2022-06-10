@@ -9,9 +9,6 @@ import { useCart } from "../../../context/useProductIdContext";
 const PixPayment: React.FC = () => {
   const { cart } = useCart();
   const history = useHistory();
-  function generatePassworld() {
-   
-  }
 
   function postPixPayment(value: any) {
     const headers = {
@@ -43,7 +40,11 @@ const PixPayment: React.FC = () => {
   const [imgQRCode, setImgQRCode] = useState("");
 
   useEffect(() => {
-    postPixPayment(Number(sessionStorage.getItem("amountOrder")).toFixed(2));
+    if (Number(sessionStorage.getItem("amountOrder")) > 0) {
+      postPixPayment(Number(sessionStorage.getItem("amountOrder")).toFixed(2));
+    } else {
+      history.push("/list-products");
+    }
   }, []);
 
   if (!imgQRCode) {
@@ -75,17 +76,22 @@ const PixPayment: React.FC = () => {
           <div className="amountValue">
             <span>R$ </span>
             <h2 className="receiverName">
-              {sessionStorage.getItem("amountOrder")}
+              {Number(sessionStorage.getItem("amountOrder"))
+                .toFixed(2)
+                .replace(".", ",")}
             </h2>
           </div>
         </div>
-          <Button className="btn-21" variant="contained" onClick={()=>{
-             history.push("/satisfactionsurvey");
-          }}>
-        Aprovar Pagameto
-      </Button>
+        <Button
+          className="btn"
+          variant="contained"
+          onClick={() => {
+            history.push("/satisfactionsurvey");
+          }}
+        >
+          Aprovar Pagameto
+        </Button>
       </div>
-     
     </Container>
   );
 };

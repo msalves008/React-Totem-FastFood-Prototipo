@@ -14,6 +14,7 @@ interface NavBarType {
 export function NavBar() {
   const categoryContext = useContext(CategoryContext);
   const [categories, setCategories] = useState<NavBarCategories>();
+  const [itemActive, setItemActive] = useState<boolean>(false);
   useEffect(() => {
     axios
       .get(
@@ -34,13 +35,14 @@ export function NavBar() {
       <div className="main-navbar">
         {categories.Categories?.map((d) => (
           <button
-            className="base-navbar"
-            onClick={() =>
+            key={d.id}
+            className={(categoryContext?.categoryId?.categoryId === d.id) ? " base-navbar active" : "base-navbar"}
+            onClick={() =>{
               categoryContext.setCategoryId({
                 categoryId: d.id,
               })
             }
-            key={d.id}
+          }
           >
             <img src={d.image} alt="" className="icon" />
           </button>

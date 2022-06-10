@@ -1,26 +1,29 @@
 import { ReactNode, createContext, useState } from "react";
 
-type ProductId = {
-  productId: string;
+type Product = {
+  id: string;
+  image: string;
+  name: string;
+  price: number;
 };
 
-type ProductIdContextProps = {
-  productId: ProductId;
-  setProductId: (terminal: ProductId) => void;
+type ProductContextProps = {
+  product: Product;
+  setProduct: (terminal: Product) => void;
 }
 
-type ProductIdProviderProps = {
+type ProductProviderProps = {
   children: ReactNode;
 }
 
-export const ProductIdContext = createContext({} as ProductIdContextProps);
+export const ProductContext = createContext({} as ProductContextProps);
 
-export function ProductIdProvider({ children }: ProductIdProviderProps) {
-  const [productId, setProductId] = useState<ProductId | null>(null);
+export function ProductProvider({ children }: ProductProviderProps) {
+  const [product, setProduct] = useState<Product | null>(null);
 
   return (
-    <ProductIdContext.Provider value={{ productId, setProductId }}>
+    <ProductContext.Provider value={{ product, setProduct }}>
       {children}
-    </ProductIdContext.Provider>
+    </ProductContext.Provider>
   );
 }

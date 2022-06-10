@@ -29,12 +29,20 @@ export function SatisfactionSurvey() {
     );
   function handlePostSatisfactionSurvey() {
     if (chanceToUseAgain && easyToUse && levelOfSatisfaction) {
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      };
       axios
-        .post(`${process.env.REACT_APP_ENDPOINT_API}/surveysatisfaction`, {
-          chanceToUseAgain,
-          easyToUse,
-          levelOfSatisfaction,
-        })
+        .post(
+          `${process.env.REACT_APP_ENDPOINT_API}/satisfactionsurvey`,
+          {
+            chanceToUseAgain,
+            easyToUse,
+            levelOfSatisfaction,
+          },
+          { headers }
+        )
         .then(() => {
           notifySuccess();
           setTimeout(() => {
@@ -43,6 +51,7 @@ export function SatisfactionSurvey() {
           }, 5000);
         })
         .catch(() => {
+          window.location.reload();
           history.push("/");
         });
     }

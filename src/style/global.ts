@@ -10,7 +10,6 @@ export const GlobalStyles = createGlobalStyle`
     --blue-light:#3693FF;
     --text-title: #363f5f;
     --text-body: #969cb3;
-    --background: #F0F2F5;
     --shape: #ffffff;
     --gray: #8c8888
   }
@@ -78,5 +77,11 @@ export const GlobalStyles = createGlobalStyle`
   &:hover{
     filter: brightness(0.6);
   }
+}
+@media(min-width: 768px){
+  .react-modal-content{
+  max-width: 40vw !important;
+  max-height: 55vh !important;
+}
 }
 `

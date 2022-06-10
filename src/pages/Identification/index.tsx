@@ -61,6 +61,7 @@ const Identification: React.FC = () => {
                   }} */
                   error={errors.name}
                   helperText={errors.name && errors.name?.message}
+                  disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
                   fullWidth
                   focused
                   variant="outlined"
@@ -70,10 +71,22 @@ const Identification: React.FC = () => {
             />
           </Box>
           <Button
+            variant="outlined"
+            color="success"
+            size="large"
+            type="button"
+            onClick={()=>history.goBack()}
+            style={{ marginRight: "20px" }}
+          >
+            Voltar
+          </Button>
+
+          <Button
             variant="contained"
             color="success"
             size="large"
             type="submit"
+            disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
           >
             Confirmar
           </Button>

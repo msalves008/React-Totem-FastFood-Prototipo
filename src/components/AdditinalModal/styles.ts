@@ -6,7 +6,28 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+.item-selected{
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px dashed #FB9400;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  flex-direction: row;
 
+  img{
+    width: 9rem;
+    height: auto;
+  }
+  .item-details{
+    width: 100%;
+    height: 100%;
+
+   
+  }
+  
+}
   .content {
     width: 100%;
     display: flex;
@@ -40,7 +61,11 @@ export const Container = styled.div`
       }
     }
   }
-
+  .qtd{
+      font-family: "Roboto";
+      font-size: 1.5rem !important;
+      color: rgba(0, 0, 0, 0.50);
+    }
   .productQuantilyGroup {
     width: 100%;
     display: flex;
@@ -57,6 +82,7 @@ export const Container = styled.div`
       display: inline-block;
       color: var(--red);
     }
+ 
     .btns {
       h2 {
         color: var(--red);
@@ -80,22 +106,7 @@ export const Container = styled.div`
   }
 
   .btn {
-    position: absolute;
-    top: 90%;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: 0.5em;
-
-    width: 20rem;
-    height: 3.5rem;
-    color: #ffffff;
-    background-color: var(--green);
-    border: none;
-    border-radius: 0.7rem;
+    margin-top: 2rem;
   }
 
   @media (max-width: 425px) {
@@ -122,8 +133,8 @@ export const Container = styled.div`
       }
     }
     .btn {
-      width: 16rem;
-      height: 2rem;
+      width: 90%;
+      height: auto;
       font-size: 17px;
       line-height: 20px;
       letter-spacing: 0.3em;
