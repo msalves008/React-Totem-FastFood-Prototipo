@@ -35,7 +35,6 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
         )
         .then((res) => {
           setProductList(res.data);
-          console.log(JSON.stringify(res.data,null,2));
         })
         .catch((err) => {});
     } else {

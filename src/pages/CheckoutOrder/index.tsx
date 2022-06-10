@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
 import { useCart } from "../../context/useProductIdContext";
@@ -9,18 +9,27 @@ import { Delete } from "@material-ui/icons";
 const CheckoutOrder: React.FC = () => {
   const { cart, removeProduct } = useCart();
   const history = useHistory();
+  const [orderTotalValue, setOrderTotalValue] = useState(0);
 
   useEffect(() => {
     handleVerifyValuesAmount();
   }, []);
   useEffect(() => {
     handleVerifyValuesAmount();
+    handleOrderTotalValue();
   }, [cart]);
 
   function handleVerifyValuesAmount() {
     if (!(Number(sessionStorage.getItem("amountOrder")) > 0)) {
       history.push("/list-products");
     }
+  }
+  async function handleOrderTotalValue() {
+    let totalValue = 0;
+    await cart.map((product) => {
+      totalValue += (Number(product.price)* product.amount);
+    });
+    setOrderTotalValue(totalValue);
   }
   function checkoutOrder() {
     history.push("/identification");
@@ -29,7 +38,7 @@ const CheckoutOrder: React.FC = () => {
     return <></>;
   }
 
-  console.log(Number(sessionStorage.getItem("amountOrder")));
+
   return (
     <Container>
       <section className="modal">
@@ -69,10 +78,7 @@ const CheckoutOrder: React.FC = () => {
             <div className="resume-item">
               <span>Total de Pedidos</span>
               <span>
-                R$:{" "}
-                {Number(sessionStorage.getItem("amountOrder"))
-                  .toFixed(2)
-                  .replace(".", ",")}
+                R$: {orderTotalValue.toFixed(2).replace(".", ",")}
               </span>
             </div>
             <div className="resume-item">
@@ -84,10 +90,7 @@ const CheckoutOrder: React.FC = () => {
               <span>Total</span>
               <span>
                 {" "}
-                R$:{" "}
-                {Number(sessionStorage.getItem("amountOrder"))
-                  .toFixed(2)
-                  .replace(".", ",")}
+                R$: {orderTotalValue.toFixed(2).replace(".", ",")}
               </span>
             </div>
             <Button
@@ -96,7 +99,7 @@ const CheckoutOrder: React.FC = () => {
               size="large"
               onClick={checkoutOrder}
               className="btn-checkout"
-              disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
+              disabled={orderTotalValue === 0}
             >
               CONFIRMAR
             </Button>
