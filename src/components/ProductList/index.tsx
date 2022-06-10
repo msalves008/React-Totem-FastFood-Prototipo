@@ -2,19 +2,19 @@ import { Container } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../../context/categoryIdContext";
 import axios from "axios";
-import { ProductIdContext } from "../../context/productIdContext";
+import { ProductContext } from "../../context/productIdContext";
 import { Box, CircularProgress } from "@material-ui/core";
 
 interface Products {
   Products: Array<Product>;
 }
 interface Product {
-  Products: string;
+  Products?: string;
   id: string;
   name: string;
-  description: string;
+  description?: string;
   price: number;
-  situation: boolean;
+  situation?: boolean;
   image: string;
 }
 interface ProductListProps {
@@ -22,7 +22,7 @@ interface ProductListProps {
 }
 
 export function ProductList({ onOpenNewModal }: ProductListProps) {
-  const productIdContext = useContext(ProductIdContext);
+  const productContext = useContext(ProductContext);
   const categoryContext = useContext(CategoryContext);
   const [productsList, setProductList] = useState<Products>();
 
@@ -35,6 +35,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
         )
         .then((res) => {
           setProductList(res.data);
+          console.log(JSON.stringify(res.data,null,2));
         })
         .catch((err) => {});
     } else {
@@ -52,9 +53,12 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     }
   }, [categoryContext.categoryId?.categoryId]);
 
-  function setItemsSelect(idProduct: string, amount: number) {
-    productIdContext.setProductId({
-      productId: idProduct,
+  function setItemsSelect(product: Product) {
+    productContext.setProduct({
+      id: product.id,
+      image: product.image,
+      name:product.name,
+      price:product.price,
     });
     onOpenNewModal();
   }
@@ -76,7 +80,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
         {productsList.Products.map((product) => (
           <button
             onClick={() => {
-              setItemsSelect(product.id, product.price);
+              setItemsSelect(product);
             }}
             key={product.id}
           >

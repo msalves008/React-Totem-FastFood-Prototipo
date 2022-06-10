@@ -7,7 +7,7 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
 import { CategoryProvider } from "../../context/categoryIdContext";
-import { ProductIdProvider } from "../../context/productIdContext";
+import { ProductProvider } from "../../context/productIdContext";
 import TopBarCheckoutSession from "../../components/TopBarCheckout";
 
 Modal.setAppElement("#root");
@@ -25,7 +25,7 @@ export function BaseProducts() {
   }
   return (
     <Container>
-      <ProductIdProvider>
+      <ProductProvider>
         <CategoryProvider>
           <header>
             <TopBarCheckoutSession showTotalValue={true} />
@@ -41,7 +41,7 @@ export function BaseProducts() {
             <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
           </section>
         </CategoryProvider>
-      </ProductIdProvider>
+      </ProductProvider>
       <GlobalStyles />
     </Container>
   );

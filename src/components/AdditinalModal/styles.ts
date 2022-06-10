@@ -6,7 +6,28 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+.item-selected{
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px dashed #FB9400;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  flex-direction: row;
 
+  img{
+    width: 9rem;
+    height: auto;
+  }
+  .item-details{
+    width: 100%;
+    height: 100%;
+
+   
+  }
+  
+}
   .content {
     width: 100%;
     display: flex;
@@ -40,7 +61,11 @@ export const Container = styled.div`
       }
     }
   }
-
+  .qtd{
+      font-family: "Roboto";
+      font-size: 1.5rem !important;
+      color: rgba(0, 0, 0, 0.50);
+    }
   .productQuantilyGroup {
     width: 100%;
     display: flex;
@@ -57,6 +82,7 @@ export const Container = styled.div`
       display: inline-block;
       color: var(--red);
     }
+ 
     .btns {
       h2 {
         color: var(--red);
