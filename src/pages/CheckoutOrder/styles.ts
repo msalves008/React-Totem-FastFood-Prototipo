@@ -70,6 +70,7 @@ export const Container = styled.div`
           line-height: 150%;
           color: var(--text-body);
         }
+      
       }
     }
     .divider {

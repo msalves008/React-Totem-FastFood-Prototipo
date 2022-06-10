@@ -39,7 +39,7 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
             <span>R$ {productContext.product?.price}</span>
           </div>
         </section>
-        <h1  className="qtd">QUANTIDADE</h1>
+        <h1 className="qtd">QUANTIDADE</h1>
 
         <div className="productQuantilyGroup">
           <span>Selecione a quantidade desejada deste mesmo produto</span>
