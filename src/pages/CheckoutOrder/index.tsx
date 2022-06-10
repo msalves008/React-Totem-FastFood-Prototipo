@@ -20,7 +20,7 @@ const CheckoutOrder: React.FC = () => {
   }, [cart]);
 
   function handleVerifyValuesAmount() {
-    if (!(Number(sessionStorage.getItem("amountOrder")) > 0)) {
+    if (!(cart.length > 0)) {
       history.push("/list-products");
     }
   }

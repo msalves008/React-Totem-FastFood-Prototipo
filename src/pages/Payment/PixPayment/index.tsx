@@ -9,7 +9,7 @@ import { useCart } from "../../../context/useProductIdContext";
 const PixPayment: React.FC = () => {
   const { cart } = useCart();
   const history = useHistory();
-
+  const [orderTotalValue, setOrderTotalValue] = useState(0);
   function postPixPayment(value: any) {
     const headers = {
       "Content-Type": "application/json",
@@ -38,20 +38,30 @@ const PixPayment: React.FC = () => {
     return response;
   }
   const [imgQRCode, setImgQRCode] = useState("");
-
-  useEffect(() => {
-    if (Number(sessionStorage.getItem("amountOrder")) > 0) {
-      postPixPayment(Number(sessionStorage.getItem("amountOrder")).toFixed(2));
-    } else {
+  function handleVerifyValuesAmount() {
+    if (!(cart.length > 0)) {
       history.push("/list-products");
     }
+  }
+  async function handleOrderTotalValue() {
+    let totalValue = 0;
+    await cart.map((product) => {
+      totalValue += Number(product.price) * product.amount;
+    });
+    setOrderTotalValue(totalValue);
+  }
+ 
+  useEffect(() => {
+    handleVerifyValuesAmount();
+    handleOrderTotalValue();
+    postPixPayment(orderTotalValue);
   }, []);
 
   if (!imgQRCode) {
     return (
-      <Box>
+      <div className="spinning-loading">
         <CircularProgress />
-      </Box>
+      </div>
     );
   }
 
@@ -76,9 +86,7 @@ const PixPayment: React.FC = () => {
           <div className="amountValue">
             <span>R$ </span>
             <h2 className="receiverName">
-              {Number(sessionStorage.getItem("amountOrder"))
-                .toFixed(2)
-                .replace(".", ",")}
+              {orderTotalValue.toFixed(2).replace(".", ",")}
             </h2>
           </div>
         </div>
