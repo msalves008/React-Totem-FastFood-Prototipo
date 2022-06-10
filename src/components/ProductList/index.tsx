@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../../context/categoryIdContext";
 import axios from "axios";
 import { ProductIdContext } from "../../context/productIdContext";
+import { Box, CircularProgress } from "@material-ui/core";
 
 interface Products {
   Products: Array<Product>;
@@ -27,6 +28,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
 
   useEffect(() => {
     if (categoryContext.categoryId?.categoryId) {
+      setProductList(null);
       axios
         .get(
           `${process.env.REACT_APP_ENDPOINT_API}/product/${process.env.REACT_APP_RESTAURANT_ID}/${categoryContext.categoryId?.categoryId}`
@@ -42,6 +44,9 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
         )
         .then((res) => {
           setProductList(res.data);
+          categoryContext.setCategoryId({
+            categoryId: process.env.REACT_APP_INITIAL_CATEGORY,
+          });
         })
         .catch((err) => {});
     }
@@ -57,7 +62,10 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     return (
       <>
         {/*  <img src={loadingIcon} alt="" className="spinningLoading" /> */}
-        <span>Carregando........</span>
+
+        <div className="spinning-loading">
+          <CircularProgress />
+        </div>
       </>
     );
   }
