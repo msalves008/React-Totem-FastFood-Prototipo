@@ -11,7 +11,9 @@ export const GlobalStyles = createGlobalStyle`
     --text-title: #363f5f;
     --text-body: #969cb3;
     --shape: #ffffff;
-    --gray: #8c8888
+    --gray: #8c8888;
+    --gradient-primary: linear-gradient(90deg, #E65C00 0%, #F9D423 100%);
+    --primary-color: ##FB9400;
   }
  *{
   margin: 0;

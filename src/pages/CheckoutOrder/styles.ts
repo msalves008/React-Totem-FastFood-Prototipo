@@ -44,6 +44,12 @@ export const Container = styled.div`
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
         align-items: center;
+        .leftItems {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        }
 
         img {
           width: 6rem;
@@ -51,6 +57,7 @@ export const Container = styled.div`
         }
         .item-info {
           text-align: left;
+          width: 80%;
           h3 {
             font-size: 1.2rem;
             line-height: 150%;
@@ -64,13 +71,31 @@ export const Container = styled.div`
             color: rgba(65, 65, 77, 0.6);
           }
         }
-        .item-value {
-          font-size: 1.2rem;
-          font-weight: 300;
-          line-height: 150%;
-          color: var(--text-body);
+        .right-items{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          width: 20rem;
+
+          .product-values {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+          
+            .item-unitary-value {
+              font-size: 1rem;
+              color: var(--text-body);
+              margin: 1rem;
+              color: rgba(65, 65, 77, 0.6);
+            }
+            .item-amount-value {
+              font-size: 1.2rem;
+              color: #fb9400;
+            }
+          }
         }
-      
       }
     }
     .divider {

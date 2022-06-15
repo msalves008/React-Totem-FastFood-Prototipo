@@ -5,9 +5,10 @@ import { useCart } from "../../context/useProductIdContext";
 import TopBarCheckoutSession from "../../components/TopBarCheckout";
 import { Button, IconButton } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
+import { QuantitySelectorButton } from "../../components/QuantitySelectorButton";
 
 const CheckoutOrder: React.FC = () => {
-  const { cart, removeProduct } = useCart();
+  const { cart, updateProductAmount, removeProduct } = useCart();
   const history = useHistory();
   const [orderTotalValue, setOrderTotalValue] = useState(0);
 
@@ -27,7 +28,7 @@ const CheckoutOrder: React.FC = () => {
   async function handleOrderTotalValue() {
     let totalValue = 0;
     await cart.map((product) => {
-      totalValue += (Number(product.price)* product.amount);
+      totalValue += Number(product.price) * product.amount;
     });
     setOrderTotalValue(totalValue);
   }
@@ -37,7 +38,6 @@ const CheckoutOrder: React.FC = () => {
   if (!cart) {
     return <></>;
   }
-
 
   return (
     <Container>
@@ -49,17 +49,7 @@ const CheckoutOrder: React.FC = () => {
         <div className="items">
           {cart?.map((row, index) => (
             <div className="item" key={index}>
-              <img
-                src={row.image}
-                alt="Nike Paul George 2 Masculino"
-                className="Item-image"
-              />
-              <div className="item-info">
-                <h3>{row.name}</h3>
-                <span> QTD: {row.amount}</span>
-              </div>
-              <div>
-                <span className="item-value">R$ {row.price}</span>
+              <div className="leftItems">
                 <IconButton
                   aria-label="delete"
                   style={{ marginLeft: "20px", color: "red" }}
@@ -67,6 +57,27 @@ const CheckoutOrder: React.FC = () => {
                 >
                   <Delete />
                 </IconButton>
+                <img
+                  src={row.image}
+                  alt="Nike Paul George 2 Masculino"
+                  className="Item-image"
+                />
+              </div>
+              <div className="item-info">
+                <h3>{row.name}</h3>
+                <span> QTD: {row.amount}</span>
+              </div>
+              <div className="right-items">
+                <QuantitySelectorButton
+                  productQuantity={row.amount}
+                  productId={row.id}
+                />
+                <div className="product-values">
+                  <span className="item-unitary-value">R$ {row.price}</span>
+                  <span className="item-amount-value">
+                    R$ {(row.price * row.amount).toFixed(2)}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -77,9 +88,7 @@ const CheckoutOrder: React.FC = () => {
           <div className="resume-itens">
             <div className="resume-item">
               <span>Total de Pedidos</span>
-              <span>
-                R$: {orderTotalValue.toFixed(2).replace(".", ",")}
-              </span>
+              <span>R$: {orderTotalValue.toFixed(2).replace(".", ",")}</span>
             </div>
             <div className="resume-item">
               <span>Descontos</span>
@@ -88,10 +97,7 @@ const CheckoutOrder: React.FC = () => {
             <div className="divider"></div>
             <div className="amount">
               <span>Total</span>
-              <span>
-                {" "}
-                R$: {orderTotalValue.toFixed(2).replace(".", ",")}
-              </span>
+              <span> R$: {orderTotalValue.toFixed(2).replace(".", ",")}</span>
             </div>
             <Button
               variant="contained"

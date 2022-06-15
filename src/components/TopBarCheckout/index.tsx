@@ -25,16 +25,13 @@ export default function TopBarCheckoutSession({ showTotalValue }: IProps) {
         total += product.price * product.amount;
       });
       setTotalItems(total);
-
       sessionStorage.setItem("amountOrder", JSON.stringify(total));
     }
   }, [cart]);
   function finshOrder() {
     history.push("/checkout-order");
   }
-  function cancelOrder() {
-    history.push("/");
-  }
+
 
   return (
     <Container>
