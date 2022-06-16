@@ -35,7 +35,7 @@ export function ProductList({ onOpenNewModal }: ProductListProps) {
     });
     onOpenNewModal();
   }
-  if (isLoading) {
+  if (isLoading || !data) {
     return (
         <div className="spinning-loading">
           <CircularProgress />

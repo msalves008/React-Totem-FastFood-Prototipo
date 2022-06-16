@@ -14,12 +14,12 @@ interface Product {
   image: string;
 }
 
-async function getProducts(categoryId: string): Promise<Products> {
+export async function getProducts(categoryId: string): Promise<Products> {
   const { data } = await api.get(
     `/product/${process.env.REACT_APP_RESTAURANT_ID}/${categoryId}`
   );
   return data;
-}
+} 
 
 export function useRequestProductsList(categoryId: string) {
   return useQuery(

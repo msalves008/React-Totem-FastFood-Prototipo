@@ -11,8 +11,9 @@ import { SatisfactionSurvey } from "./pages/SatisfactionSurvey";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { queryClient } from "./services/queryClient";
 function App() {
-  const queryClient = new QueryClient();
+
   return (
     <div className="App">
       <BrowserRouter>
