@@ -14,9 +14,13 @@ interface NavBarType {
 export function NavBar() {
   const categoryContext = useContext(CategoryContext);
   const [categories, setCategories] = useState<NavBarCategories>();
-  const [itemActive, setItemActive] = useState<boolean>(false);
   useEffect(() => {
-    axios
+    categoryContext.setCategoryId({
+      categoryId:process.env.REACT_APP_INITIAL_CATEGORY,
+    })
+  },[])
+  useEffect(() => {
+       axios
       .get(
         `${process.env.REACT_APP_ENDPOINT_API}/category/${process.env.REACT_APP_RESTAURANT_ID}`
       )

@@ -4,10 +4,8 @@ import { CategoryContext } from "../../context/categoryIdContext";
 import axios from "axios";
 import { ProductContext } from "../../context/productIdContext";
 import { Box, CircularProgress } from "@material-ui/core";
+import { useRequestProductsList } from "../../hooks/useRequestProductsList";
 
-interface Products {
-  Products: Array<Product>;
-}
 interface Product {
   Products?: string;
   id: string;
@@ -19,64 +17,36 @@ interface Product {
 }
 interface ProductListProps {
   onOpenNewModal: () => void;
+  categoryId: string;
 }
 
 export function ProductList({ onOpenNewModal }: ProductListProps) {
   const productContext = useContext(ProductContext);
   const categoryContext = useContext(CategoryContext);
-  const [productsList, setProductList] = useState<Products>();
-
-  useEffect(() => {
-    if (categoryContext.categoryId?.categoryId) {
-      setProductList(null);
-      axios
-        .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/product/${process.env.REACT_APP_RESTAURANT_ID}/${categoryContext.categoryId?.categoryId}`
-        )
-        .then((res) => {
-          setProductList(res.data);
-        })
-        .catch((err) => {});
-    } else {
-      axios
-        .get(
-          `${process.env.REACT_APP_ENDPOINT_API}/product/${process.env.REACT_APP_RESTAURANT_ID}/${process.env.REACT_APP_INITIAL_CATEGORY}`
-        )
-        .then((res) => {
-          setProductList(res.data);
-          categoryContext.setCategoryId({
-            categoryId: process.env.REACT_APP_INITIAL_CATEGORY,
-          });
-        })
-        .catch((err) => {});
-    }
-  }, [categoryContext.categoryId?.categoryId]);
-
+  const { data, isLoading, error, isFetching } = useRequestProductsList(
+    categoryContext?.categoryId?.categoryId
+  );
   function setItemsSelect(product: Product) {
     productContext.setProduct({
       id: product.id,
       image: product.image,
-      name:product.name,
-      price:product.price,
+      name: product.name,
+      price: product.price,
     });
     onOpenNewModal();
   }
-  if (!productsList) {
+  if (isLoading) {
     return (
-      <>
-        {/*  <img src={loadingIcon} alt="" className="spinningLoading" /> */}
-
         <div className="spinning-loading">
           <CircularProgress />
         </div>
-      </>
     );
   }
 
   return (
     <Container>
       <div className="section-hamburger">
-        {productsList.Products.map((product) => (
+        {data.Products.map((product) => (
           <button
             onClick={() => {
               setItemsSelect(product);

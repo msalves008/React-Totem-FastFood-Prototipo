@@ -9,29 +9,43 @@ import { CartProvider } from "./context/useProductIdContext";
 import Identification from "./pages/Identification";
 import { SatisfactionSurvey } from "./pages/SatisfactionSurvey";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 function App() {
+  const queryClient = new QueryClient();
   return (
     <div className="App">
       <BrowserRouter>
-        <CartProvider>
-          <Switch>
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/consumption" exact={true} component={Consumption} />
-              <Route path="/identification" exact={true} component={Identification} />
-            <Route
-              path="/list-products"
-              exact={true}
-              component={BaseProducts}
-            />
-            <Route
-              path="/checkout-order"
-              exact={true}
-              component={CheckoutOrder}
-            />
-            <Route path="/pixpayment" exact={true} component={PixPayment} />
-            <Route path="/satisfactionsurvey" exact={true} component={SatisfactionSurvey} />
-          </Switch>
-        </CartProvider>
+        <QueryClientProvider client={queryClient}>
+          <CartProvider>
+            <Switch>
+              <Route path="/" exact={true} component={Home} />
+              <Route path="/consumption" exact={true} component={Consumption} />
+              <Route
+                path="/identification"
+                exact={true}
+                component={Identification}
+              />
+              <Route
+                path="/list-products"
+                exact={true}
+                component={BaseProducts}
+              />
+              <Route
+                path="/checkout-order"
+                exact={true}
+                component={CheckoutOrder}
+              />
+              <Route path="/pixpayment" exact={true} component={PixPayment} />
+              <Route
+                path="/satisfactionsurvey"
+                exact={true}
+                component={SatisfactionSurvey}
+              />
+            </Switch>
+          </CartProvider>
+          <ReactQueryDevtools />
+        </QueryClientProvider>
       </BrowserRouter>
     </div>
   );

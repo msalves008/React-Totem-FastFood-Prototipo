@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductList } from "../../components/ProductList";
 import { NavBar } from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
@@ -6,7 +6,7 @@ import { AdditinalModal } from "./../../components/AdditinalModal";
 import Modal from "react-modal";
 import { Container } from "./styles";
 import { GlobalStyles } from "../../style/global";
-import { CategoryProvider } from "../../context/categoryIdContext";
+import { CategoryProvider,CategoryContext } from "../../context/categoryIdContext";
 import { ProductProvider } from "../../context/productIdContext";
 import TopBarCheckoutSession from "../../components/TopBarCheckout";
 
@@ -15,7 +15,9 @@ Modal.setAppElement("#root");
 export function BaseProducts() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
-
+    const categoryContext = useContext(CategoryContext);
+    
+ 
   function handleOpenNewTransactionModal() {
     setIsNewTransactionModalOpen(true);
   }
@@ -38,7 +40,10 @@ export function BaseProducts() {
               isOpen={isNewTransactionModalOpen}
               onRequestClose={handleCloseNewTransactionModal}
             />
-            <ProductList onOpenNewModal={handleOpenNewTransactionModal} />
+            <ProductList
+              onOpenNewModal={handleOpenNewTransactionModal}
+              categoryId={categoryContext?.categoryId?.categoryId}
+            />
           </section>
         </CategoryProvider>
       </ProductProvider>

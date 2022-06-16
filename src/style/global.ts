@@ -84,16 +84,16 @@ export const GlobalStyles = createGlobalStyle`
     filter: brightness(0.6);
   }
 }
-@media(min-width: 768px){
+@media(max-width: 425px){
+  .react-modal-content{
+    max-width: 90vw !important;
+    max-height: 80vh !important;
+  } 
+}
+@media(max-width: 768px){
   .react-modal-content{
   max-width: 40vw !important;
   max-height: 55vh !important;
-} 
-}
-@media(max-width: 425px){
-  .react-modal-content{
-  max-width: 90vw !important;
-  max-height: 80vh !important;
 } 
 }
 
