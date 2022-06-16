@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: row !important;
   height: 2.5rem;
   width: auto;
   text-align: center;
@@ -23,12 +23,12 @@ export const Container = styled.div`
     height: 2.5rem;
     color: #fb9400;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
     flex-direction: column;
     span {
       font-size: 1.5rem;
-      text-align: center;
+      text-align: center !important;
     }
   }
   .reduce-quantity-products {
