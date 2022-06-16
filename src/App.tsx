@@ -45,7 +45,7 @@ function App() {
               />
             </Switch>
           </CartProvider>
-          <ReactQueryDevtools />
+          {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
       </BrowserRouter>
     </div>
