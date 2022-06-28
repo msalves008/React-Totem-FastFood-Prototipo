@@ -9,7 +9,7 @@ import { CartProvider } from "./context/useProductIdContext";
 import Identification from "./pages/Identification";
 import { SatisfactionSurvey } from "./pages/SatisfactionSurvey";
 
-import { QueryClient, QueryClientProvider } from "react-query";
+import {QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { queryClient } from "./services/queryClient";
 function App() {
