@@ -81,6 +81,18 @@ export const Container = styled.div`
       margin-bottom: 2.5rem;
     }
   }
+  @media (max-width: 1450px) {
+    /* background-color: yellow; */
+    .Content {
+      /* h1, h2{
+        font-size: 1.5rem;
+        margin: 0;
+      } */
+      img {
+        width: 20vw;
+      }
+    }
+  }
   @media (max-width: 1300px) {
     /* background-color: yellow; */
     .Content {
