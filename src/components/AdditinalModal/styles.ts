@@ -6,138 +6,100 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-.item-selected{
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px dashed #FB9400;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  flex-direction: row;
-
-  img{
-    width: 9rem;
-    height: auto;
-  }
-  .item-details{
-    width: 100%;
-    height: 100%;
-
-   
-  }
-  
-}
-  .content {
-    width: 100%;
+  .wrapper-header {
+    margin: 0 auto;
+    padding: 1.5rem;
     display: flex;
-    flex: 4;
-    padding-top: 3rem;
-    flex-direction: column;
-
-    .item {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-      padding-top: 1rem;
-
-      .quantily {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        button {
-          width: 2rem;
-          background-color: transparent;
-          border: none;
-          font-family: "Roboto";
-          font-size: 1.5rem;
-          line-height: 2rem;
-          font-weight: bold;
-        }
-      }
-    }
-  }
-  .qtd{
-      font-family: "Roboto";
-      font-size: 1.5rem !important;
-      color: rgba(0, 0, 0, 0.50);
-    }
-  .productQuantilyGroup {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding-top: 3rem;
     align-items: center;
-    justify-content: space-between;
-
-    span {
-      display: flex;
-      font-family: "Roboto";
-      font-size: 1.3rem;
-      font-weight: bold;
-      display: inline-block;
-      color: var(--red);
-    }
- 
-    .btns {
-      h2 {
-        color: var(--red);
-      }
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      button {
-        color: var(--red);
-        width: 2rem;
-        background-color: transparent;
-        border: none;
-        font-family: "Roboto";
-        font-size: 1.5rem;
-        line-height: 2rem;
-        font-weight: bold;
-      }
-    }
-  }
-
-  .btn {
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 425px) {
-    h1 {
+    /* justify-content: space-between; */
+    flex-direction: column;
+    h3 {
+      text-align: center;
       font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 auto;
+      color: #fff;
+      letter-spacing: 0.07em;
     }
-    .content {
-      justify-content: flex-start;
-      h2 {
-        font-size: 1rem;
+  }
+  .product-image {
+    width: 23rem;
+    height: auto;
+    position: absolute;
+    top: 5rem;
+  }
+  .wrapper-product-information {
+    /*  display: relative; */
+    margin-top: 8rem;
+    margin-left: 2;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+  }
+  h1 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    color: #1b1b1b;
+    margin-left: 2rem;
+    text-align: left;
+  }
+  .dividers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 2rem;
+
+    .divider-left {
+      border: 1px solid #fb9400;
+      width: 80%;
+    }
+    .divider-right {
+      border: 1px solid #e2e2e2;
+      width: 20%;
+    }
+  }
+  .wrapper-product-quantity-amount {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    padding: 0 2rem;
+    flex-direction: row;
+    div {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
+      .product-quantity {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #1b1b1b;
+        margin-bottom: 1rem;
       }
     }
-    .productQuantilyGroup {
-      span {
-        font-size: 1rem;
-      }
-      .btns {
-        h2 {
-          font-size: 1rem;
-        }
-        button {
-          font-size: 1rem;
-        }
-      }
+    .product-unitary-value {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 48px;
+      text-align: right;
+      color: #fb9400 !important;
     }
-    .btn {
-      width: 90%;
-      height: auto;
-      font-size: 17px;
-      line-height: 20px;
-      letter-spacing: 0.3em;
-    }
+  }
+  .btn {
+    width: 80%;
+    height: 3rem;
+    margin: 2rem;
   }
 `;

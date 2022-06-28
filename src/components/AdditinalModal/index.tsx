@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { useCart } from "../../context/useProductIdContext";
 import { ProductContext } from "../../context/productIdContext";
 import { Button } from "@material-ui/core";
+import { QuantitySelectorButton } from "./QuantitySelectorButton";
 
 interface NewModalProps {
   isOpen: boolean;
@@ -13,9 +14,9 @@ interface NewModalProps {
 }
 
 export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
-  const { addProduct, updateProductAmount } = useCart();
-  const [productQuantity, setProductQuantity] = useState(1);
   const productContext = useContext(ProductContext);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const { addProduct } = useCart();
 
   return (
     <Modal
@@ -32,43 +33,39 @@ export function AdditinalModal({ isOpen, onRequestClose }: NewModalProps) {
         <img src={closeIcon} alt="Fechar Modal" />
       </button>
       <Container>
-        <section className="item-selected">
-          <img src={productContext?.product?.image} alt="" />
-          <div className="item-details">
-            <h1>{productContext.product?.name}</h1>
-            <span>R$ {productContext.product?.price}</span>
+        <section className="wrapper-header">
+          <h3>Product</h3>
+        </section>
+        <img
+          src={productContext?.product?.image}
+          alt={productContext?.product?.name}
+          className="product-image"
+        />
+        <section className="wrapper-product-information">
+          <h1>{productContext?.product?.name}</h1>
+          <div className="dividers">
+            <div className="divider-left"></div>
+            <div className="divider-right"></div>
           </div>
         </section>
-        <h1 className="qtd">QUANTIDADE</h1>
-
-        <div className="productQuantilyGroup">
-          <span>Selecione a quantidade desejada deste mesmo produto</span>
-          <div className="btns">
-            <button
-              type="button"
-              onClick={() => {
-                if (productQuantity > 1) {
-                  setProductQuantity(productQuantity - 1);
-                }
-              }}
-            >
-              -
-            </button>
-            <h2>{productQuantity}</h2>
-            <button
-              type="button"
-              onClick={() => {
-                setProductQuantity(productQuantity + 1);
-              }}
-            >
-              +
-            </button>
+        <section className="wrapper-product-quantity-amount">
+          <div className="div">
+            <span className="product-quantity">Quantidade</span>
+            <QuantitySelectorButton
+              productQuantity={productQuantity}
+              setProductQuantity={setProductQuantity}
+            />
           </div>
-        </div>
-
+          <h1 className="product-unitary-value">
+            R${" "}
+            {productQuantity === 1
+              ? productContext?.product?.price
+              : (productContext?.product?.price * productQuantity).toFixed(2)}
+          </h1>
+        </section>
         <Button
           type="button"
-          variant="outlined"
+          variant="contained"
           size="large"
           color="warning"
           className="btn"

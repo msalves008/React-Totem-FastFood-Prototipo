@@ -1,4 +1,4 @@
-import { createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
@@ -11,7 +11,9 @@ export const GlobalStyles = createGlobalStyle`
     --text-title: #363f5f;
     --text-body: #969cb3;
     --shape: #ffffff;
-    --gray: #8c8888
+    --gray: #8c8888;
+    --gradient-primary: linear-gradient(90deg, #E65C00 0%, #F9D423 100%);
+    --primary-color: ##FB9400;
   }
  *{
   margin: 0;
@@ -59,13 +61,17 @@ export const GlobalStyles = createGlobalStyle`
  }
 .react-modal-content{
   width: 100%;
-  max-width: 90%;
-  height: 100%;
-  max-height: 75%;
+  max-width: 35vw;
+  height: 90vh;
   background: var(--background);
-  padding: 3rem;
   position: relative;
   border-radius: 0.25rem;
+  .wrapper-header{
+    display: flex;
+    background: linear-gradient(90deg, #E65C00 0%, #F9D423 100%);
+    width: 100%;
+    height: 16rem;
+  }
 }
 .react-modal-close{
   position: absolute;
@@ -78,10 +84,17 @@ export const GlobalStyles = createGlobalStyle`
     filter: brightness(0.6);
   }
 }
-@media(min-width: 768px){
+@media(max-width: 425px){
+  .react-modal-content{
+    max-width: 90vw !important;
+    max-height: 80vh !important;
+  } 
+}
+@media(max-width: 768px){
   .react-modal-content{
   max-width: 40vw !important;
   max-height: 55vh !important;
+} 
 }
-}
-`
+
+`;

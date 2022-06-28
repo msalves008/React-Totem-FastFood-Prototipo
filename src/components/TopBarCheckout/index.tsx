@@ -10,31 +10,17 @@ type IProps = {
 };
 export default function TopBarCheckoutSession({ showTotalValue }: IProps) {
   const history = useHistory();
-  const [cartQuantity, setCartQuantity] = useState(0);
   const [totalItems, setTotalItems] = useState<number>();
   const { cart } = useCart();
   useEffect(() => {
     if (cart) {
-      let quantity = 0;
       let total = 0;
-      for (var i = 0; i < cart.length; i++) {
-        quantity += cart[i].amount;
-      }
-      setCartQuantity(quantity);
       cart.map((product) => {
         total += product.price * product.amount;
       });
       setTotalItems(total);
-
-      sessionStorage.setItem("amountOrder", JSON.stringify(total));
     }
   }, [cart]);
-  function finshOrder() {
-    history.push("/checkout-order");
-  }
-  function cancelOrder() {
-    history.push("/");
-  }
 
   return (
     <Container>
@@ -54,8 +40,10 @@ export default function TopBarCheckoutSession({ showTotalValue }: IProps) {
                 size="large"
                 color="warning"
                 startIcon={<ShoppingCart />}
-                onClick={finshOrder}
-                disabled={Number(totalItems).toFixed(2).replace(".", ",") === "0,00"}
+                onClick={() => history.push("/checkout-order")}
+                disabled={
+                  Number(totalItems).toFixed(2).replace(".", ",") === "0,00"
+                }
               >
                 Finalizar pedido
               </Button>
