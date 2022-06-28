@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Container } from "./styles";
 import { TextField, Box, Button } from "@material-ui/core";
 import TopBarCheckoutSession from "../../components/TopBarCheckout";
+import { CartContext } from "../../context/useProductIdContext";
 const schema = yup
   .object({
     name: yup.string().required("Nome é obrigatório"),
@@ -14,6 +15,7 @@ const schema = yup
 
 const Identification: React.FC = () => {
   const history = useHistory();
+  const {cart} = useContext(CartContext);
 
   const {
     register,
@@ -61,7 +63,7 @@ const Identification: React.FC = () => {
                   }} */
                   error={errors.name}
                   helperText={errors.name && errors.name?.message}
-                  disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
+                  disabled={cart.length === 0}
                   fullWidth
                   focused
                   variant="outlined"
@@ -86,7 +88,7 @@ const Identification: React.FC = () => {
             color="success"
             size="large"
             type="submit"
-            disabled={Number(sessionStorage.getItem("amountOrder")) === 0}
+            disabled={cart.length === 0}
           >
             Confirmar
           </Button>
