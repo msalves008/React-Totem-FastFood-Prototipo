@@ -6,7 +6,9 @@
 
 - <p style="color: red;">O projeto de Software para Auto-Atendimento foi desenvolvido como parte do Trabalho de Conclusão de Curso (TCC) e é um MVP para uma aplicação web destinada a totens de autoatendimento em fastfoods.</p>
 
-## 🚀 Preview do projeto
+## 🚀 Preview do projeto no YouTube
+
+<strong> Clique na imagem para assistir </strong>
 
 [![Watch the video](https://img.youtube.com/vi/TW4cR6CUS30/maxresdefault.jpg)](https://youtu.be/TW4cR6CUS30)
 
